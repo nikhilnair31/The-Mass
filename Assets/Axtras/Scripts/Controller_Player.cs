@@ -22,8 +22,11 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] private float maxDistance = 10f;
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private Transform holdAtTransform;
+    [SerializeField] private GameObject throwLineGO;
+    [SerializeField] private float throwForce = 3f;
     private Transform currentInteractable;
     private Transform heldInteractable;
+    private bool aimingToThrow;
     private RaycastHit hit;
 
     [Header("UI Settings")]
@@ -87,6 +90,16 @@ public class Controller_Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G) && heldInteractable != null) {
             DropInteractable(heldInteractable);
         }
+        
+        if (Input.GetMouseButtonDown(0)) {
+            aimingToThrow = true;
+            throwLineGO.SetActive(true);
+        }
+        if (Input.GetMouseButtonUp(0)) {
+            ThrowInteractable(heldInteractable);
+            throwLineGO.SetActive(false);
+            aimingToThrow = false;
+        }
     }
 
     private void CheckForInteractable() {
@@ -135,6 +148,11 @@ public class Controller_Player : MonoBehaviour
         heldInteractable = null;
     }
     private void ThrowInteractable(Transform interactable) {
+        var rb = interactable.GetComponent<Rigidbody>();
+        EnablePhysics(rb, true);
+        rb.AddForce(holdAtTransform.forward * throwForce, ForceMode.Impulse);
+        heldInteractable.SetParent(null);
+        heldInteractable = null;
     }
 
     private void EnablePhysics(Rigidbody rb, bool active) {
