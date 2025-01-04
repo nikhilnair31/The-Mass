@@ -1,5 +1,7 @@
 using UnityEngine;
+using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Controller_Player : MonoBehaviour
 {
@@ -18,7 +20,8 @@ public class Controller_Player : MonoBehaviour
 
     [Header("Interactable Settings")]
     [SerializeField] private float maxDistance = 10f;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask interactableLayer;
+    [SerializeField] private Transform holdAtTransform;
     private Transform currentInteractable;
     private RaycastHit hit;
 
@@ -68,12 +71,26 @@ public class Controller_Player : MonoBehaviour
     }
 
     private void HandleInteractable() {
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, layerMask)) {
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer)) {
             if (hit.transform != currentInteractable) {
                 if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
                     currentInteractable = hit.transform;
-                    lookedAtText.text = interactable.ShowInteractablesText();
+                    lookedAtText.text = interactable.ReturnInteractableText();
                     Helper.Instance.ScaleTween(lookedAtText.transform, 3f);
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.E)) {
+                if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
+                    bool canBeInteractedWith = interactable.ReturnInteractableBool();
+                    if (canBeInteractedWith) {
+                        interactable.Interacted();
+                    }
+
+                    bool canBePicked = interactable.ReturnPickableBool();
+                    if (canBePicked) {
+                        PickInteractable(interactable.transform);
+                    }
                 }
             }
         }
@@ -83,5 +100,29 @@ public class Controller_Player : MonoBehaviour
                 Helper.Instance.ScaleTween(lookedAtText.transform, 0.3f);
             }
         }
+    }
+    private void PickInteractable(Transform interactable) {
+        if (!interactable.TryGetComponent(out Rigidbody rb)) {
+            interactable.AddComponent<Rigidbody>();
+        }
+
+        interactable.DOMove(holdAtTransform.position, 0.5f)
+        .OnComplete(() => {
+            var rb = interactable.GetComponent<Rigidbody>();
+            EnablePhysics(rb, false);
+
+            interactable.SetParent(holdAtTransform);
+        });
+    }
+    private void DropInteractable(Transform interactable) {
+        var rb = interactable.GetComponent<Rigidbody>();
+        EnablePhysics(rb, true);
+    }
+    private void ThrowInteractable(Transform interactable) {
+    }
+
+    private void EnablePhysics(Rigidbody rb, bool active) {
+        rb.useGravity = active;
+        rb.isKinematic = !active;
     }
 }
