@@ -23,6 +23,7 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private Transform holdAtTransform;
     private Transform currentInteractable;
+    private Transform heldInteractable;
     private RaycastHit hit;
 
     [Header("UI Settings")]
@@ -88,7 +89,7 @@ public class Controller_Player : MonoBehaviour
                     }
 
                     bool canBePicked = interactable.ReturnPickableBool();
-                    if (canBePicked) {
+                    if (canBePicked && heldInteractable == null) {
                         PickInteractable(interactable.transform);
                     }
                 }
@@ -98,6 +99,12 @@ public class Controller_Player : MonoBehaviour
             if (currentInteractable != null) {
                 currentInteractable = null;
                 Helper.Instance.ScaleTween(lookedAtText.transform, 0.3f);
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.G)) {
+            if (heldInteractable != null) {
+                DropInteractable(heldInteractable);
             }
         }
     }
@@ -112,11 +119,15 @@ public class Controller_Player : MonoBehaviour
             EnablePhysics(rb, false);
 
             interactable.SetParent(holdAtTransform);
+
+            heldInteractable = interactable;
         });
     }
     private void DropInteractable(Transform interactable) {
         var rb = interactable.GetComponent<Rigidbody>();
         EnablePhysics(rb, true);
+        heldInteractable.SetParent(null);
+        heldInteractable = null;
     }
     private void ThrowInteractable(Transform interactable) {
     }
