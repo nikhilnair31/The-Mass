@@ -52,7 +52,6 @@ public class Controller_Player : MonoBehaviour
         playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
-
     private void HandleMovement() {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -70,44 +69,50 @@ public class Controller_Player : MonoBehaviour
             controller.Move(move * sprintSpeed * Time.deltaTime);
         }
     }
-
     private void HandleInteractable() {
+        CheckForInteractable();
+
+        if (Input.GetKeyDown(KeyCode.E)) {
+            if (currentInteractable != null && currentInteractable.TryGetComponent(out Controller_Interactables interactable)) {
+                if (interactable.ReturnInteractableBool()) {
+                    interactable.Interacted();
+                }
+
+                if (interactable.ReturnPickableBool() && heldInteractable == null) {
+                    PickInteractable(currentInteractable);
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.G) && heldInteractable != null) {
+            DropInteractable(heldInteractable);
+        }
+    }
+
+    private void CheckForInteractable() {
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer)) {
             if (hit.transform != currentInteractable) {
                 if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
                     currentInteractable = hit.transform;
-                    lookedAtText.text = interactable.ReturnInteractableText();
-                    Helper.Instance.ScaleTween(lookedAtText.transform, 3f);
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.E)) {
-                if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
-                    bool canBeInteractedWith = interactable.ReturnInteractableBool();
-                    if (canBeInteractedWith) {
-                        interactable.Interacted();
-                    }
-
-                    bool canBePicked = interactable.ReturnPickableBool();
-                    if (canBePicked && heldInteractable == null) {
-                        PickInteractable(interactable.transform);
-                    }
+                    UpdateLookedAtText(interactable);
                 }
             }
         }
         else {
-            if (currentInteractable != null) {
-                currentInteractable = null;
-                Helper.Instance.ScaleTween(lookedAtText.transform, 0.3f);
-            }
-        }
-        
-        if (Input.GetKeyDown(KeyCode.G)) {
-            if (heldInteractable != null) {
-                DropInteractable(heldInteractable);
-            }
+            ClearLookedAtText();
         }
     }
+    private void UpdateLookedAtText(Controller_Interactables interactable) {
+        lookedAtText.text = interactable.ReturnInteractableText();
+        Helper.Instance.ScaleTween(lookedAtText.transform, 3f);
+    }
+    private void ClearLookedAtText() {
+        if (currentInteractable != null) {
+            currentInteractable = null;
+            Helper.Instance.ScaleTween(lookedAtText.transform, 0.3f);
+        }
+    }
+
     private void PickInteractable(Transform interactable) {
         if (!interactable.TryGetComponent(out Rigidbody rb)) {
             interactable.AddComponent<Rigidbody>();
