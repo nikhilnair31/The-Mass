@@ -8,6 +8,8 @@
 
 ## Done
 
+[x] Added the vents inbto the room
+[x] Added some window sections into the room
 [x] Add interaction system to throw
 [x] Add interaction system to drop
 [x] Add interaction system to pickup
