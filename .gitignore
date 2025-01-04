@@ -2,6 +2,9 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+/[Aa]ssets/TextMesh Pro/
+/[Aa]ssets/Plugins/
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -34,6 +37,7 @@ ExportedObj/
 .consulo/
 *.csproj
 *.unityproj
+*.meta
 *.sln
 *.suo
 *.tmp
