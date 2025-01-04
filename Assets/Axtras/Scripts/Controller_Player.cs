@@ -91,11 +91,11 @@ public class Controller_Player : MonoBehaviour
             DropInteractable(heldInteractable);
         }
         
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && heldInteractable != null) {
             aimingToThrow = true;
             throwLineGO.SetActive(true);
         }
-        if (Input.GetMouseButtonUp(0)) {
+        if (Input.GetMouseButtonUp(0) && heldInteractable != null) {
             ThrowInteractable(heldInteractable);
             throwLineGO.SetActive(false);
             aimingToThrow = false;
