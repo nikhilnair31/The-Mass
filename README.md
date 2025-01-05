@@ -2,7 +2,6 @@
 
 ## To-do
 
-[ ] 
 [ ] Add effects for shower warping
 [ ] Improve effects for barrier (make visible when close and on thrown items impacting)
 [ ] Improve effects for thrown arc (make dotted line fading away, match as close as possible to thrown item)
@@ -10,6 +9,8 @@
 
 ## Done
 
+[x] Add typewriter effect for text
+[x] Add sound when speach shows up
 [x] Added light switch functionality
 [x] Add functional doors
 [x] Add sounds to the Mass

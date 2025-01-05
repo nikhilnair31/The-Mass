@@ -29,9 +29,6 @@ public class Controller_Player : MonoBehaviour
     private Transform heldInteractable;
     private bool aimingToThrow;
     private RaycastHit hit;
-
-    [Header("UI Settings")]
-    [SerializeField] private TMP_Text lookedAtText;
     #endregion
 
     private void Start() {
@@ -116,13 +113,15 @@ public class Controller_Player : MonoBehaviour
         }
     }
     private void UpdateLookedAtText(Controller_Interactables interactable) {
-        lookedAtText.text = interactable.ReturnInteractableText();
-        Helper.Instance.ScaleTween(lookedAtText.transform, 3f);
+        var showTextStr = interactable.ReturnInteractableText();
+
+        StopAllCoroutines();
+        StartCoroutine(Manager_UI.Instance.ShowTextWithSound(showTextStr));
     }
     private void ClearLookedAtText() {
         if (currentInteractable != null) {
             currentInteractable = null;
-            Helper.Instance.ScaleTween(lookedAtText.transform, 0.3f);
+            StartCoroutine(Manager_UI.Instance.ClearText());
         }
     }
 
