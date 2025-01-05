@@ -178,7 +178,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8067726398312463513, guid: cd8be20347698fa49bdcea07be2fa22e, type: 3}
+  - {fileID: 2100000, guid: 0346bf9c0f72a5b4b88598e1643a79b9, type: 2}
   - {fileID: -8896051167825165466, guid: cd8be20347698fa49bdcea07be2fa22e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -364,5 +364,8 @@ MonoBehaviour:
   doorTransform: {fileID: 7697492796149422600}
   doorAudioSource: {fileID: 6502125613198762406}
   doorAudioClips:
-  - {fileID: 8300000, guid: a58da8baeee3c1842a35397e20a7bf79, type: 3}
+  - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
+  - {fileID: 8300000, guid: c02deef2e1386f54d8c7baf87737a1a6, type: 3}
+  - {fileID: 8300000, guid: e7d98d508702f1b4d8e08b84327b2729, type: 3}
   transitionTime: 1
+  doorIsLocked: 0

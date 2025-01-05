@@ -2,7 +2,7 @@
 
 ## To-do
 
-[ ] Switch door over to open/cloe with E instead of hinge joints
+[ ] Add a locked door shake effect
 [ ] Improve thrown object trajectory
 [ ] Add effects for shower warping
 [ ] Improve effects for barrier (make visible when close and on thrown items impacting)
@@ -11,6 +11,7 @@
 
 ## Done
 
+[x] Switch door over to open/cloe with E instead of hinge joints
 [x] Add typewriter effect for text
 [x] Add sound when speach shows up
 [x] Added light switch functionality
