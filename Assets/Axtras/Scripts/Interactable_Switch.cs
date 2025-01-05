@@ -4,7 +4,7 @@ using UnityEngine;
 public class Interactable_Switch : Controller_Interactables 
 {
     #region Vars
-    [Header("Interaction Settings")]
+    [Header("Switch Settings")]
     [SerializeField] private Transform switchButton;
     [SerializeField] private AudioSource switchAudioSource;
     [SerializeField] private AudioClip[] switchAudioClips;

@@ -17,6 +17,11 @@ public class Controller_Interactables : MonoBehaviour
         // Debug.Log("Controller_Interactables InteractInteractable");
     }
 
+    internal void PlayRandAudio(AudioSource source, AudioClip[] clips) {
+        var clip = clips[Random.Range(0, clips.Length)];
+        source.PlayOneShot(clip);
+    }
+
     public string ReturnInteractableText() {
         return showThisText;
     }
