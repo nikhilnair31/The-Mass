@@ -128,7 +128,7 @@ public class Controller_Player : MonoBehaviour
 
     private void PickInteractable(Transform interactable) {
         if (!interactable.TryGetComponent(out Rigidbody rb)) {
-            interactable.AddComponent<Rigidbody>();
+            rb = interactable.AddComponent<Rigidbody>();
         }
 
         EnablePhysics(rb, false);
