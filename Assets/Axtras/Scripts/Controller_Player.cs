@@ -103,7 +103,7 @@ public class Controller_Player : MonoBehaviour
     }
 
     private void CheckForInteractable() {
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer)) {
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer.value)) {
             if (hit.transform != currentInteractable) {
                 if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
                     currentInteractable = hit.transform;
@@ -131,13 +131,12 @@ public class Controller_Player : MonoBehaviour
             interactable.AddComponent<Rigidbody>();
         }
 
-        interactable.DOMove(holdAtTransform.position, 0.5f)
+        EnablePhysics(rb, false);
+
+        interactable.SetParent(holdAtTransform);
+
+        interactable.DOLocalMove(Vector3.zero, 0.5f)
         .OnComplete(() => {
-            var rb = interactable.GetComponent<Rigidbody>();
-            EnablePhysics(rb, false);
-
-            interactable.SetParent(holdAtTransform);
-
             heldInteractable = interactable;
         });
     }

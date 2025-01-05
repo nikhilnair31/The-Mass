@@ -2,13 +2,13 @@
 
 ## To-do
 
-[ ] Add functional draggable doors
 [ ] Improve effects for barrier (make visible when close and on thrown items impacting)
 [ ] Improve effects for thrown arc (make dotted line fading away, match as close as possible to thrown item)
 [ ] Improve the look at system to stop text scaling up when leaving an item or it disappearing while still looking at it
 
 ## Done
 
+[x] Add functional doors
 [x] Add sounds to the Mass
 [x] Add steam into vent
 [x] Added the vents inbto the room
