@@ -13,8 +13,8 @@ public class Controller_Interactables : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Interactable");
     }
 
-    public void Interacted() {
-        Debug.Log("Interacted");
+    public virtual void Interacted() {
+        // Debug.Log("Controller_Interactables Interacted");
     }
 
     public string ReturnInteractableText() {

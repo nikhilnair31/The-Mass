@@ -10,6 +10,7 @@
 
 ## Done
 
+[x] Added light switch functionality
 [x] Add functional doors
 [x] Add sounds to the Mass
 [x] Add steam into vent
