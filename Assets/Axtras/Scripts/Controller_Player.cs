@@ -10,8 +10,9 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sprintSpeed = 8f;
     [SerializeField] private float gravity = -9.81f;
-    private CharacterController controller;
-    private Vector3 velocity;
+    [SerializeField] private float jumpForce = 5f;
+    private Rigidbody rb;
+    private Vector3 moveDirection;
 
     [Header("Mouse Settings")]
     [SerializeField] private float mouseSensitivity = 100f;
@@ -34,7 +35,8 @@ public class Controller_Player : MonoBehaviour
     #endregion
 
     private void Start() {
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
         
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -59,18 +61,16 @@ public class Controller_Player : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(move * moveSpeed * Time.deltaTime);
+        moveDirection = transform.right * x + transform.forward * z;
 
-        // Apply gravity
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-
-        // Sprint
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            controller.Move(move * sprintSpeed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            rb.linearVelocity = new Vector3(moveDirection.x * sprintSpeed, rb.linearVelocity.y, moveDirection.z * sprintSpeed);
         }
+        else {
+            rb.linearVelocity = new Vector3(moveDirection.x * moveSpeed, rb.linearVelocity.y, moveDirection.z * moveSpeed);
+        }
+
+        rb.AddForce(Vector3.up * gravity);
     }
     private void HandleInteractable() {
         CheckForInteractable();
