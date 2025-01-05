@@ -42,7 +42,7 @@ public class Manager_UI : MonoBehaviour
 
             if (typingClips.Length > 0) {
                 AudioClip clip = typingClips[Random.Range(0, typingClips.Length)];
-                uiSource.PlayOneShot(clip);
+                // uiSource.PlayOneShot(clip);
             }
 
             yield return new WaitForSeconds(hideTypingSpeed);

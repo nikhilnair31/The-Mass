@@ -9,8 +9,11 @@ public class Controller_Player : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sprintSpeed = 8f;
+    [SerializeField] private float crouchSpeed = 2.5f;
     [SerializeField] private float gravity = -9.81f;
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float normalHeight = 2f;
+    [SerializeField] private float crouchHeight = 1f;
+    [SerializeField] private Transform playerTransform;
     private Rigidbody rb;
     private Vector3 moveDirection;
 
@@ -60,11 +63,17 @@ public class Controller_Player : MonoBehaviour
 
         moveDirection = transform.right * x + transform.forward * z;
 
-        if (Input.GetKey(KeyCode.LeftShift)) {
-            rb.linearVelocity = new Vector3(moveDirection.x * sprintSpeed, rb.linearVelocity.y, moveDirection.z * sprintSpeed);
-        }
+        if (Input.GetKey(KeyCode.LeftControl)) {
+            rb.linearVelocity = new Vector3(moveDirection.x * crouchSpeed, rb.linearVelocity.y, moveDirection.z * crouchSpeed);
+            playerTransform.localScale = new Vector3(1f, crouchHeight / normalHeight, 1f); // Adjust height
+        } 
         else {
             rb.linearVelocity = new Vector3(moveDirection.x * moveSpeed, rb.linearVelocity.y, moveDirection.z * moveSpeed);
+            playerTransform.localScale = new Vector3(1f, 1f, 1f); // Reset height
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.LeftControl)) {
+            rb.linearVelocity = new Vector3(moveDirection.x * sprintSpeed, rb.linearVelocity.y, moveDirection.z * sprintSpeed);
         }
 
         rb.AddForce(Vector3.up * gravity);
@@ -75,7 +84,7 @@ public class Controller_Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) {
             if (currentInteractable != null && currentInteractable.TryGetComponent(out Controller_Interactables interactable)) {
                 if (interactable.ReturnInteractableBool()) {
-                    interactable.Interacted();
+                    interactable.InteractInteractable();
                 }
 
                 if (interactable.ReturnPickableBool() && heldInteractable == null) {

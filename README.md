@@ -2,6 +2,8 @@
 
 ## To-do
 
+[ ] Switch door over to open/cloe with E instead of hinge joints
+[ ] Improve thrown object trajectory
 [ ] Add effects for shower warping
 [ ] Improve effects for barrier (make visible when close and on thrown items impacting)
 [ ] Improve effects for thrown arc (make dotted line fading away, match as close as possible to thrown item)
