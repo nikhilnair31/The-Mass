@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5609796611443003558}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13.599345, y: 4.5271435, z: -5.7909026}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
@@ -222,14 +222,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showThisText: pick up?
-  canBeInteracted: 1
-  canBePicked: 0
-  impactAudioSource: {fileID: 3637661144603006955}
-  impactAudioClips:
-  - {fileID: 8300000, guid: 5d3b7b5c4c495c845b9e93157bb4cbe2, type: 3}
-  - {fileID: 8300000, guid: 211f07d8def4de44683433990c74d27e, type: 3}
-  - {fileID: 8300000, guid: d78588678b7ff0f40991a40aa8414767, type: 3}
+  canBePicked: 1
+  audioClips:
   - {fileID: 8300000, guid: 674871bd243a3af4f8b3459e33369d0a, type: 3}
   - {fileID: 8300000, guid: ccb48752b21ae8b409fc6128c19705a4, type: 3}
   - {fileID: 8300000, guid: 214988429b8584c468775958162232b6, type: 3}
   - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}
+  throwForce: 3

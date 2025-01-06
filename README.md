@@ -2,7 +2,9 @@
 
 ## To-do
 
-[ ] Add a locked door shake effect
+[ ] Remove canBePicked from parent Controller_Interactables script 
+[ ] see how to get typwriter effect corecttly when using rich text
+[ ] Fix entrance door shake broken
 [ ] Improve thrown object trajectory
 [ ] Add effects for shower warping
 [ ] Improve effects for barrier (make visible when close and on thrown items impacting)
@@ -11,6 +13,7 @@
 
 ## Done
 
+[x] Add a locked door shake effect
 [x] Switch door over to open/cloe with E instead of hinge joints
 [x] Add typewriter effect for text
 [x] Add sound when speach shows up

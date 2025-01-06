@@ -7,10 +7,6 @@ public class Interactable_Throwable : Controller_Interactables
     #region Vars
     [Header("Throwable Settings")]
     [SerializeField] private float throwForce = 3f;
-
-    [Header("Audio Settings")]
-    [SerializeField] private AudioSource impactAudioSource;
-    [SerializeField] private AudioClip[] impactAudioClips;
     #endregion
 
     public override void InteractInteractable(Transform currentInteractable) {
@@ -52,6 +48,6 @@ public class Interactable_Throwable : Controller_Interactables
     }
 
     private void OnCollisionEnter(Collision other) {
-        PlayRandAudio(impactAudioSource, impactAudioClips);
+        PlayRandAudio(audioSource, audioClips);
     }
 }

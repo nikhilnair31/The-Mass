@@ -25,10 +25,17 @@ public class Manager_UI : MonoBehaviour
     public IEnumerator ShowTextWithSound(string text) {
         lookedAtText.text = "";
 
-        foreach (char c in text) {
+        bool insideTag = false;
+
+        for (int i = 0; i < text.Length; i++) {
+            char c = text[i];
+
+            if (c == '<') insideTag = true;
+            if (c == '>') insideTag = false;
+
             lookedAtText.text += c;
 
-            if (typingClips.Length > 0) {
+            if (!insideTag && typingClips.Length > 0) {
                 AudioClip clip = typingClips[Random.Range(0, typingClips.Length)];
                 uiSource.PlayOneShot(clip);
             }

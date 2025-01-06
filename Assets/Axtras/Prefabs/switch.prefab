@@ -307,11 +307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showThisText: turn on/off lights?
-  canBeInteracted: 1
   canBePicked: 0
-  switchButton: {fileID: 26003072213945625}
-  switchAudioSource: {fileID: 2488852888117086160}
-  switchAudioClips:
+  audioClips:
   - {fileID: 8300000, guid: 07c26cf6a45f0fe41b711f2db6ead26f, type: 3}
   - {fileID: 8300000, guid: 37604ceb446fbcc4faa0931b67bb75a6, type: 3}
+  switchButton: {fileID: 26003072213945625}
   lightToControl: {fileID: 0}

@@ -359,13 +359,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showThisText: open/close door?
-  canBeInteracted: 1
   canBePicked: 0
-  doorTransform: {fileID: 7697492796149422600}
-  doorAudioSource: {fileID: 6502125613198762406}
-  doorAudioClips:
+  audioClips:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   - {fileID: 8300000, guid: c02deef2e1386f54d8c7baf87737a1a6, type: 3}
   - {fileID: 8300000, guid: e7d98d508702f1b4d8e08b84327b2729, type: 3}
   transitionTime: 1
+  shakeTime: 0.2
+  shakeVec: {x: 0, y: 5, z: 0}
   doorIsLocked: 0

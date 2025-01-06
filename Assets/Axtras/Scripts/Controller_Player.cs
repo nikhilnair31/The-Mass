@@ -83,17 +83,6 @@ public class Controller_Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) {
             var interactable = currentInteractable.GetComponent<Controller_Interactables>();
             interactable?.InteractInteractable(currentInteractable);
-
-            // if (currentInteractable != null) {
-            //     interactable.InteractInteractable();
-
-            //     // if (interactable.ReturnPickableBool() && heldInteractable == null) {
-            //     //     PickInteractable(currentInteractable);
-            //     // }
-            // }
-            // if () {
-
-            // }
         }
 
         if (Input.GetKeyDown(KeyCode.G) && heldInteractable != null) {

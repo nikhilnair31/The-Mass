@@ -8,10 +8,17 @@ public class Controller_Interactables : MonoBehaviour
     [Header("Interaction Settings")]
     [SerializeField] private string showThisText;
     [SerializeField] private bool canBePicked;
+
+    [Header("Audio Settings")]
+    [SerializeField] internal AudioClip[] audioClips;
+    internal AudioSource audioSource;
     #endregion
 
-    private void Start() {
+    public virtual void Start() {
         playerController = FindFirstObjectByType<Controller_Player>();
+
+        audioSource = GetComponent<AudioSource>();
+
         gameObject.layer = LayerMask.NameToLayer("Interactable");
     }
 
