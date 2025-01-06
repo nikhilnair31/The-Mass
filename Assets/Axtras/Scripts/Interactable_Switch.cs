@@ -16,9 +16,8 @@ public class Interactable_Switch : Controller_Interactables
         switchButton.localRotation = Quaternion.Euler(60f, 0f, 0f);
     }
 
-    public override void InteractInteractable() {
-        base.InteractInteractable();
-        Debug.Log("Interactable_Switch InteractInteractable");
+    public override void InteractInteractable(Transform currentInteractable) {
+        base.InteractInteractable(currentInteractable);
 
         float targetXRotation = isOn ? -60f : 60f;
         switchButton.DORotate(new Vector3(targetXRotation, 0f, 0f), 0.5f);

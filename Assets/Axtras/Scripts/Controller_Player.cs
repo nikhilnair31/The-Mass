@@ -25,11 +25,10 @@ public class Controller_Player : MonoBehaviour
     [Header("Interactable Settings")]
     [SerializeField] private float maxDistance = 10f;
     [SerializeField] private LayerMask interactableLayer;
-    [SerializeField] private Transform holdAtTransform;
+    [SerializeField] public Transform holdAtTransform;
     [SerializeField] private GameObject throwLineGO;
-    [SerializeField] private float throwForce = 3f;
+    [SerializeField] public Transform heldInteractable;
     private Transform currentInteractable;
-    private Transform heldInteractable;
     private bool aimingToThrow;
     private RaycastHit hit;
     #endregion
@@ -82,19 +81,24 @@ public class Controller_Player : MonoBehaviour
         CheckForInteractable();
 
         if (Input.GetKeyDown(KeyCode.E)) {
-            if (currentInteractable != null && currentInteractable.TryGetComponent(out Controller_Interactables interactable)) {
-                if (interactable.ReturnInteractableBool()) {
-                    interactable.InteractInteractable();
-                }
+            var interactable = currentInteractable.GetComponent<Controller_Interactables>();
+            interactable?.InteractInteractable(currentInteractable);
 
-                if (interactable.ReturnPickableBool() && heldInteractable == null) {
-                    PickInteractable(currentInteractable);
-                }
-            }
+            // if (currentInteractable != null) {
+            //     interactable.InteractInteractable();
+
+            //     // if (interactable.ReturnPickableBool() && heldInteractable == null) {
+            //     //     PickInteractable(currentInteractable);
+            //     // }
+            // }
+            // if () {
+
+            // }
         }
 
         if (Input.GetKeyDown(KeyCode.G) && heldInteractable != null) {
-            DropInteractable(heldInteractable);
+            var throwable = heldInteractable.GetComponent<Interactable_Throwable>();
+            throwable?.DropInteractable(heldInteractable);
         }
         
         if (Input.GetMouseButtonDown(0) && heldInteractable != null) {
@@ -102,7 +106,8 @@ public class Controller_Player : MonoBehaviour
             throwLineGO.SetActive(true);
         }
         if (Input.GetMouseButtonUp(0) && heldInteractable != null) {
-            ThrowInteractable(heldInteractable);
+            var throwable = heldInteractable.GetComponent<Interactable_Throwable>();
+            throwable?.ThrowInteractable(heldInteractable);
             throwLineGO.SetActive(false);
             aimingToThrow = false;
         }
@@ -132,38 +137,5 @@ public class Controller_Player : MonoBehaviour
             currentInteractable = null;
             StartCoroutine(Manager_UI.Instance.ClearText());
         }
-    }
-
-    private void PickInteractable(Transform interactable) {
-        if (!interactable.TryGetComponent(out Rigidbody rb)) {
-            rb = interactable.AddComponent<Rigidbody>();
-        }
-
-        EnablePhysics(rb, false);
-
-        interactable.SetParent(holdAtTransform);
-
-        interactable.DOLocalMove(Vector3.zero, 0.5f)
-        .OnComplete(() => {
-            heldInteractable = interactable;
-        });
-    }
-    private void DropInteractable(Transform interactable) {
-        var rb = interactable.GetComponent<Rigidbody>();
-        EnablePhysics(rb, true);
-        heldInteractable.SetParent(null);
-        heldInteractable = null;
-    }
-    private void ThrowInteractable(Transform interactable) {
-        var rb = interactable.GetComponent<Rigidbody>();
-        EnablePhysics(rb, true);
-        rb.AddForce(holdAtTransform.forward * throwForce, ForceMode.Impulse);
-        heldInteractable.SetParent(null);
-        heldInteractable = null;
-    }
-
-    private void EnablePhysics(Rigidbody rb, bool active) {
-        rb.useGravity = active;
-        rb.isKinematic = !active;
     }
 }

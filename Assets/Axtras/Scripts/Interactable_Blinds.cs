@@ -16,11 +16,12 @@ public class Interactable_Blinds : Controller_Interactables
         startScale = transform.localScale;
     }
 
-    public override void InteractInteractable() {
-        base.InteractInteractable();
-        Debug.Log("Interactable_Switch InteractInteractable");
-        
-        transform.DOScale(isDown ? new (startScale.x, startScale.y, 0f) : startScale, transitionTime);
+    public override void InteractInteractable(Transform currentInteractable) {
+        base.InteractInteractable(currentInteractable);
+        OpenCloseBlinds();
+    }
+    private void OpenCloseBlinds() {
+        transform.DOScale(isDown ? new (startScale.x, startScale.y, 0.05f) : startScale, transitionTime);
         
         PlayRandAudio(blindsAudioSource, blindsAudioClips);
 

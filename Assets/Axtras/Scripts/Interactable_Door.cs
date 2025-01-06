@@ -13,9 +13,8 @@ public class Interactable_Door : Controller_Interactables
     private bool isOpen = false;
     #endregion
 
-    public override void InteractInteractable() {
-        base.InteractInteractable();
-        Debug.Log("Interactable_Switch InteractInteractable");
+    public override void InteractInteractable(Transform currentInteractable) {
+        base.InteractInteractable(currentInteractable);
 
         if (!doorIsLocked) {
             Vector3 playerPosition = Camera.main.transform.position;
