@@ -1,5 +1,5 @@
-using DG.Tweening;
 using UnityEngine;
+using DG.Tweening;
 
 public class Interactable_Switch : Controller_Interactables 
 {
