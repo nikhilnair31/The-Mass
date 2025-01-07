@@ -11,8 +11,8 @@ public class Controller_TheMass : MonoBehaviour
     private Vector3 currScale;
 
     [Header("Audio Settings")]
-    [SerializeField] internal AudioClip[] impactClips;
-    internal AudioSource audioSource;
+    [SerializeField] private AudioClip[] impactClips;
+    private AudioSource audioSource;
     #endregion
 
     private void Awake() {
@@ -23,6 +23,7 @@ public class Controller_TheMass : MonoBehaviour
     }
 
     private void Start() {
+        audioSource = GetComponent<AudioSource>();
         currScale = transform.localScale;
     }
 
