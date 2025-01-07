@@ -37,9 +37,19 @@ public class Interactable_Throwable : Controller_Interactables
     public void ThrowInteractable(Transform interactable) {
         var rb = interactable.GetComponent<Rigidbody>();
         EnablePhysics(rb, true);
-        rb.AddForce(playerController.holdAtTransform.forward * throwForce, ForceMode.Impulse);
+        rb.AddForce(GetDir(interactable) * throwForce, ForceMode.Impulse);
         playerController.heldInteractable.SetParent(null);
         playerController.heldInteractable = null;
+    }
+
+    private Vector3 GetDir(Transform interactable) {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit)) {
+            return (hit.point - interactable.position).normalized;
+        }
+        else {
+            return ray.direction;
+        }
     }
 
     private void EnablePhysics(Rigidbody rb, bool active) {

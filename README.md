@@ -2,6 +2,7 @@
 
 ## To-do
 
+[ ] Fix realtime shadows
 [ ] Remove canBePicked from parent Controller_Interactables script 
 [ ] see how to get typwriter effect corecttly when using rich text
 [ ] Fix entrance door shake broken

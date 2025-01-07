@@ -1,11 +1,10 @@
 using UnityEngine;
-using DG.Tweening;
-using TMPro;
-using Unity.VisualScripting;
 
 public class Controller_Player : MonoBehaviour
 {
     #region Vars
+    public static Controller_Player Instance { get; private set; }
+
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sprintSpeed = 8f;
@@ -32,6 +31,13 @@ public class Controller_Player : MonoBehaviour
     private bool aimingToThrow;
     private RaycastHit hit;
     #endregion
+
+    private void Awake() {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     private void Start() {
         rb = GetComponent<Rigidbody>();
