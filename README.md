@@ -9,7 +9,7 @@
   - water hose to douse with
   - blanket to conver with
   - shatterable glass to throw and break
-- [ ] Remove canBePicked from parent Controller_Interactables script 
+- [ ] Remove canBePicked from parent Controller_Interactables script
 - [ ] Fix entrance door shake broken
 - [ ] Improve thrown object trajectory
 - [ ] Add effects for shower warping

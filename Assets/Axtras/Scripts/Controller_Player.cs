@@ -28,7 +28,6 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] private GameObject throwLineGO;
     [SerializeField] public Transform heldInteractable;
     private Transform currentInteractable;
-    private bool aimingToThrow;
     private RaycastHit hit;
     #endregion
 
@@ -87,7 +86,7 @@ public class Controller_Player : MonoBehaviour
         CheckForInteractable();
 
         if (Input.GetKeyDown(KeyCode.E)) {
-            if (currentInteractable.TryGetComponent(out Controller_Interactables interactable)) {
+            if (currentInteractable != null && currentInteractable.TryGetComponent(out Controller_Interactables interactable)) {
                 interactable.InteractInteractable(currentInteractable);
             }
         }
@@ -98,14 +97,12 @@ public class Controller_Player : MonoBehaviour
         }
         
         if (Input.GetMouseButtonDown(0) && heldInteractable != null) {
-            aimingToThrow = true;
             throwLineGO.SetActive(true);
         }
         if (Input.GetMouseButtonUp(0) && heldInteractable != null) {
             var throwable = heldInteractable.GetComponent<Interactable_Throwable>();
             throwable?.ThrowInteractable(heldInteractable);
             throwLineGO.SetActive(false);
-            aimingToThrow = false;
         }
     }
 

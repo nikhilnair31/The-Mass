@@ -7,7 +7,7 @@ public class Controller_Interactables : MonoBehaviour
 
     [Header("Interaction Settings")]
     [SerializeField] private string showThisText;
-    [SerializeField] private bool canBePicked;
+    [SerializeField] public bool canBePicked;
 
     [Header("Audio Settings")]
     [SerializeField] internal AudioClip[] audioClips;
@@ -24,6 +24,10 @@ public class Controller_Interactables : MonoBehaviour
 
     public virtual void InteractInteractable(Transform currentInteractable) {
         // Debug.Log("Controller_Interactables InteractInteractable");
+    }
+
+    public void SetInteractionText(string newtext) {
+        showThisText = newtext;
     }
 
     public string ReturnInteractableText() {
