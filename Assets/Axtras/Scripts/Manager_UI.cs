@@ -23,34 +23,21 @@ public class Manager_UI : MonoBehaviour
     }
 
     public IEnumerator ShowTextWithSound(string text) {
-        lookedAtText.text = "";
+        lookedAtText.text = text;
 
-        bool insideTag = false;
+        for (int lettersDisplayed = 0; lettersDisplayed <= text.Length; lettersDisplayed++) {
+            lookedAtText.maxVisibleCharacters = lettersDisplayed;
 
-        for (int i = 0; i < text.Length; i++) {
-            char c = text[i];
-
-            if (c == '<') insideTag = true;
-            if (c == '>') insideTag = false;
-
-            lookedAtText.text += c;
-
-            if (!insideTag && typingClips.Length > 0) {
-                AudioClip clip = typingClips[Random.Range(0, typingClips.Length)];
-                uiSource.PlayOneShot(clip);
-            }
+            AudioClip clip = typingClips[Random.Range(0, typingClips.Length)];
+            uiSource.PlayOneShot(clip);
 
             yield return new WaitForSeconds(showTypingSpeed);
         }
     }
     public IEnumerator ClearText() {
-        while (!string.IsNullOrEmpty(lookedAtText.text)) {
-            lookedAtText.text = lookedAtText.text[..^1];
-
-            if (typingClips.Length > 0) {
-                AudioClip clip = typingClips[Random.Range(0, typingClips.Length)];
-                // uiSource.PlayOneShot(clip);
-            }
+        int textLen = lookedAtText.text.Length;
+        for (int lettersDisplayed = textLen; lettersDisplayed >= 0; lettersDisplayed--) {
+            lookedAtText.maxVisibleCharacters = lettersDisplayed;
 
             yield return new WaitForSeconds(hideTypingSpeed);
         }
