@@ -5,9 +5,12 @@ public class Manager_Game : MonoBehaviour
     #region Vars
     public static Manager_Game Instance { get; private set; }
 
-    [Header("Unlock Vent Settings")]
+    [Header("Unlock Settings")]
     [SerializeField] private int numOfAttemptsCompleted = 5;
     [SerializeField] private int numOfAttemptsAttempted;
+
+    [Header("Vent Settings")]
+    [SerializeField] private Transform ventTranform;
     #endregion
 
     private void Awake() {
@@ -17,7 +20,7 @@ public class Manager_Game : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void AddAttempt() {
+    public void AddAttempt() {
         numOfAttemptsAttempted++;
 
         if (numOfAttemptsAttempted >= numOfAttemptsCompleted) {
@@ -27,5 +30,9 @@ public class Manager_Game : MonoBehaviour
 
     private void UnlockVent() {
         Debug.Log($"UnlockVent");
+        
+        if (ventTranform.TryGetComponent(out Rigidbody rb)) {
+            Helper.Instance.EnablePhysics(rb, true);
+        }
     }
 }

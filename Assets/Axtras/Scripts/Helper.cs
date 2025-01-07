@@ -13,6 +13,18 @@ public class Helper : MonoBehaviour
             Destroy(gameObject);
     }
 
+    #region Vec Related
+    public Vector3 GetDir(Transform interactable) {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit)) {
+            return (hit.point - interactable.position).normalized;
+        }
+        else {
+            return ray.direction;
+        }
+    }
+    #endregion
+
     #region UI Related
     public bool DefineOnUI() {
         if (EventSystem.current.IsPointerOverGameObject()) {
@@ -21,6 +33,20 @@ public class Helper : MonoBehaviour
         else {
             return false;
         }
+    }
+    #endregion
+
+    #region Audio Related
+    public void PlayRandAudio(AudioSource source, AudioClip[] clips) {
+        var clip = clips[UnityEngine.Random.Range(0, clips.Length)];
+        source.PlayOneShot(clip);
+    }
+    #endregion
+
+    #region Physics Related
+    public void EnablePhysics(Rigidbody rb, bool active) {
+        rb.useGravity = active;
+        rb.isKinematic = !active;
     }
     #endregion
 

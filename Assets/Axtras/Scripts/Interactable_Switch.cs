@@ -21,7 +21,7 @@ public class Interactable_Switch : Controller_Interactables
         float targetXRotation = isOn ? -60f : 60f;
         switchButton.DORotate(new Vector3(targetXRotation, 0f, 0f), 0.5f);
         
-        PlayRandAudio(audioSource, audioClips);
+        Helper.Instance.PlayRandAudio(audioSource, audioClips);
 
         lightToControl.enabled = isOn;
 

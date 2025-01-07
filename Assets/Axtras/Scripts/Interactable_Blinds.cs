@@ -22,7 +22,7 @@ public class Interactable_Blinds : Controller_Interactables
     private void OpenCloseBlinds() {
         transform.DOScale(isDown ? new (startScale.x, startScale.y, 0.05f) : startScale, transitionTime);
         
-        PlayRandAudio(audioSource, audioClips);
+        Helper.Instance.PlayRandAudio(audioSource, audioClips);
 
         isDown = !isDown;
     }

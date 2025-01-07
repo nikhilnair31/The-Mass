@@ -33,7 +33,7 @@ public class Interactable_Door : Controller_Interactables
 
             transform.DORotate(new Vector3(0f, targetYRotation, 0f), transitionTime);
 
-            PlayRandAudio(audioSource, audioClips);
+            Helper.Instance.PlayRandAudio(audioSource, audioClips);
 
             isOpen = !isOpen;
         }
@@ -43,7 +43,7 @@ public class Interactable_Door : Controller_Interactables
                 .OnStart(() => startAngleY = transform.localEulerAngles.y)
                 .OnComplete(() => transform.rotation = Quaternion.Euler(0f, startAngleY, 0f));
 
-            PlayRandAudio(audioSource, audioClips);
+            Helper.Instance.PlayRandAudio(audioSource, audioClips);
         }
     }
 }
