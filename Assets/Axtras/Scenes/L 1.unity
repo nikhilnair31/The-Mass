@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 20408b629241f0d44bbc3f5cbfd5406c, type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: e78071c3f45d3034cacca8c7e9d4442e, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -25969,7 +25969,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 2.61
+    m_NearPlane: 0.95
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
