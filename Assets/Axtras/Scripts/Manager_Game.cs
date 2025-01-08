@@ -12,6 +12,10 @@ public class Manager_Game : MonoBehaviour
 
     [Header("Vent Settings")]
     [SerializeField] private Transform ventTranform;
+
+    // [Header("Game Settings")]
+    // [SerializeField] private GameObject snowstorm;
+    // [SerializeField] private GameObject phone;
     #endregion
 
     #if UNITY_EDITOR
@@ -30,8 +34,45 @@ public class Manager_Game : MonoBehaviour
             Destroy(gameObject);
     }
 
+    private void Start() {
+        numOfAttemptsAttempted = 0;
+    }
+
+    private void UpdateByAttempt() {
+        switch (numOfAttemptsAttempted) {
+            // case 0:
+            //     snowstorm.Run(false);
+            //     phone.Run(false);
+            //     break;
+            // case 1:
+            //     snowstorm.Run(true);
+            //     phone.Run(false);
+            //     break;
+            // case 2:
+            //     snowstorm.Run(true);
+            //     phone.Run(true);
+            //     break;
+            // case 3:
+            //     snowstorm.Run(false);
+            //     phone.Run(false);
+            //     break;
+            // case 4:
+            //     snowstorm.Run(false);
+            //     phone.Run(false);
+            //     break;
+            // case 5:
+            //     snowstorm.Run(false);
+            //     phone.Run(false);
+            //     break;
+            // default:
+            //     break;
+        }
+    }
+
     public void AddAttempt() {
         numOfAttemptsAttempted++;
+
+        UpdateByAttempt();
 
         if (numOfAttemptsAttempted >= numOfAttemptsCompleted) {
             UnlockVent();
