@@ -40,8 +40,12 @@ public class Interactable_Door : Controller_Interactables
         else {
             float startAngleY = 0f;
             transform.DOShakeRotation(shakeTime,shakeVec, 10, 90f)
-                .OnStart(() => startAngleY = transform.localEulerAngles.y)
-                .OnComplete(() => transform.rotation = Quaternion.Euler(0f, startAngleY, 0f));
+                .OnStart(() => {
+                    startAngleY = transform.localEulerAngles.y;
+                })
+                .OnComplete(() => {
+                    transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, startAngleY, transform.localEulerAngles.z);
+                });
 
             Helper.Instance.PlayRandAudio(audioSource, audioClips);
         }

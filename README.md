@@ -10,7 +10,6 @@
   - blanket to conver with
   - shatterable glass to throw and break
 - [ ] Remove canBePicked from parent Controller_Interactables script
-- [ ] Fix entrance door shake broken
 - [ ] Improve thrown object trajectory
 - [ ] Add effects for shower warping
 - [ ] Improve effects for barrier (make visible when close and on thrown items impacting)
@@ -19,6 +18,7 @@
 
 ## Done
 
+- [x] Fix entrance door shake broken
 - [x] see how to get typwriter effect corecttly when using rich text
 - [x] Fix realtime shadows
 - [x] Add a locked door shake effect
