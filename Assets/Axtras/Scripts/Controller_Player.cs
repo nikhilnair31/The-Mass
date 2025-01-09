@@ -86,31 +86,42 @@ public class Controller_Player : MonoBehaviour
         CheckForInteractable();
 
         if (Input.GetKeyDown(KeyCode.E)) {
-            if (currentInteractable != null && currentInteractable.TryGetComponent(out Controller_Interactables interactable)) {
-                interactable.InteractInteractable(currentInteractable);
+            if (currentInteractable != null) {
+                if (currentInteractable.TryGetComponent(out Controller_Pickable pickable)) {
+                    pickable.PickInteractable();
+                }
+                
+                else if (currentInteractable.TryGetComponent(out Interactable_Blinds blinds)) {
+                    blinds.OpenCloseBlinds();
+                }
+                else if (currentInteractable.TryGetComponent(out Interactable_Door doors)) {
+                    doors.ControlOpenCloseDoor();
+                }
+                else if (currentInteractable.TryGetComponent(out Interactable_Switch switches)) {
+                    switches.ControlOnOffLight();
+                }
             }
         }
 
         if (Input.GetKeyDown(KeyCode.G) && heldInteractable != null) {
-            if (heldInteractable.TryGetComponent(out Interactable_Throwable interactable)) {
-                interactable.DropInteractable(heldInteractable);
+            if (heldInteractable.TryGetComponent(out Controller_Pickable pickable)) {
+                pickable.DropInteractable();
             }
         }
         
         if (Input.GetMouseButtonDown(0) && heldInteractable != null) {
-            if (heldInteractable.TryGetComponent(out Interactable_Throwable throwable)) {
+            if (heldInteractable.TryGetComponent(out Controller_Pickable pickable)) {
                 throwLineGO.SetActive(true);
             }
         }
         if (Input.GetMouseButtonUp(0) && heldInteractable != null) {
             if (heldInteractable.TryGetComponent(out Interactable_Throwable throwable)) {
-                throwable.ThrowInteractable(heldInteractable);
-                throwLineGO.SetActive(false);
+                throwable.ThrowInteractable();
             }
-            if (heldInteractable.TryGetComponent(out Interactable_Pokable pokable)) {
-                pokable.PokableInteractable(heldInteractable);
-                throwLineGO.SetActive(false);
+            else if (heldInteractable.TryGetComponent(out Interactable_Pokable pokable)) {
+                pokable.PokableInteractable();
             }
+            throwLineGO.SetActive(false);
         }
     }
 

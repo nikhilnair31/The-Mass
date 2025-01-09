@@ -221,10 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showThisText: pick up?
-  canBePicked: 1
-  audioClips:
-  - {fileID: 8300000, guid: 674871bd243a3af4f8b3459e33369d0a, type: 3}
-  - {fileID: 8300000, guid: ccb48752b21ae8b409fc6128c19705a4, type: 3}
-  - {fileID: 8300000, guid: 214988429b8584c468775958162232b6, type: 3}
-  - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}
+  isPickable: 1
   moveDist: 1
+  impactClips:
+  - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}

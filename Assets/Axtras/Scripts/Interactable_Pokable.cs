@@ -1,63 +1,30 @@
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Interactable_Pokable : Controller_Interactables 
+public class Interactable_Pokable : Controller_Pickable 
 {
     #region Vars
     [Header("Pokable Settings")]
     [SerializeField] private float moveDist = 3f;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip[] impactClips;
     #endregion
 
-    public override void InteractInteractable(Transform currentInteractable) {
-        base.InteractInteractable(currentInteractable);
-        PickInteractable(currentInteractable);
-    }
-
-    private void PickInteractable(Transform interactable) {
-        if (!interactable.TryGetComponent(out Rigidbody rb)) {
-            rb = interactable.AddComponent<Rigidbody>();
-        }
-
-        Helper.Instance.EnablePhysics(rb, false);
-
-        interactable.SetParent(playerController.holdAtTransform);
-        
-        interactable.localEulerAngles = new (90f, 0f, 0f);
-
-        interactable.DOLocalMove(Vector3.zero, 0.5f)
-        .OnComplete(() => {
-            playerController.heldInteractable = interactable;
-        });
-    }
-    private void DropInteractable(Transform interactable) {
-        var rb = interactable.GetComponent<Rigidbody>();
-        Helper.Instance.EnablePhysics(rb, true);
-        playerController.heldInteractable.SetParent(null);
-        playerController.heldInteractable = null;
-    }
-    public void PokableInteractable(Transform interactable) {
-        if (!interactable.TryGetComponent(out Rigidbody rb)) {
-            rb = interactable.AddComponent<Rigidbody>();
-        }
-
-        Helper.Instance.EnablePhysics(rb, false);
-
-        interactable.SetParent(playerController.holdAtTransform);
-        
-        interactable
+    public void PokableInteractable() {
+        transform
             .DOLocalRotate(
-                interactable.localEulerAngles + new Vector3(90f, 0f, 0f), 
+                transform.localEulerAngles + new Vector3(90f, 0f, 0f), 
                 0.3f
             )
             .OnComplete(() => {
-                interactable
+                transform
                     .DOLocalMove(
                         playerController.holdAtTransform.localPosition + new Vector3(0f, 0f, moveDist), 
                         0.3f
                     )
                     .OnComplete(() => {
-                        interactable
+                        transform
                             .DOLocalMove(
                                 Vector3.zero, 
                                 0.6f
@@ -71,6 +38,6 @@ public class Interactable_Pokable : Controller_Interactables
             Controller_TheMass.Instance.GotHit();
         }
 
-        Helper.Instance.PlayRandAudio(audioSource, audioClips);
+        Helper.Instance.PlayRandAudio(audioSource, impactClips);
     }
 }

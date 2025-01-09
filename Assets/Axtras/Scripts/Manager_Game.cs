@@ -12,6 +12,7 @@ public class Manager_Game : MonoBehaviour
 
     [Header("Vent Settings")]
     [SerializeField] private Transform ventTranform;
+    [SerializeField] private GameObject ventColliderGO;
 
     // [Header("Game Settings")]
     // [SerializeField] private GameObject snowstorm;
@@ -69,6 +70,9 @@ public class Manager_Game : MonoBehaviour
         }
     }
 
+    public bool AllAttemptsCompleted() {
+        return numOfAttemptsAttempted == numOfAttemptsCompleted;
+    }
     public void AddAttempt() {
         numOfAttemptsAttempted++;
 
@@ -77,9 +81,6 @@ public class Manager_Game : MonoBehaviour
         if (numOfAttemptsAttempted >= numOfAttemptsCompleted) {
             UnlockVent();
         }
-    }
-    public bool AllAttemptsCompleted() {
-        return numOfAttemptsAttempted == numOfAttemptsCompleted;
     }
 
     private void UnlockVent() {
@@ -91,5 +92,7 @@ public class Manager_Game : MonoBehaviour
 
             Helper.Instance.EnablePhysics(rb, true);
         }
+
+        ventColliderGO.SetActive(true);
     }
 }

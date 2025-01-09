@@ -10,11 +10,13 @@ public class Interactable_Door : Controller_Interactables
     [SerializeField] private Vector3 shakeVec;
     [SerializeField] private bool doorIsLocked = false;
     private bool isOpen = false;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip[] opencloseClips;
+    [SerializeField] private AudioClip[] lockedClips;
     #endregion
 
-    public override void InteractInteractable(Transform currentInteractable) {
-        base.InteractInteractable(currentInteractable);
-
+    public void ControlOpenCloseDoor() {
         if (!doorIsLocked) {
             Vector3 playerPosition = Camera.main.transform.position;
             Vector3 doorPosition = transform.position;
@@ -33,7 +35,7 @@ public class Interactable_Door : Controller_Interactables
 
             transform.DORotate(new Vector3(0f, targetYRotation, 0f), transitionTime);
 
-            Helper.Instance.PlayRandAudio(audioSource, audioClips);
+            Helper.Instance.PlayRandAudio(audioSource, opencloseClips);
 
             isOpen = !isOpen;
         }
@@ -47,7 +49,7 @@ public class Interactable_Door : Controller_Interactables
                     transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, startAngleY, transform.localEulerAngles.z);
                 });
 
-            Helper.Instance.PlayRandAudio(audioSource, audioClips);
+            Helper.Instance.PlayRandAudio(audioSource, lockedClips);
         }
     }
 }

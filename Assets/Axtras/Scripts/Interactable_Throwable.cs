@@ -1,8 +1,6 @@
-using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Interactable_Throwable : Controller_Interactables 
+public class Interactable_Throwable : Controller_Pickable 
 {
     #region Vars
     [Header("Throwable Settings")]
@@ -13,38 +11,15 @@ public class Interactable_Throwable : Controller_Interactables
     [SerializeField] private GameObject shatteredPrefab;
     [SerializeField] private float explosionForce = 5f;
     [SerializeField] private float explosionRadius = 1f;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip[] impactClips;
     #endregion
 
-    public override void InteractInteractable(Transform currentInteractable) {
-        base.InteractInteractable(currentInteractable);
-        PickInteractable(currentInteractable);
-    }
-
-    private void PickInteractable(Transform interactable) {
-        if (!interactable.TryGetComponent(out Rigidbody rb)) {
-            rb = interactable.AddComponent<Rigidbody>();
-        }
-
-        Helper.Instance.EnablePhysics(rb, false);
-
-        interactable.SetParent(playerController.holdAtTransform);
-
-        interactable.DOLocalMove(Vector3.zero, 0.5f)
-        .OnComplete(() => {
-            playerController.heldInteractable = interactable;
-        });
-    }
-    public void DropInteractable(Transform interactable) {
-        var rb = interactable.GetComponent<Rigidbody>();
+    public void ThrowInteractable() {
+        var rb = transform.GetComponent<Rigidbody>();
         Helper.Instance.EnablePhysics(rb, true);
-        playerController.heldInteractable.SetParent(null);
-        playerController.heldInteractable = null;
-    }
-    public void ThrowInteractable(Transform interactable) {
-        var rb = interactable.GetComponent<Rigidbody>();
-        
-        Helper.Instance.EnablePhysics(rb, true);
-        var dir = Helper.Instance.GetDir(interactable);
+        var dir = Helper.Instance.GetDir(transform);
         rb.AddForce(dir * throwForce, ForceMode.Impulse);
         
         playerController.heldInteractable.SetParent(null);
@@ -65,6 +40,6 @@ public class Interactable_Throwable : Controller_Interactables
             }
         }
 
-        Helper.Instance.PlayRandAudio(audioSource, audioClips);
+        Helper.Instance.PlayRandAudio(audioSource, impactClips);
     }
 }

@@ -8,21 +8,21 @@ public class Interactable_Blinds : Controller_Interactables
     [SerializeField] private float transitionTime = 1f;
     private Vector3 startScale;
     private bool isDown = true;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip[] opencloseClips;
     #endregion
 
     public override void Start() {
         base.Start();
+
         startScale = transform.localScale;
     }
 
-    public override void InteractInteractable(Transform currentInteractable) {
-        base.InteractInteractable(currentInteractable);
-        OpenCloseBlinds();
-    }
-    private void OpenCloseBlinds() {
+    public void OpenCloseBlinds() {
         transform.DOScale(isDown ? new (startScale.x, startScale.y, 0.05f) : startScale, transitionTime);
         
-        Helper.Instance.PlayRandAudio(audioSource, audioClips);
+        Helper.Instance.PlayRandAudio(audioSource, opencloseClips);
 
         isDown = !isDown;
     }

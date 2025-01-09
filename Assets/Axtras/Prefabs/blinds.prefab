@@ -220,7 +220,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showThisText: open the blinds?
-  canBePicked: 0
-  audioClips:
-  - {fileID: 8300000, guid: a58da8baeee3c1842a35397e20a7bf79, type: 3}
   transitionTime: 3
+  opencloseClips:
+  - {fileID: 8300000, guid: a58da8baeee3c1842a35397e20a7bf79, type: 3}

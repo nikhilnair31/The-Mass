@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
   m_Name: ColorAdjustments
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   contrast:
     m_OverrideState: 1
     m_Value: 0
@@ -43,37 +43,37 @@ MonoBehaviour:
   active: 0
   scanlinesWeight:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.05
   noiseWeight:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.05
   screenBendX:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 2
   screenBendY:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 2
   vignetteAmount:
     m_OverrideState: 1
-    m_Value: 0.98
+    m_Value: 0.78
   vignetteSize:
     m_OverrideState: 1
-    m_Value: 2.06
+    m_Value: 0.31
   vignetteRounding:
     m_OverrideState: 1
-    m_Value: 5.26
+    m_Value: 0.51
   vignetteSmoothing:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: 0.27
   scanlinesDensity:
     m_OverrideState: 1
-    m_Value: 200
+    m_Value: 24
   scanlinesSpeed:
     m_OverrideState: 1
-    m_Value: 200
+    m_Value: 24
   noiseAmount:
     m_OverrideState: 1
-    m_Value: 250
+    m_Value: 128
   chromaticRed:
     m_OverrideState: 1
     m_Value: {x: 0.002, y: -0.002}
@@ -82,25 +82,25 @@ MonoBehaviour:
     m_Value: {x: -0.002, y: 0.002}
   chromaticBlue:
     m_OverrideState: 1
-    m_Value: {x: 0, y: 0}
+    m_Value: {x: -0.002, y: 0.002}
   grilleOpacity:
     m_OverrideState: 1
-    m_Value: 0.2
+    m_Value: -100
   grilleCounterOpacity:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: -10
   grilleResolution:
     m_OverrideState: 1
-    m_Value: 640
+    m_Value: 128
   grilleCounterResolution:
     m_OverrideState: 1
-    m_Value: 380
+    m_Value: 64
   grilleUvRotation:
     m_OverrideState: 1
     m_Value: 90
   grilleBrightness:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 64
   grilleUvMidPoint:
     m_OverrideState: 1
     m_Value: 0.5
@@ -119,10 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   neutralHDRRangeReductionMode:
     m_OverrideState: 1
     m_Value: 2
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   skipIterations:
     m_OverrideState: 1
     m_Value: 1
@@ -168,18 +168,18 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   scatter:
     m_OverrideState: 1
     m_Value: 0.7
   clamp:
     m_OverrideState: 1
-    m_Value: 65472
+    m_Value: 1.66
   tint:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   highQualityFiltering:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   downscale:
     m_OverrideState: 1
@@ -209,7 +209,7 @@ MonoBehaviour:
   active: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.1
 --- !u!114 &-2824654751956731439
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -414,13 +414,13 @@ MonoBehaviour:
   active: 1
   widthPixelation:
     m_OverrideState: 1
-    m_Value: 512
+    m_Value: 256
   heightPixelation:
     m_OverrideState: 1
     m_Value: 256
   colorPrecision:
     m_OverrideState: 1
-    m_Value: 16
+    m_Value: 256
 --- !u!114 &-2120664122139511901
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -520,16 +520,16 @@ MonoBehaviour:
   active: 1
   patternIndex:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
   ditherThreshold:
     m_OverrideState: 1
-    m_Value: 3.53
+    m_Value: 64
   ditherStrength:
     m_OverrideState: 1
-    m_Value: 1.37
+    m_Value: 2
   ditherScale:
     m_OverrideState: 1
-    m_Value: 4.67
+    m_Value: 2
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32eb3b8fb939d9b41b04b5621e6d36dd, type: 3}
   m_Name: Fog
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   fogDensity:
     m_OverrideState: 1
     m_Value: 10
@@ -709,10 +709,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
   m_Name: WhiteBalance
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: -15
   tint:
     m_OverrideState: 1
     m_Value: 0
@@ -862,16 +862,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   type:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   intensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   response:
-    m_OverrideState: 0
-    m_Value: 0.8
+    m_OverrideState: 1
+    m_Value: 1
   texture:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {fileID: 0}
 --- !u!114 &8227399550363008833
 MonoBehaviour:
