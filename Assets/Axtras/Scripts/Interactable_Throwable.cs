@@ -7,6 +7,12 @@ public class Interactable_Throwable : Controller_Interactables
     #region Vars
     [Header("Throwable Settings")]
     [SerializeField] private float throwForce = 3f;
+
+    [Header("Breakable Settings")]
+    [SerializeField] private bool isBreakable = false;
+    [SerializeField] private GameObject shatteredPrefab;
+    [SerializeField] private float explosionForce = 5f;
+    [SerializeField] private float explosionRadius = 1f;
     #endregion
 
     public override void InteractInteractable(Transform currentInteractable) {
@@ -46,6 +52,14 @@ public class Interactable_Throwable : Controller_Interactables
     }
 
     private void OnCollisionEnter(Collision other) {
+        if (isBreakable) {
+            var spawn = Instantiate(shatteredPrefab, transform.position, Quaternion.identity);
+            foreach (var rb in spawn.GetComponentsInChildren<Rigidbody>()) {
+                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+            }
+            gameObject.SetActive(false);
+        }
+
         if (other.transform.CompareTag("Mass")) {
             Controller_TheMass.Instance.GotHit();
             Helper.Instance.PlayRandAudio(audioSource, audioClips);

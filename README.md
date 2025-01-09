@@ -3,12 +3,12 @@
 ## To-do
 
 - [ ] Add items
+  - shatterable glass to throw and break
   - broom to poke with
+  - blanket to conver with
+  - water hose to douse with
   - room fresherner to spray with
   - bug spray and lighter to flamethrow with
-  - water hose to douse with
-  - blanket to conver with
-  - shatterable glass to throw and break
 - [ ] Remove canBePicked from parent Controller_Interactables script
 - [ ] Improve thrown object trajectory
 - [ ] Add effects for shower warping
