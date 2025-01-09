@@ -1,8 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using TMPro;
-using UnityEngine.UI;
 
 public class Manager_UI : MonoBehaviour 
 {
@@ -43,6 +43,8 @@ public class Manager_UI : MonoBehaviour
         
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        Time.timeScale = 1f;
     }
     
     private void Update() {
@@ -76,12 +78,12 @@ public class Manager_UI : MonoBehaviour
         pauseCanvasGO.SetActive(false);
         gameoverCanvasGO.SetActive(true);
         Time.timeScale = 0f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
     public void RestartGame() {
-        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);  
+        Time.timeScale = 1f;
     }
     public void ExitGame() {
         Application.Quit();
@@ -108,6 +110,5 @@ public class Manager_UI : MonoBehaviour
         }
 
         lookedAtText.text = "";
-    }
-    
+    }   
 }

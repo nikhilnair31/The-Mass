@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Manager_Game : MonoBehaviour 
@@ -14,9 +15,13 @@ public class Manager_Game : MonoBehaviour
     [SerializeField] private Transform ventTranform;
     [SerializeField] private GameObject ventColliderGO;
 
-    // [Header("Game Settings")]
-    // [SerializeField] private GameObject snowstorm;
-    // [SerializeField] private GameObject phone;
+    [Header("Attempt 1 Settings")]
+    [SerializeField] private GameObject phoneGO;
+    [SerializeField] private AudioClip ringtoneClip;
+
+    [Header("Attempt 2 Settings")]
+    [SerializeField] private GameObject snowstormGO;
+    [SerializeField] private AudioSource snowstormSource;
     #endregion
 
     #if UNITY_EDITOR
@@ -42,17 +47,14 @@ public class Manager_Game : MonoBehaviour
     private void UpdateByAttempt() {
         switch (numOfAttemptsAttempted) {
             // case 0:
-            //     snowstorm.Run(false);
-            //     phone.Run(false);
+            //     Attempt1();
             //     break;
-            // case 1:
-            //     snowstorm.Run(true);
-            //     phone.Run(false);
-            //     break;
-            // case 2:
-            //     snowstorm.Run(true);
-            //     phone.Run(true);
-            //     break;
+            case 1:
+                Attempt1();
+                break;
+            case 2:
+                Attempt2();
+                break;
             // case 3:
             //     snowstorm.Run(false);
             //     phone.Run(false);
@@ -68,6 +70,17 @@ public class Manager_Game : MonoBehaviour
             default:
                 break;
         }
+    }
+    private void Attempt1() {
+        var source = phoneGO.GetComponent<AudioSource>();
+        source.clip = ringtoneClip;
+        source.loop = true;
+        source.volume = 0f;
+        source.Play();
+        source.DOFade(1f, 5f);
+    }
+    private void Attempt2() {
+        snowstormSource.DOFade(2f, 5f);
     }
 
     public bool AllAttemptsCompleted() {
