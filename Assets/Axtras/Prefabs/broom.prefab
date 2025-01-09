@@ -224,7 +224,7 @@ MonoBehaviour:
   showThisText: pick up?
   isPickable: 1
   wasHeld: 0
-  moveDir: {x: 0, y: 0, z: 2}
+  moveDir: {x: 0, y: 0, z: 3}
   impactClips:
   - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}
 --- !u!54 &-7381003037474004787

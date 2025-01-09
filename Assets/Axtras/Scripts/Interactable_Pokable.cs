@@ -40,6 +40,7 @@ public class Interactable_Pokable : Controller_Pickable
     }
     
     private void OnCollisionEnter(Collision other) {
+        Debug.Log($"{transform.name} - OnCollisionEnter - {other.transform.name} - {other.transform.tag}");
         if (other.transform.CompareTag("Mass")) {
             Controller_TheMass.Instance.GotHit();
         }

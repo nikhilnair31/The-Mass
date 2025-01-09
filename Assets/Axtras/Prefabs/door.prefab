@@ -366,4 +366,5 @@ MonoBehaviour:
   opencloseClips:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
-  - {fileID: 8300000, guid: c02deef2e1386f54d8c7baf87737a1a6, type: 3}
+  - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
+  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
