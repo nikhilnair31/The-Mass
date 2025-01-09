@@ -6,14 +6,23 @@ public class Interactable_Pokable : Controller_Pickable
     #region Vars
     [Header("Pokable Settings")]
     [SerializeField] private Vector3 moveDir;
+    private Vector3 initPos;
+    private Vector3 initRot;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioClip[] impactClips;
     #endregion
 
+    public override void Start() {
+        base.Start();
+        
+        initPos = transform.localPosition;
+        initRot = transform.localEulerAngles;
+    }
+
     public void PokableInteractable() {
-        var initPos = transform.localPosition;
-        var initRot = transform.localEulerAngles;
+        // var initPos = transform.localPosition;
+        // var initRot = transform.localEulerAngles;
         transform
             .DOLocalRotate(
                 initRot + new Vector3(90f, 0f, 0f), 
