@@ -3,21 +3,24 @@
 ## To-do
 
 - [] Add items
-  - broom to poke with
   - blanket to conver with
   - water hose to douse with
   - room fresherner to spray with
   - bug spray and lighter to flamethrow with
-- [ ] Remove canBePicked from parent Controller_Interactables script
 - [ ] Improve thrown object trajectory
+
+## Skipped
+
 - [ ] Add effects for shower warping
 - [ ] Improve effects for barrier (make visible when close and on thrown items impacting)
 - [ ] Improve effects for thrown arc (make dotted line fading away, match as close as possible to thrown item)
-- [ ] Improve the look at system to stop text scaling up when leaving an item or it disappearing while still looking at it
 
 ## Done
 
+- [x] Remove canBePicked from parent Controller_Interactables script
+- [x] Improve the look at system to stop text scaling up when leaving an item or it disappearing while still looking at it
 - [x] Added items
+  - broom to poke with
   - shatterable glass to throw and break
 - [x] Fix entrance door shake broken
 - [x] see how to get typwriter effect corecttly when using rich text
