@@ -41,8 +41,6 @@ public class Controller_Player : MonoBehaviour
     private void Start() {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update() {

@@ -5,6 +5,8 @@ using UnityEngine.Rendering.Universal;
 public class Manager_Sanity : MonoBehaviour 
 {
     #region Vars
+    public static Manager_Sanity Instance { get; private set; }
+
     [Header("Sanity Settings")]
     [SerializeField] private float sanityLostInTimeMax = 100f;
     [SerializeField] private float sanityLostInTime;
@@ -22,6 +24,13 @@ public class Manager_Sanity : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] private AudioSource sanityAudioSource;
     #endregion
+
+    private void Awake() {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     private void Start() {
         if (postProcessVolume.profile.TryGet<ChromaticAberration>(out chromaticAberration)) {
@@ -47,7 +56,7 @@ public class Manager_Sanity : MonoBehaviour
         }
 
         if (sanityLostInTime >= sanityLostInTimeMax) {
-            Debug.Log("Game Over");
+            Manager_UI.Instance.GameOver();
             sanityLostInTime = sanityLostInTimeMax;
         }
     }

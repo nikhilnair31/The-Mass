@@ -1,11 +1,26 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using TMPro;
+using UnityEngine.UI;
 
 public class Manager_UI : MonoBehaviour 
 {
     #region Vars
     public static Manager_UI Instance { get; private set; }
+
+    [Header("Game UI")]
+    [SerializeField] private GameObject gameCanvasGO;
+    private bool inGame = true;
+
+    [Header("Pause UI")]
+    [SerializeField] private GameObject pauseCanvasGO;
+
+    [Header("Game Over UI")]
+    [SerializeField] private GameObject gameoverCanvasGO;
+    [SerializeField] private Button restartGameButtonGO;
+    [SerializeField] private Button exitGameButtonGO;
+    private bool gameOver = false;
 
     [Header("Look At UI")]
     [SerializeField] private AudioSource uiSource;
@@ -20,6 +35,56 @@ public class Manager_UI : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
+    }
+    
+    private void Start() {
+        restartGameButtonGO.onClick.AddListener(RestartGame);
+        exitGameButtonGO.onClick.AddListener(ExitGame);
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+    
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            PauseGame();
+        }
+    }
+    
+    public void PauseGame() {
+        if (inGame) {
+            inGame = false;
+            gameCanvasGO.SetActive(false);
+            pauseCanvasGO.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+        else {
+            inGame = true;
+            gameCanvasGO.SetActive(true);
+            pauseCanvasGO.SetActive(false);
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+
+    public void GameOver() {
+        gameOver = true;
+        gameCanvasGO.SetActive(false);
+        pauseCanvasGO.SetActive(false);
+        gameoverCanvasGO.SetActive(true);
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+    public void RestartGame() {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);  
+    }
+    public void ExitGame() {
+        Application.Quit();
     }
 
     public IEnumerator ShowTextWithSound(string text) {
