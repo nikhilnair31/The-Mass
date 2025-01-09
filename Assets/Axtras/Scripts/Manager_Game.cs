@@ -64,8 +64,8 @@ public class Manager_Game : MonoBehaviour
             //     snowstorm.Run(false);
             //     phone.Run(false);
             //     break;
-            // default:
-            //     break;
+            default:
+                break;
         }
     }
 

@@ -57,16 +57,14 @@ public class Interactable_Throwable : Controller_Interactables
             foreach (var rb in spawn.GetComponentsInChildren<Rigidbody>()) {
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
             }
-            
+
             gameObject.SetActive(false);
+            
+            if (other.transform.CompareTag("Mass")) {
+                Controller_TheMass.Instance.GotHit();
+            }
         }
 
-        if (other.transform.CompareTag("Mass")) {
-            Controller_TheMass.Instance.GotHit();
-            Helper.Instance.PlayRandAudio(audioSource, audioClips);
-        }
-        else {
-            Helper.Instance.PlayRandAudio(audioSource, audioClips);
-        }
+        Helper.Instance.PlayRandAudio(audioSource, audioClips);
     }
 }
