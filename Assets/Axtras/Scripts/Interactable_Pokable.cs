@@ -12,22 +12,23 @@ public class Interactable_Pokable : Controller_Pickable
     #endregion
 
     public void PokableInteractable() {
+        var initPos = transform.localPosition;
         var initRot = transform.localEulerAngles;
         transform
             .DOLocalRotate(
-                transform.localEulerAngles + new Vector3(90f, 0f, 0f), 
+                initRot + new Vector3(90f, 0f, 0f), 
                 0.3f
             )
             .OnComplete(() => {
                 transform
                     .DOLocalMove(
-                        transform.localPosition + moveDir, 
+                        initPos + moveDir, 
                         0.3f
                     )
                     .OnComplete(() => {
                         transform
                             .DOLocalMove(
-                                Vector3.zero, 
+                                initPos, 
                                 0.6f
                             );
                         transform

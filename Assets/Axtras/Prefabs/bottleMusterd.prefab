@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6155610643608912287}
   - component: {fileID: 7932910979272555951}
   - component: {fileID: 7493038282524445511}
+  - component: {fileID: 5787862624609662460}
   - component: {fileID: 7665807550049323260}
   - component: {fileID: 7743802665747321732}
   - component: {fileID: 3680279559079499315}
-  - component: {fileID: 5787862624609662460}
   m_Layer: 7
   m_Name: bottleMusterd
   m_TagString: Interactable
@@ -90,6 +90,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &5787862624609662460
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569518591487422965}
+  serializedVersion: 4
+  m_Mass: 0.2
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &7665807550049323260
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -230,31 +257,4 @@ MonoBehaviour:
   explosionForce: 5
   explosionRadius: 1
   impactClips:
-  - {fileID: 8300000, guid: ccb48752b21ae8b409fc6128c19705a4, type: 3}
---- !u!54 &5787862624609662460
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569518591487422965}
-  serializedVersion: 4
-  m_Mass: 0.2
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}

@@ -6,7 +6,7 @@ public class Interactable_Switch : Controller_Interactables
     #region Vars
     [Header("Switch Settings")]
     [SerializeField] private Transform switchButton;
-    [SerializeField] private Light lightToControl;
+    [SerializeField] private Light[] lightsList;
     private bool isOn = false;
 
     [Header("Audio Settings")]
@@ -25,8 +25,13 @@ public class Interactable_Switch : Controller_Interactables
         
         Helper.Instance.PlayRandAudio(audioSource, switchClips);
 
-        lightToControl.enabled = isOn;
+        LightsControl();
 
         isOn = !isOn;
+    }
+    private void LightsControl() {
+        foreach (var light in lightsList) {
+            light.enabled = isOn;
+        }
     }
 }

@@ -9,6 +9,15 @@ public class Controller_Pickable : Controller_Interactables
     [SerializeField] private bool isPickable = true;
     [SerializeField] internal bool wasHeld = false;
     #endregion
+
+    private void Update() {
+        if (wasHeld && playerController.heldInteractable == transform) {
+            transform.SetPositionAndRotation(
+                playerController.holdAtTransform.position,
+                playerController.holdAtTransform.rotation
+            );
+        }
+    }
     
     public virtual void PickInteractable() {
         var rb = transform.GetComponent<Rigidbody>();
