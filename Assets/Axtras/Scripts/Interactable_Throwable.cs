@@ -57,6 +57,7 @@ public class Interactable_Throwable : Controller_Interactables
             foreach (var rb in spawn.GetComponentsInChildren<Rigidbody>()) {
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
             }
+            
             gameObject.SetActive(false);
         }
 

@@ -2,8 +2,7 @@
 
 ## To-do
 
-- [ ] Add items
-  - shatterable glass to throw and break
+- [] Add items
   - broom to poke with
   - blanket to conver with
   - water hose to douse with
@@ -18,6 +17,8 @@
 
 ## Done
 
+- [x] Added items
+  - shatterable glass to throw and break
 - [x] Fix entrance door shake broken
 - [x] see how to get typwriter effect corecttly when using rich text
 - [x] Fix realtime shadows
