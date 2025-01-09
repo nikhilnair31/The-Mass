@@ -513,12 +513,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showThisText: just a vent cover
   isPickable: 1
+  wasHeld: 0
   throwForce: 10
   isBreakable: 0
   shatteredPrefab: {fileID: 0}
   explosionForce: 5
   explosionRadius: 1
-  impactClips: []
+  impactClips:
+  - {fileID: 8300000, guid: 211f07d8def4de44683433990c74d27e, type: 3}
 --- !u!82 &66872119
 AudioSource:
   m_ObjectHideFlags: 0
@@ -817,8 +819,8 @@ MonoBehaviour:
   typingClips:
   - {fileID: 8300000, guid: 15cb705e118cf07489da67e8bbaa7093, type: 3}
   lookedAtText: {fileID: 2082415440}
-  showTypingSpeed: 0.05
-  hideTypingSpeed: 0.03
+  showTypingSpeed: 0
+  hideTypingSpeed: 0
 --- !u!114 &140932111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7196,7 +7198,7 @@ MonoBehaviour:
   maxDistance: 6
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 136
   holdAtTransform: {fileID: 1714296809}
   throwLineGO: {fileID: 1432886044}
   heldInteractable: {fileID: 0}

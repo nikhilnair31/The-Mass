@@ -7,13 +7,11 @@ public class Controller_Pickable : Controller_Interactables
     #region Vars
     [Header("Pickable Settings")]
     [SerializeField] private bool isPickable = true;
+    [SerializeField] internal bool wasHeld = false;
     #endregion
     
     public virtual void PickInteractable() {
-        if (!transform.TryGetComponent(out Rigidbody rb)) {
-            rb = transform.AddComponent<Rigidbody>();
-        }
-
+        var rb = transform.GetComponent<Rigidbody>();
         Helper.Instance.EnablePhysics(rb, false);
 
         transform.SetParent(playerController.holdAtTransform);
@@ -30,6 +28,9 @@ public class Controller_Pickable : Controller_Interactables
         playerController.heldInteractable = null;
     }
     
+    public void SetWasPicked(bool picked) {
+        wasHeld = picked;
+    }
     public bool ReturnPickableBool() {
         return isPickable;
     }

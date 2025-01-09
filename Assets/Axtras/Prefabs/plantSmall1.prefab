@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7503239283036214410}
   - component: {fileID: 6186677166633518219}
   - component: {fileID: 2817841417430728379}
+  - component: {fileID: 3396560934051461248}
   m_Layer: 0
   m_Name: plantSmall1
   m_TagString: Interactable
@@ -29,13 +30,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3450066370314640055}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -3.1343288, y: 3.039646, z: 8.51041}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &5353539930831767151
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -223,10 +224,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showThisText: pick up?
   isPickable: 1
-  throwForce: 10
+  wasHeld: 0
+  throwForce: 3
   isBreakable: 0
   shatteredPrefab: {fileID: 0}
   explosionForce: 5
   explosionRadius: 1
   impactClips:
   - {fileID: 8300000, guid: ccb48752b21ae8b409fc6128c19705a4, type: 3}
+--- !u!54 &3396560934051461248
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3450066370314640055}
+  serializedVersion: 4
+  m_Mass: 0.2
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

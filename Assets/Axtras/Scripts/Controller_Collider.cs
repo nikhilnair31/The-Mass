@@ -47,6 +47,8 @@ public class Controller_Collider : MonoBehaviour
                 Debug.Log($"Starting end sequence...");
             }
         }
-        
+    }
+    private void OnCollisionExit(Collision other) {
+        StartCoroutine(Manager_UI.Instance.ClearText());
     }
 }

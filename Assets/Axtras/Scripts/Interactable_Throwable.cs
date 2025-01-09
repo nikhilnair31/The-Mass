@@ -27,10 +27,18 @@ public class Interactable_Throwable : Controller_Pickable
     }
 
     private void OnCollisionEnter(Collision other) {
-        if (isBreakable) {
+        if (isBreakable && wasHeld) {
             var spawn = Instantiate(shatteredPrefab, transform.position, Quaternion.identity);
-            foreach (var rb in spawn.GetComponentsInChildren<Rigidbody>()) {
-                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+            foreach (ContactPoint contact in other.contacts) {
+                Vector3 explosionPoint = contact.point;
+                Vector3 explosionDirection = contact.normal;
+
+                foreach (var rb in spawn.GetComponentsInChildren<Rigidbody>()) {
+                    rb.AddExplosionForce(explosionForce, explosionPoint, explosionRadius, upwardsModifier: 0f, ForceMode.Impulse);
+                    rb.AddForce(explosionDirection * explosionForce, ForceMode.Impulse);
+                }
+
+                break;
             }
 
             gameObject.SetActive(false);

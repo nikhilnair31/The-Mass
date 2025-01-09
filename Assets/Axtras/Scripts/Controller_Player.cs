@@ -49,6 +49,7 @@ public class Controller_Player : MonoBehaviour
         HandleMouseLook();
         HandleMovement();
         HandleInteractable();
+        CheckForInteractable();
     }
 
     private void HandleMouseLook() {
@@ -83,12 +84,11 @@ public class Controller_Player : MonoBehaviour
         rb.AddForce(Vector3.up * gravity);
     }
     private void HandleInteractable() {
-        CheckForInteractable();
-
         if (Input.GetKeyDown(KeyCode.E)) {
             if (currentInteractable != null) {
                 if (currentInteractable.TryGetComponent(out Controller_Pickable pickable)) {
                     pickable.PickInteractable();
+                    pickable.SetWasPicked(true);
                 }
                 
                 else if (currentInteractable.TryGetComponent(out Interactable_Blinds blinds)) {
@@ -106,6 +106,7 @@ public class Controller_Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G) && heldInteractable != null) {
             if (heldInteractable.TryGetComponent(out Controller_Pickable pickable)) {
                 pickable.DropInteractable();
+                pickable.SetWasPicked(false);
             }
         }
         
@@ -126,7 +127,7 @@ public class Controller_Player : MonoBehaviour
     }
 
     private void CheckForInteractable() {
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer.value)) {
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer)) {
             if (hit.transform != currentInteractable) {
                 if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
                     currentInteractable = hit.transform;
@@ -148,6 +149,19 @@ public class Controller_Player : MonoBehaviour
         if (currentInteractable != null) {
             currentInteractable = null;
             StartCoroutine(Manager_UI.Instance.ClearText());
+        }
+    }
+
+    private void OnDrawGizmos() {
+        // Only draw the Gizmos if the ray has hit something
+        if (hit.collider != null) {
+            // Draw the ray as a line
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(hit.point - hit.normal * 0.5f, hit.point);
+
+            // Draw a sphere at the hit point
+            Gizmos.color = Color.green;
+            Gizmos.DrawSphere(hit.point, 0.1f);
         }
     }
 }

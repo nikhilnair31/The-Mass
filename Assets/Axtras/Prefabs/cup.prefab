@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4767977334456526829}
   - component: {fileID: 7886474975483473620}
   - component: {fileID: 3103183586058480071}
+  - component: {fileID: -2852820652121204640}
   m_Layer: 7
   m_Name: cup
   m_TagString: Interactable
@@ -222,10 +223,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showThisText: pick up?
   isPickable: 1
-  throwForce: 10
+  wasHeld: 0
+  throwForce: 3
   isBreakable: 1
   shatteredPrefab: {fileID: 7506700693728338330, guid: 3d66ce0387c20274aa5d8ae06ffe63e0, type: 3}
-  explosionForce: 10
-  explosionRadius: 2
+  explosionForce: 0.7
+  explosionRadius: 0.2
   impactClips:
   - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}
+--- !u!54 &-2852820652121204640
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390266634541601856}
+  serializedVersion: 4
+  m_Mass: 0.2
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
