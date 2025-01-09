@@ -46,32 +46,27 @@ public class Manager_Game : MonoBehaviour
 
     private void UpdateByAttempt() {
         switch (numOfAttemptsAttempted) {
-            // case 0:
-            //     Attempt1();
-            //     break;
             case 1:
                 Attempt1();
                 break;
             case 2:
                 Attempt2();
                 break;
-            // case 3:
-            //     snowstorm.Run(false);
-            //     phone.Run(false);
-            //     break;
-            // case 4:
-            //     snowstorm.Run(false);
-            //     phone.Run(false);
-            //     break;
-            // case 5:
-            //     snowstorm.Run(false);
-            //     phone.Run(false);
-            //     break;
+            case 3:
+                Attempt3();
+                break;
+            case 4:
+                Attempt4();
+                break;
+            case 5:
+                Attempt5();
+                break;
             default:
                 break;
         }
     }
     private void Attempt1() {
+        // Call comes on broken phone
         var source = phoneGO.GetComponent<AudioSource>();
         source.clip = ringtoneClip;
         source.loop = true;
@@ -80,7 +75,21 @@ public class Manager_Game : MonoBehaviour
         source.DOFade(1f, 5f);
     }
     private void Attempt2() {
+        // Snowstorm gets stronger
         snowstormSource.DOFade(2f, 5f);
+        // Water starts dripping from taps
+    }
+    private void Attempt3() {
+        // Clocks stop
+        // Water from taps flows much faster
+    }
+    private void Attempt4() {
+        // Visible breath as it gets colder 
+        // Locked door room opens
+    }
+    private void Attempt5() {
+        // Some objects move from their previous place
+        // New small objects appear 
     }
 
     public bool AllAttemptsCompleted() {
