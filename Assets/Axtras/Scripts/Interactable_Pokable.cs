@@ -5,13 +5,14 @@ public class Interactable_Pokable : Controller_Pickable
 {
     #region Vars
     [Header("Pokable Settings")]
-    [SerializeField] private float moveDist = 3f;
+    [SerializeField] private Vector3 moveDir;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioClip[] impactClips;
     #endregion
 
     public void PokableInteractable() {
+        var initRot = transform.localEulerAngles;
         transform
             .DOLocalRotate(
                 transform.localEulerAngles + new Vector3(90f, 0f, 0f), 
@@ -20,7 +21,7 @@ public class Interactable_Pokable : Controller_Pickable
             .OnComplete(() => {
                 transform
                     .DOLocalMove(
-                        playerController.holdAtTransform.localPosition + new Vector3(0f, 0f, moveDist), 
+                        transform.localPosition + moveDir, 
                         0.3f
                     )
                     .OnComplete(() => {
@@ -28,6 +29,11 @@ public class Interactable_Pokable : Controller_Pickable
                             .DOLocalMove(
                                 Vector3.zero, 
                                 0.6f
+                            );
+                        transform
+                            .DOLocalRotate(
+                                initRot, 
+                                0.3f
                             );
                     });
             });

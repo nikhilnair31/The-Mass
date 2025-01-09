@@ -15,6 +15,7 @@ public class Controller_Pickable : Controller_Interactables
         Helper.Instance.EnablePhysics(rb, false);
 
         transform.SetParent(playerController.holdAtTransform);
+        transform.localEulerAngles = Vector3.zero;
 
         transform.DOLocalMove(Vector3.zero, 0.5f)
         .OnComplete(() => {
