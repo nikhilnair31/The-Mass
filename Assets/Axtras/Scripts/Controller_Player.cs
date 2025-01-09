@@ -92,17 +92,25 @@ public class Controller_Player : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.G) && heldInteractable != null) {
-            var throwable = heldInteractable.GetComponent<Interactable_Throwable>();
-            throwable?.DropInteractable(heldInteractable);
+            if (heldInteractable.TryGetComponent(out Interactable_Throwable interactable)) {
+                interactable.DropInteractable(heldInteractable);
+            }
         }
         
         if (Input.GetMouseButtonDown(0) && heldInteractable != null) {
-            throwLineGO.SetActive(true);
+            if (heldInteractable.TryGetComponent(out Interactable_Throwable throwable)) {
+                throwLineGO.SetActive(true);
+            }
         }
         if (Input.GetMouseButtonUp(0) && heldInteractable != null) {
-            var throwable = heldInteractable.GetComponent<Interactable_Throwable>();
-            throwable?.ThrowInteractable(heldInteractable);
-            throwLineGO.SetActive(false);
+            if (heldInteractable.TryGetComponent(out Interactable_Throwable throwable)) {
+                throwable.ThrowInteractable(heldInteractable);
+                throwLineGO.SetActive(false);
+            }
+            if (heldInteractable.TryGetComponent(out Interactable_Pokable pokable)) {
+                pokable.PokableInteractable(heldInteractable);
+                throwLineGO.SetActive(false);
+            }
         }
     }
 

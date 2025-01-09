@@ -78,6 +78,9 @@ public class Manager_Game : MonoBehaviour
             UnlockVent();
         }
     }
+    public bool AllAttemptsCompleted() {
+        return numOfAttemptsAttempted == numOfAttemptsCompleted;
+    }
 
     private void UnlockVent() {
         Debug.Log($"UnlockVent");

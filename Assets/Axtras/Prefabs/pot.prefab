@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4549212488332495171}
   m_Layer: 0
   m_Name: pot
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,3 +229,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 214988429b8584c468775958162232b6, type: 3}
   - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}
   throwForce: 10
+  isBreakable: 0
+  shatteredPrefab: {fileID: 0}
+  explosionForce: 5
+  explosionRadius: 1

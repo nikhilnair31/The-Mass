@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8503546786228305436}
   m_Layer: 7
   m_Name: blinds
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 65
