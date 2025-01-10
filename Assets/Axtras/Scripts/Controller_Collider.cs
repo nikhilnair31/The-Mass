@@ -34,7 +34,7 @@ public class Controller_Collider : MonoBehaviour
         }
         else if (colliderType == ColliderType.VentBottom) {
             if (other.transform.CompareTag("Player")) {
-                var allAttemptsCompleted = Manager_Game.Instance.AllAttemptsCompleted();
+                var allAttemptsCompleted = Manager_Game.Instance.GetIfAllAttemptsCompleted();
 
                 StopAllCoroutines();
                 StartCoroutine(Manager_UI.Instance.ShowTextWithSound(

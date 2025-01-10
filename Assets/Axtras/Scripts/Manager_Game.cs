@@ -1,4 +1,3 @@
-using System.Xml.Linq;
 using DG.Tweening;
 using UnityEngine;
 
@@ -63,6 +62,16 @@ public class Manager_Game : MonoBehaviour
         numOfAttemptsAttempted = 0;
     }
 
+    public void AddAttempt() {
+        numOfAttemptsAttempted++;
+
+        UpdateByAttempt();
+
+        if (numOfAttemptsAttempted >= numOfAttemptsCompleted) {
+            UnlockVent();
+        }
+    }
+
     private void UpdateByAttempt() {
         switch (numOfAttemptsAttempted) {
             case 1:
@@ -104,6 +113,7 @@ public class Manager_Game : MonoBehaviour
     }
     private void Attempt3() {
         // Clocks stop
+        Controller_Clock.Instance.StopClock();
         // Water from taps flows much faster
         kitchenTapWaterStrongPS.Play();
         toiletTapWaterStrongPS.Play();
@@ -127,17 +137,8 @@ public class Manager_Game : MonoBehaviour
         // New small objects appear 
     }
 
-    public bool AllAttemptsCompleted() {
+    public bool GetIfAllAttemptsCompleted() {
         return numOfAttemptsAttempted == numOfAttemptsCompleted;
-    }
-    public void AddAttempt() {
-        numOfAttemptsAttempted++;
-
-        UpdateByAttempt();
-
-        if (numOfAttemptsAttempted >= numOfAttemptsCompleted) {
-            UnlockVent();
-        }
     }
 
     private void UnlockVent() {
