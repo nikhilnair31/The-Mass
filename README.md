@@ -4,7 +4,6 @@
 
 - [ ] Add more things in closet and bedroom
 - [ ] Create script for drawers
-- [ ] Fix door rotation for various furniture
 - [ ] Add items
   - room fresherner to spray with
   - bug spray and lighter to flamethrow with
@@ -23,6 +22,7 @@
 
 ## Done
 
+- [x] Fix door rotation for various furniture
 - [x] Add models for light fixtures in lobby and kitchen
 - [x] Add cracked screen image and more for the phone
 - [x] Add random pings on phone via notifications
