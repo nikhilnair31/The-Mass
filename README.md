@@ -2,17 +2,17 @@
 
 ## To-do
 
-- [ ] See how to get point light working on The Mass
-- [ ] Add items
-  - room fresherner to spray with
-  - bug spray and lighter to flamethrow with
-- [ ] Create a player vent movement controller
-- [ ] Add effects as vent is traversed
 - [ ] Add models for light fixtures in lobby and kitchen
 - [ ] Add more things in closet and bedroom
 - [ ] Add cracked screen image and more for the phone
 - [ ] Add random pings on phone via notifications
 - [ ] Create script for drawers
+- [ ] Fix door rotation for various furniture
+- [ ] Add items
+  - room fresherner to spray with
+  - bug spray and lighter to flamethrow with
+- [ ] Create a player vent movement controller
+- [ ] Add effects as vent is traversed
 
 ## Skipped
 
@@ -26,6 +26,7 @@
 
 ## Done
 
+- [x] See how to get point light working on The Mass
 - [x] Add door script to all cabinets
 - [x] Create particle system for snowstorm
 - [x] Hide the vent exit steam at the start and unlock at Attempt 5

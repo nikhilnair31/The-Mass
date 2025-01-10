@@ -2370,7 +2370,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071016, z: -0, w: -0.707112}
-  m_LocalPosition: {x: -0.7001295, y: 2.6999998, z: 8.999914}
+  m_LocalPosition: {x: -10.399999, y: 2.6999998, z: 17.900059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7846,7 +7846,7 @@ Transform:
   m_GameObject: {fileID: 488930024}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071016, z: -0, w: -0.707112}
-  m_LocalPosition: {x: -0.7001295, y: 1.3000001, z: 8.999914}
+  m_LocalPosition: {x: -10.399999, y: 1.3000001, z: 17.900059}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -48882,12 +48882,12 @@ GameObject:
   - component: {fileID: 2010977250}
   - component: {fileID: 2010977248}
   - component: {fileID: 2010977246}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: The Mass
-  m_TagString: Mass
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 126
   m_IsActive: 1
 --- !u!4 &2010977243
 Transform:

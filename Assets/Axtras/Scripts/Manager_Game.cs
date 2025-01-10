@@ -102,9 +102,13 @@ public class Manager_Game : MonoBehaviour
         // Call comes on broken phone
         phoneSource.clip = ringtoneClip;
         phoneSource.loop = true;
-        phoneSource.volume = 0f;
-        phoneSource.DOFade(1f, 5f);
-        Helper.Instance.StartAudioLoop(phoneSource, ringtoneClip, 1f);
+        phoneSource.volume = 2f;
+        DOVirtual.DelayedCall(
+            3f, 
+            () => {
+                Helper.Instance.StartAudioLoop(phoneSource, ringtoneClip, 2f);
+            }
+        );
     }
     private void Attempt2() {
         // Snowstorm gets stronger
