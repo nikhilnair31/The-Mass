@@ -1,4 +1,6 @@
 using DG.Tweening;
+using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Interactable_Door : Controller_Interactables 
@@ -15,6 +17,28 @@ public class Interactable_Door : Controller_Interactables
     [SerializeField] private AudioClip[] opencloseClips;
     [SerializeField] private AudioClip[] lockedClips;
     #endregion
+
+    public override void Start() {
+        base.Start();
+
+        if (!transform.TryGetComponent(out Rigidbody rb)) {
+            rb = transform.gameObject.AddComponent<Rigidbody>();
+        }
+        rb.mass = 20;
+        rb.isKinematic = true;
+        rb.useGravity = false;
+
+        if (!transform.TryGetComponent(out BoxCollider coll)) {
+            coll = transform.gameObject.AddComponent<BoxCollider>();
+        }
+
+        if (!transform.TryGetComponent(out AudioSource source)) {
+            audioSource = transform.gameObject.AddComponent<AudioSource>();
+        }
+        audioSource.spatialBlend = 1;
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
+    }
 
     public void ControlOpenCloseDoor() {
         if (!doorIsLocked) {

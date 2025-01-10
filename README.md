@@ -3,7 +3,6 @@
 ## To-do
 
 - [ ] See how to get point light working on The Mass
-- [ ] Create particle system for snowstorm
 - [ ] Add items
   - room fresherner to spray with
   - bug spray and lighter to flamethrow with
@@ -13,7 +12,6 @@
 - [ ] Add more things in closet and bedroom
 - [ ] Add cracked screen image and more for the phone
 - [ ] Add random pings on phone via notifications
-- [ ] Add door script to all cabinets
 - [ ] Create script for drawers
 
 ## Skipped
@@ -28,6 +26,8 @@
 
 ## Done
 
+- [x] Add door script to all cabinets
+- [x] Create particle system for snowstorm
 - [x] Hide the vent exit steam at the start and unlock at Attempt 5
 - [x] Add throwables in the toilet
 - [x] Make text system more robust?
