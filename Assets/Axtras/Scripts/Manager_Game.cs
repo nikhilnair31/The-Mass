@@ -14,6 +14,7 @@ public class Manager_Game : MonoBehaviour
     [Header("Vent Settings")]
     [SerializeField] private Transform ventTranform;
     [SerializeField] private GameObject ventColliderGO;
+    [SerializeField] private ParticleSystem ventExitSteamPS;
 
     [Header("Attempt 1 Settings")]
     [SerializeField] private AudioSource phoneSource;
@@ -90,8 +91,12 @@ public class Manager_Game : MonoBehaviour
                 Attempt5();
                 break;
             default:
+                Attempt0();
                 break;
         }
+    }
+    private void Attempt0() {
+        ventExitSteamPS.Stop();
     }
     private void Attempt1() {
         // Call comes on broken phone
@@ -104,7 +109,10 @@ public class Manager_Game : MonoBehaviour
     private void Attempt2() {
         // Snowstorm gets stronger
         snowstormPS.Play();
-        snowstormSource.DOFade(2f, 5f);
+        DOVirtual.DelayedCall(
+            3f, 
+            () => snowstormSource.DOFade(2f, 5f)
+        );
         // Water starts dripping from taps
         kitchenTapWaterWeakPS.Play();
         toiletTapWaterWeakPS.Play();
@@ -133,6 +141,11 @@ public class Manager_Game : MonoBehaviour
         }
     }
     private void Attempt5() {
+        // Start playing steam to vent exit to draw attention
+        DOVirtual.DelayedCall(
+            3f, 
+            () => ventExitSteamPS.Play()
+        );
         // Some objects move from their previous place
         // New small objects appear 
     }
