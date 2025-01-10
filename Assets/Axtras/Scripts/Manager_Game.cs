@@ -6,7 +6,7 @@ public class Manager_Game : MonoBehaviour
     #region Vars
     public static Manager_Game Instance { get; private set; }
 
-    [Header("Unlock Settings")]
+    [Header("Attempts Settings")]
     [SerializeField] private int numOfAttemptsCompleted = 5;
     [SerializeField] private int numOfAttemptsAttempted;
     [SerializeField] private bool addAttempt;
@@ -16,31 +16,28 @@ public class Manager_Game : MonoBehaviour
     [SerializeField] private GameObject ventColliderGO;
     [SerializeField] private ParticleSystem ventExitSteamPS;
 
-    [Header("Attempt 1 Settings")]
-    [SerializeField] private AudioSource phoneSource;
-    [SerializeField] private AudioClip ringtoneClip;
-
-    [Header("Attempt 2 Settings")]
+    [Header("Snowstorm Settings")]
     [SerializeField] private ParticleSystem snowstormPS;
     [SerializeField] private AudioSource snowstormSource;
-    [SerializeField] private AudioSource kitchenTapWaterSource;
-    [SerializeField] private AudioSource toiletTapWaterSource;
-    [SerializeField] private AudioClip weakTapWaterClip;
-    [SerializeField] private ParticleSystem kitchenTapWaterWeakPS;
-    [SerializeField] private ParticleSystem toiletTapWaterWeakPS;
 
-    [Header("Attempt 3 Settings")]
-    [SerializeField] private AudioClip strongTapWaterClip;
+    [Header("Kitchen Tap Settings")]
+    [SerializeField] private AudioSource kitchenTapWaterSource;
+    [SerializeField] private ParticleSystem kitchenTapWaterWeakPS;
     [SerializeField] private ParticleSystem kitchenTapWaterStrongPS;
+
+    [Header("Toilet Tap Settings")]
+    [SerializeField] private AudioSource toiletTapWaterSource;
+    [SerializeField] private ParticleSystem toiletTapWaterWeakPS;
     [SerializeField] private ParticleSystem toiletTapWaterStrongPS;
 
-    [Header("Attempt 4 Settings")]
+    [Header("Cold Breath Settings")]
     [SerializeField] private AudioSource coldPlayerBreathSource;
-    [SerializeField] private AudioClip coldBreathClip;
     [SerializeField] private ParticleSystem coldPlayerBreathPS;
 
-    [Header("Attempt 5 Settings")]
-    [SerializeField] private float idk;
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip weakTapWaterClip;
+    [SerializeField] private AudioClip strongTapWaterClip;
+    [SerializeField] private AudioClip coldBreathClip;
     #endregion
 
     #if UNITY_EDITOR
@@ -99,24 +96,22 @@ public class Manager_Game : MonoBehaviour
         ventExitSteamPS.Stop();
     }
     private void Attempt1() {
-        // Call comes on broken phone
-        phoneSource.clip = ringtoneClip;
-        phoneSource.loop = true;
-        phoneSource.volume = 2f;
-        DOVirtual.DelayedCall(
-            3f, 
-            () => {
-                Helper.Instance.StartAudioLoop(phoneSource, ringtoneClip, 2f);
-            }
-        );
+        // EMP effects that make the phone ring adn lights get brighter
+        
+        // Call audio
+        Controller_Phone.Instance.MakeCall();
     }
     private void Attempt2() {
-        // Snowstorm gets stronger
+        // Weather and tap water effects
+
+        // Start snowstorm
         snowstormPS.Play();
+        // Increase snowstorm loudness
         DOVirtual.DelayedCall(
             3f, 
             () => snowstormSource.DOFade(2f, 5f)
         );
+
         // Water starts dripping from taps
         kitchenTapWaterWeakPS.Play();
         toiletTapWaterWeakPS.Play();
@@ -124,8 +119,9 @@ public class Manager_Game : MonoBehaviour
         Helper.Instance.StartAudioLoop(toiletTapWaterSource, weakTapWaterClip, 0f);
     }
     private void Attempt3() {
-        // Clocks stop
-        Controller_Clock.Instance.StopClock();
+        // Clocks speed up rapidly
+        Controller_Clock.Instance.SetTimeMul(20f);
+
         // Water from taps flows much faster
         kitchenTapWaterStrongPS.Play();
         toiletTapWaterStrongPS.Play();
@@ -136,6 +132,7 @@ public class Manager_Game : MonoBehaviour
         // Visible breath as it gets colder 
         coldPlayerBreathPS.Play();
         Helper.Instance.StartAudioLoop(coldPlayerBreathSource, coldBreathClip, 1f);
+
         // Locked door room opens
         var allDoors = FindObjectsByType<Interactable_Door>(FindObjectsSortMode.None);
         foreach (var door in allDoors) {
@@ -150,7 +147,9 @@ public class Manager_Game : MonoBehaviour
             3f, 
             () => ventExitSteamPS.Play()
         );
+
         // Some objects move from their previous place
+        
         // New small objects appear 
     }
 

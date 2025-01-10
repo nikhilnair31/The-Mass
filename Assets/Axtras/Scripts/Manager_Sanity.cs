@@ -33,7 +33,7 @@ public class Manager_Sanity : MonoBehaviour
     }
 
     private void Start() {
-        if (postProcessVolume.profile.TryGet<ChromaticAberration>(out chromaticAberration)) {
+        if (postProcessVolume.profile.TryGet(out chromaticAberration)) {
             chromaticAberration.intensity.value = 0f;
         }
 

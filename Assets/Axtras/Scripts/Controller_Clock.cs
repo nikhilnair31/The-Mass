@@ -57,6 +57,9 @@ public class Controller_Clock : MonoBehaviour
         clockTimeText.text = $"{displayHour:D2}:{minute:D2} {period}";
     }
 
+    public void SetTimeMul(float val) {
+        timeMultiplier = val;
+    }
     public void StopClock() {
         isClockRunning = false;
     }

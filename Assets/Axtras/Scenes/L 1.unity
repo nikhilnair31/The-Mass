@@ -1057,22 +1057,19 @@ MonoBehaviour:
   ventTranform: {fileID: 66872113}
   ventColliderGO: {fileID: 1750890968}
   ventExitSteamPS: {fileID: 524540030}
-  phoneSource: {fileID: 611166861995487561}
-  ringtoneClip: {fileID: 8300000, guid: 9b234943d5f016841a5f8478648ffb90, type: 3}
   snowstormPS: {fileID: 816074031}
   snowstormSource: {fileID: 266666800}
   kitchenTapWaterSource: {fileID: 1297582853}
-  toiletTapWaterSource: {fileID: 1826026469}
-  weakTapWaterClip: {fileID: 8300000, guid: 729fa054fd8d9e142bafc17e3ee7fb00, type: 3}
   kitchenTapWaterWeakPS: {fileID: 435379084}
-  toiletTapWaterWeakPS: {fileID: 1573373897}
-  strongTapWaterClip: {fileID: 8300000, guid: 891c1de706e3fa348ad9844b83b5c9be, type: 3}
   kitchenTapWaterStrongPS: {fileID: 2088197490}
+  toiletTapWaterSource: {fileID: 1826026469}
+  toiletTapWaterWeakPS: {fileID: 1573373897}
   toiletTapWaterStrongPS: {fileID: 1044816082}
   coldPlayerBreathSource: {fileID: 2023649118}
-  coldBreathClip: {fileID: 8300000, guid: 3b30e604c98c62441bf208cf660e61f0, type: 3}
   coldPlayerBreathPS: {fileID: 2023649117}
-  idk: 0
+  weakTapWaterClip: {fileID: 8300000, guid: 729fa054fd8d9e142bafc17e3ee7fb00, type: 3}
+  strongTapWaterClip: {fileID: 8300000, guid: 891c1de706e3fa348ad9844b83b5c9be, type: 3}
+  coldBreathClip: {fileID: 8300000, guid: 3b30e604c98c62441bf208cf660e61f0, type: 3}
 --- !u!114 &140932112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48882,9 +48879,9 @@ GameObject:
   - component: {fileID: 2010977250}
   - component: {fileID: 2010977248}
   - component: {fileID: 2010977246}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: The Mass
-  m_TagString: Untagged
+  m_TagString: Mass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 126
@@ -60325,11 +60322,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa742bac4b1f4b4ebef894cff5a1eb1, type: 3}
---- !u!82 &611166861995487561 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4050518000696037760, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
-  m_PrefabInstance: {fileID: 661979607492829199}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &655656922120563195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 714891608830840127, guid: 48713782005aef84db48451747356a36, type: 3}
@@ -60353,7 +60345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6874260215175032069, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.043
+      value: 3.05
       objectReference: {fileID: 0}
     - target: {fileID: 6874260215175032069, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -60361,19 +60353,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6874260215175032069, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9824019
+      value: 0.6946628
       objectReference: {fileID: 0}
     - target: {fileID: 6874260215175032069, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -2.7283507e-17
+      value: -0.1320729
       objectReference: {fileID: 0}
     - target: {fileID: 6874260215175032069, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.1867792
+      value: -0.13207279
       objectReference: {fileID: 0}
     - target: {fileID: 6874260215175032069, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000022265814
+      value: 0.6946633
       objectReference: {fileID: 0}
     - target: {fileID: 6874260215175032069, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -60385,7 +60377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6874260215175032069, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

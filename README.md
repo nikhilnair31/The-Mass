@@ -5,7 +5,6 @@
 - [ ] Add models for light fixtures in lobby and kitchen
 - [ ] Add more things in closet and bedroom
 - [ ] Add cracked screen image and more for the phone
-- [ ] Add random pings on phone via notifications
 - [ ] Create script for drawers
 - [ ] Fix door rotation for various furniture
 - [ ] Add items
@@ -26,6 +25,7 @@
 
 ## Done
 
+- [x] Add random pings on phone via notifications
 - [x] See how to get point light working on The Mass
 - [x] Add door script to all cabinets
 - [x] Create particle system for snowstorm
