@@ -23,11 +23,7 @@ public class Manager_UI : MonoBehaviour
     private bool gameOver = false;
 
     [Header("Look At UI")]
-    [SerializeField] private AudioSource uiSource;
-    [SerializeField] private AudioClip[] typingClips;
     [SerializeField] private TMP_Text lookedAtText;
-    [SerializeField] private float showTypingSpeed = 0.05f;
-    [SerializeField] private float hideTypingSpeed = 0.02f;
     #endregion
 
     private void Awake() {
@@ -89,24 +85,24 @@ public class Manager_UI : MonoBehaviour
         Application.Quit();
     }
 
-    public IEnumerator ShowTextWithSound(string text) {
+    public IEnumerator ShowTextWithSound(AudioSource source, AudioClip[] clips, float speed, string text) {
         lookedAtText.text = text;
 
         for (int lettersDisplayed = 0; lettersDisplayed <= text.Length; lettersDisplayed++) {
             lookedAtText.maxVisibleCharacters = lettersDisplayed;
 
-            AudioClip clip = typingClips[Random.Range(0, typingClips.Length)];
-            uiSource.PlayOneShot(clip);
+            AudioClip clip = clips[Random.Range(0, clips.Length)];
+            source.PlayOneShot(clip);
 
-            yield return new WaitForSeconds(showTypingSpeed);
+            yield return new WaitForSeconds(speed);
         }
     }
-    public IEnumerator ClearText() {
+    public IEnumerator ClearText(float speed) {
         int textLen = lookedAtText.text.Length;
         for (int lettersDisplayed = textLen; lettersDisplayed >= 0; lettersDisplayed--) {
             lookedAtText.maxVisibleCharacters = lettersDisplayed;
 
-            yield return new WaitForSeconds(hideTypingSpeed);
+            yield return new WaitForSeconds(speed);
         }
 
         lookedAtText.text = "";

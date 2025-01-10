@@ -15,6 +15,9 @@ public class Interactable_Pokable : Controller_Pickable
 
     public override void Start() {
         base.Start();
+
+        rgb.isKinematic = false;
+        rgb.useGravity = true;
         
         initPos = transform.localPosition;
         initRot = transform.localEulerAngles;

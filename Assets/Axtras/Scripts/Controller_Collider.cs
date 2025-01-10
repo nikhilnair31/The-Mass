@@ -20,12 +20,12 @@ public class Controller_Collider : MonoBehaviour
                 var isPlayersFirstColl = PlayerPrefs.GetInt("IsPlayersFirstColl");
                 if (isPlayersFirstColl == 1) {
                     StopAllCoroutines();
-                    StartCoroutine(Manager_UI.Instance.ShowTextWithSound(firstTextStr));
+                    Manager_Thoughts.Instance.UpdateThoughtText(firstTextStr);
                     PlayerPrefs.SetInt("IsPlayersFirstColl", 0);
                 }
                 else {
                     StopAllCoroutines();
-                    StartCoroutine(Manager_UI.Instance.ShowTextWithSound(secondTextStr));
+                    Manager_Thoughts.Instance.UpdateThoughtText(secondTextStr);
                 }
             }
             if (other.transform.CompareTag("Interactable")) {
@@ -37,9 +37,9 @@ public class Controller_Collider : MonoBehaviour
                 var allAttemptsCompleted = Manager_Game.Instance.GetIfAllAttemptsCompleted();
 
                 StopAllCoroutines();
-                StartCoroutine(Manager_UI.Instance.ShowTextWithSound(
+                Manager_Thoughts.Instance.UpdateThoughtText(
                     allAttemptsCompleted ? firstTextStr : "Error"
-                ));
+                );
             }
         }
         else if (colliderType == ColliderType.VentTop) {
@@ -49,6 +49,6 @@ public class Controller_Collider : MonoBehaviour
         }
     }
     private void OnCollisionExit(Collision other) {
-        StartCoroutine(Manager_UI.Instance.ClearText());
+        Manager_Thoughts.Instance.ClearThoughtText();
     }
 }

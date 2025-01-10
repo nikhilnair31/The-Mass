@@ -16,6 +16,9 @@ public class Interactable_Blinds : Controller_Interactables
     public override void Start() {
         base.Start();
 
+        rgb.isKinematic = true;
+        rgb.useGravity = false;
+
         startScale = transform.localScale;
     }
 

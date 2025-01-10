@@ -21,20 +21,10 @@ public class Interactable_Door : Controller_Interactables
     public override void Start() {
         base.Start();
 
-        if (!transform.TryGetComponent(out Rigidbody rb)) {
-            rb = transform.gameObject.AddComponent<Rigidbody>();
-        }
-        rb.mass = 20;
-        rb.isKinematic = true;
-        rb.useGravity = false;
+        rgb.mass = 20;
+        rgb.isKinematic = true;
+        rgb.useGravity = false;
 
-        if (!transform.TryGetComponent(out BoxCollider coll)) {
-            coll = transform.gameObject.AddComponent<BoxCollider>();
-        }
-
-        if (!transform.TryGetComponent(out AudioSource source)) {
-            audioSource = transform.gameObject.AddComponent<AudioSource>();
-        }
         audioSource.spatialBlend = 1;
         audioSource.playOnAwake = false;
         audioSource.loop = false;

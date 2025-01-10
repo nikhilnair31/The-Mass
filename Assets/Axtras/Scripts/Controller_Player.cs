@@ -131,7 +131,8 @@ public class Controller_Player : MonoBehaviour
             if (hit.transform != currentInteractable) {
                 if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
                     currentInteractable = hit.transform;
-                    Manager_Thoughts.Instance.UpdateThoughtText(interactable);
+                    var showTextStr = interactable.ReturnInteractableText();
+                    Manager_Thoughts.Instance.UpdateThoughtText(showTextStr);
                 }
             }
         }

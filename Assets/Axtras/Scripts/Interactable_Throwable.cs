@@ -16,6 +16,13 @@ public class Interactable_Throwable : Controller_Pickable
     [SerializeField] private AudioClip[] impactClips;
     #endregion
 
+    public override void Start() {
+        base.Start();
+
+        rgb.isKinematic = false;
+        rgb.useGravity = true;
+    }
+
     public void ThrowInteractable() {
         var rb = transform.GetComponent<Rigidbody>();
         Helper.Instance.EnablePhysics(rb, true);
