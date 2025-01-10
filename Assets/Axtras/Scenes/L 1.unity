@@ -378,6 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clockTimeText: {fileID: 1486327643}
   isClockRunning: 1
+  timeMultiplier: 12
 --- !u!65 &40346784
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1059,7 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d237490f3f297644a847012a7cb36e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfAttemptsCompleted: 3
+  numOfAttemptsCompleted: 5
   numOfAttemptsAttempted: 0
   addAttempt: 0
   ventTranform: {fileID: 66872113}
@@ -1095,8 +1096,8 @@ MonoBehaviour:
   sanityLostInTimeMax: 200
   sanityLostInTime: 0
   sanityRate: 1
-  withinRangeOfMass: 7
-  sanityScaleRate: 2
+  withinRangeOfMass: 10
+  sanityScaleRate: 3
   postProcessVolume: {fileID: 2079075755}
   sanityAudioSource: {fileID: 488930032}
 --- !u!1 &150741070
@@ -7145,7 +7146,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 100
-  field of view: 40
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -19043,7 +19044,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 40
+    FieldOfView: 70
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 100

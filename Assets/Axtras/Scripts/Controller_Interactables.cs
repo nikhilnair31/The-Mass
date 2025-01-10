@@ -9,7 +9,7 @@ public class Controller_Interactables : MonoBehaviour
     internal AudioSource audioSource;
 
     [Header("Interaction Settings")]
-    [SerializeField] private string showThisText;
+    [SerializeField] internal string showThisText;
     #endregion
 
     public virtual void Start() {

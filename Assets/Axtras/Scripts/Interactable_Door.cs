@@ -48,6 +48,8 @@ public class Interactable_Door : Controller_Interactables
                 .OnComplete(() => {
                     transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, startAngleY, transform.localEulerAngles.z);
                 });
+            
+            showThisText = "it's locked";
 
             Helper.Instance.PlayRandAudio(audioSource, lockedClips);
         }

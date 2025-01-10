@@ -131,7 +131,8 @@ public class Controller_Player : MonoBehaviour
             if (hit.transform != currentInteractable) {
                 if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
                     currentInteractable = hit.transform;
-                    UpdateLookedAtText(interactable);
+                    var showTextStr = interactable.ReturnInteractableText();
+                    UpdateLookedAtText(showTextStr);
                 }
             }
         }
@@ -139,9 +140,7 @@ public class Controller_Player : MonoBehaviour
             ClearLookedAtText();
         }
     }
-    private void UpdateLookedAtText(Controller_Interactables interactable) {
-        var showTextStr = interactable.ReturnInteractableText();
-
+    private void UpdateLookedAtText(string showTextStr) {
         StopAllCoroutines();
         StartCoroutine(Manager_UI.Instance.ShowTextWithSound(showTextStr));
     }
