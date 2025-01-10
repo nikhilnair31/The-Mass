@@ -2,21 +2,35 @@
 
 ## To-do
 
-- [] Add items
-  - blanket to conver with
-  - water hose to douse with
+- [ ] See how to get point light working on The Mass
+- [ ] Create particle system for snowstorm
+- [ ] Add throwables in the toilet
+- [ ] Hide the vent exit steam at the start and unlock at Attempt 5
+- [ ] Add items
   - room fresherner to spray with
   - bug spray and lighter to flamethrow with
-- [ ] Improve thrown object trajectory
+- [ ] Create a player vent movement controller
+- [ ] Add effects as vent is traversed
+- [ ] Add models for light fixtures in lobby and kitchen
+- [ ] Add more things in closet and bedroom
+- [ ] Add cracked screen image and more for the phone
+- [ ] Add random pings on phone via notifications
+- [ ] Add door script to all cabinets
+- [ ] Create script for drawers
 
 ## Skipped
 
+- [] Add items
+  - blanket to conver with
+  - water hose to douse with
+- [ ] Improve thrown object trajectory
 - [ ] Add effects for shower warping
 - [ ] Improve effects for barrier (make visible when close and on thrown items impacting)
 - [ ] Improve effects for thrown arc (make dotted line fading away, match as close as possible to thrown item)
 
 ## Done
 
+- [x] Make text system more robust?
 - [x] Remove canBePicked from parent Controller_Interactables script
 - [x] Improve the look at system to stop text scaling up when leaving an item or it disappearing while still looking at it
 - [x] Added items

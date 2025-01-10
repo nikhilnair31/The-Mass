@@ -989,6 +989,7 @@ GameObject:
   - component: {fileID: 140932109}
   - component: {fileID: 140932108}
   - component: {fileID: 140932110}
+  - component: {fileID: 140932113}
   - component: {fileID: 140932112}
   - component: {fileID: 140932111}
   m_Layer: 0
@@ -1100,6 +1101,18 @@ MonoBehaviour:
   sanityScaleRate: 3
   postProcessVolume: {fileID: 2079075755}
   sanityAudioSource: {fileID: 488930032}
+--- !u!114 &140932113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140932107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 464d575f4debe7540942d370c232252d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &150741070
 GameObject:
   m_ObjectHideFlags: 0
@@ -48449,7 +48462,7 @@ PrefabInstance:
       objectReference: {fileID: 2052028297}
     - target: {fileID: 2991114553781699569, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: meshRenderers.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2991114553781699569, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: 'meshRenderers.Array.data[0]'
@@ -48459,6 +48472,10 @@ PrefabInstance:
       propertyPath: 'meshRenderers.Array.data[1]'
       value: 
       objectReference: {fileID: 1299554934}
+    - target: {fileID: 2991114553781699569, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: 'meshRenderers.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1852543164}
     - target: {fileID: 5517785163931550238, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.7879028
@@ -48966,7 +48983,7 @@ AudioSource:
   Priority: 0
   DopplerLevel: 1
   MinDistance: 1.5
-  MaxDistance: 12
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -48976,22 +48993,22 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.5296733
+      time: 0.13105202
       value: 1
-      inSlope: -3.9107625
-      outSlope: -3.9107625
+      inSlope: -2.584854
+      outSlope: -2.584854
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.031719305
+      outWeight: 0.040707882
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -4.016446
-      outSlope: -4.016446
+      inSlope: -0.7320688
+      outSlope: -0.7320688
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.04130305
+      inWeight: 0.06697595
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -49000,7 +49017,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.13105202
       value: 1
       inSlope: 0
       outSlope: 0
@@ -49030,7 +49047,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.13105202
       value: 1
       inSlope: 0
       outSlope: 0

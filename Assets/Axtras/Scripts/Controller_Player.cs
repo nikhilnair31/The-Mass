@@ -131,23 +131,15 @@ public class Controller_Player : MonoBehaviour
             if (hit.transform != currentInteractable) {
                 if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
                     currentInteractable = hit.transform;
-                    var showTextStr = interactable.ReturnInteractableText();
-                    UpdateLookedAtText(showTextStr);
+                    Manager_Thoughts.Instance.UpdateThoughtText(interactable);
                 }
             }
         }
         else {
-            ClearLookedAtText();
-        }
-    }
-    private void UpdateLookedAtText(string showTextStr) {
-        StopAllCoroutines();
-        StartCoroutine(Manager_UI.Instance.ShowTextWithSound(showTextStr));
-    }
-    private void ClearLookedAtText() {
-        if (currentInteractable != null) {
-            currentInteractable = null;
-            StartCoroutine(Manager_UI.Instance.ClearText());
+            if (currentInteractable != null) {
+                currentInteractable = null;
+                Manager_Thoughts.Instance.ClearThoughtText();
+            }
         }
     }
 
