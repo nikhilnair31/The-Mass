@@ -97,6 +97,9 @@ public class Controller_Player : MonoBehaviour
                 else if (currentInteractable.TryGetComponent(out Interactable_Door doors)) {
                     doors.ControlOpenCloseDoor();
                 }
+                else if (currentInteractable.TryGetComponent(out Interactable_Drawer drawer)) {
+                    drawer.ControlOpenCloseDrawer();
+                }
                 else if (currentInteractable.TryGetComponent(out Interactable_Switch switches)) {
                     switches.ControlOnOffLight();
                 }

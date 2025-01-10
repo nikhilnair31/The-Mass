@@ -2272,7 +2272,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071016, z: -0, w: -0.707112}
-  m_LocalPosition: {x: 1.399848, y: 2.6999998, z: 7.4998846}
+  m_LocalPosition: {x: -11.099998, y: 2.6999998, z: 17.90007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7964,7 +7964,7 @@ Transform:
   m_GameObject: {fileID: 488930024}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071016, z: -0, w: -0.707112}
-  m_LocalPosition: {x: 1.399848, y: 1.3000001, z: 7.4998846}
+  m_LocalPosition: {x: -11.099998, y: 1.3000001, z: 17.90007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -61917,12 +61917,13 @@ GameObject:
   - component: {fileID: 7274182434743502017}
   - component: {fileID: 4151032211346994640}
   - component: {fileID: 8274918729323348416}
+  - component: {fileID: 8274918729323348417}
   m_Layer: 0
   m_Name: drawerBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!23 &1859103615195759622
 MeshRenderer:
@@ -63408,13 +63409,37 @@ GameObject:
   - component: {fileID: 5287344303349894095}
   - component: {fileID: 3052667074224915946}
   - component: {fileID: 2266976149908589164}
+  - component: {fileID: 5528078467959985771}
   m_Layer: 0
   m_Name: drawer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 1
   m_IsActive: 1
+--- !u!114 &5528078467959985771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528078467959985770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df61e00a90bc2b14b97d7f3670a94bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showThisText: open?
+  openPos: {x: 0, y: 0, z: -0.5}
+  shakeVec: {x: 1, y: 1, z: 2}
+  shakeTime: 0.1
+  transitionTime: 0.2
+  drawerIsLocked: 1
+  opencloseClips:
+  - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
+  lockedClips:
+  - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
+  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!4 &5843041367632355347
 Transform:
   m_ObjectHideFlags: 0
@@ -64005,12 +64030,13 @@ GameObject:
   - component: {fileID: 8541903016754044405}
   - component: {fileID: 2531654572941536406}
   - component: {fileID: 4046639525467031974}
+  - component: {fileID: 8541903016754044406}
   m_Layer: 0
   m_Name: drawerTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!23 &8274918729323348416
 MeshRenderer:
@@ -64059,6 +64085,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8274918729323348417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856217937898718925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df61e00a90bc2b14b97d7f3670a94bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showThisText: open?
+  openPos: {x: 0, y: 0, z: -0.5}
+  shakeVec: {x: 1, y: 1, z: 2}
+  shakeTime: 0.1
+  transitionTime: 0.2
+  drawerIsLocked: 0
+  opencloseClips:
+  - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
+  lockedClips:
+  - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
+  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!4 &8541903016754044405
 Transform:
   m_ObjectHideFlags: 0
@@ -64074,6 +64123,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450652731565040}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8541903016754044406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8038241322372990095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df61e00a90bc2b14b97d7f3670a94bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showThisText: open?
+  openPos: {x: 0, y: 0, z: -0.5}
+  shakeVec: {x: 1, y: 1, z: 2}
+  shakeTime: 0.1
+  transitionTime: 0.2
+  drawerIsLocked: 0
+  opencloseClips:
+  - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
+  lockedClips:
+  - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
+  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1001 &8621653482958554956
 PrefabInstance:
   m_ObjectHideFlags: 0
