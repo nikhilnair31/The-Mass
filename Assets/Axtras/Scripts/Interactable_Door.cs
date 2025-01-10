@@ -52,4 +52,11 @@ public class Interactable_Door : Controller_Interactables
             Helper.Instance.PlayRandAudio(audioSource, lockedClips);
         }
     }
+
+    public void SetIsDoorLocked(bool active) {
+        doorIsLocked = active;
+    }
+    public bool GetIsDoorLocked() {
+        return doorIsLocked;
+    }
 }

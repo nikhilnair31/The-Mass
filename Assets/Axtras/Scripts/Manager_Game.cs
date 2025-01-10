@@ -1,3 +1,4 @@
+using System.Xml.Linq;
 using DG.Tweening;
 using UnityEngine;
 
@@ -16,12 +17,30 @@ public class Manager_Game : MonoBehaviour
     [SerializeField] private GameObject ventColliderGO;
 
     [Header("Attempt 1 Settings")]
-    [SerializeField] private GameObject phoneGO;
+    [SerializeField] private AudioSource phoneSource;
     [SerializeField] private AudioClip ringtoneClip;
 
     [Header("Attempt 2 Settings")]
-    [SerializeField] private GameObject snowstormGO;
+    [SerializeField] private ParticleSystem snowstormPS;
     [SerializeField] private AudioSource snowstormSource;
+    [SerializeField] private AudioSource kitchenTapWaterSource;
+    [SerializeField] private AudioSource toiletTapWaterSource;
+    [SerializeField] private AudioClip weakTapWaterClip;
+    [SerializeField] private ParticleSystem kitchenTapWaterWeakPS;
+    [SerializeField] private ParticleSystem toiletTapWaterWeakPS;
+
+    [Header("Attempt 3 Settings")]
+    [SerializeField] private AudioClip strongTapWaterClip;
+    [SerializeField] private ParticleSystem kitchenTapWaterStrongPS;
+    [SerializeField] private ParticleSystem toiletTapWaterStrongPS;
+
+    [Header("Attempt 4 Settings")]
+    [SerializeField] private AudioSource coldPlayerBreathSource;
+    [SerializeField] private AudioClip coldBreathClip;
+    [SerializeField] private ParticleSystem coldPlayerBreathPS;
+
+    [Header("Attempt 5 Settings")]
+    [SerializeField] private float idk;
     #endregion
 
     #if UNITY_EDITOR
@@ -67,25 +86,41 @@ public class Manager_Game : MonoBehaviour
     }
     private void Attempt1() {
         // Call comes on broken phone
-        var source = phoneGO.GetComponent<AudioSource>();
-        source.clip = ringtoneClip;
-        source.loop = true;
-        source.volume = 0f;
-        source.Play();
-        source.DOFade(1f, 5f);
+        phoneSource.clip = ringtoneClip;
+        phoneSource.loop = true;
+        phoneSource.volume = 0f;
+        phoneSource.DOFade(1f, 5f);
+        Helper.Instance.StartAudioLoop(phoneSource, ringtoneClip, 1f);
     }
     private void Attempt2() {
         // Snowstorm gets stronger
+        snowstormPS.Play();
         snowstormSource.DOFade(2f, 5f);
         // Water starts dripping from taps
+        kitchenTapWaterWeakPS.Play();
+        toiletTapWaterWeakPS.Play();
+        Helper.Instance.StartAudioLoop(kitchenTapWaterSource, weakTapWaterClip, 0f);
+        Helper.Instance.StartAudioLoop(toiletTapWaterSource, weakTapWaterClip, 0f);
     }
     private void Attempt3() {
         // Clocks stop
         // Water from taps flows much faster
+        kitchenTapWaterStrongPS.Play();
+        toiletTapWaterStrongPS.Play();
+        Helper.Instance.StartAudioLoop(kitchenTapWaterSource, strongTapWaterClip, 0f);
+        Helper.Instance.StartAudioLoop(toiletTapWaterSource, strongTapWaterClip, 0f);
     }
     private void Attempt4() {
         // Visible breath as it gets colder 
+        coldPlayerBreathPS.Play();
+        Helper.Instance.StartAudioLoop(coldPlayerBreathSource, coldBreathClip, 1f);
         // Locked door room opens
+        var allDoors = FindObjectsByType<Interactable_Door>(FindObjectsSortMode.None);
+        foreach (var door in allDoors) {
+            if (door.GetIsDoorLocked()) {
+                door.SetIsDoorLocked(false);
+            }
+        }
     }
     private void Attempt5() {
         // Some objects move from their previous place

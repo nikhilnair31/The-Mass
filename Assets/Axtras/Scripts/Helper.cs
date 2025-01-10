@@ -41,6 +41,17 @@ public class Helper : MonoBehaviour
         var clip = clips[UnityEngine.Random.Range(0, clips.Length)];
         source.PlayOneShot(clip);
     }
+    public void StartAudioLoop(AudioSource source, AudioClip clip, float delay) {
+        source.clip = clip;
+        source.loop = false;  // Disable built-in looping
+
+        source.Play();
+        
+        DOVirtual.DelayedCall(
+            clip.length + delay, 
+            () => StartAudioLoop(source, clip, delay)
+        );
+    }
     #endregion
 
     #region Physics Related
