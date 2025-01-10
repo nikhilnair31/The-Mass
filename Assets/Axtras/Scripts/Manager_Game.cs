@@ -58,6 +58,7 @@ public class Manager_Game : MonoBehaviour
 
     private void Start() {
         numOfAttemptsAttempted = 0;
+        UpdateByAttempt();
     }
 
     public void AddAttempt() {
@@ -72,6 +73,9 @@ public class Manager_Game : MonoBehaviour
 
     private void UpdateByAttempt() {
         switch (numOfAttemptsAttempted) {
+            case 0:
+                Attempt0();
+                break;
             case 1:
                 Attempt1();
                 break;
@@ -88,12 +92,17 @@ public class Manager_Game : MonoBehaviour
                 Attempt5();
                 break;
             default:
-                Attempt0();
                 break;
         }
     }
     private void Attempt0() {
         ventExitSteamPS.Stop();
+        
+        if (ventTranform.TryGetComponent(out Rigidbody rb)) {
+            Helper.Instance.EnablePhysics(rb, false);
+        }
+
+        ventColliderGO.SetActive(false);
     }
     private void Attempt1() {
         // EMP effects that make the phone ring adn lights get brighter

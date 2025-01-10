@@ -7,11 +7,15 @@ public class Interactable_Door : Controller_Interactables
 {
     #region Vars
     [Header("Door Settings")]
-    [SerializeField] private float transitionTime = 1f;
-    [SerializeField] private float shakeTime = 0.2f;
-    [SerializeField] private Vector3 shakeVec;
-    [SerializeField] private bool doorIsLocked = false;
+    [SerializeField] private bool dependsOnPlayerLoc = true;
+    [SerializeField] private Vector3 rotVec;
     private bool isOpen = false;
+
+    [Header("Lock Settings")]
+    [SerializeField] private Vector3 shakeVec;
+    [SerializeField] private float shakeTime = 0.2f;
+    [SerializeField] private float transitionTime = 1f;
+    [SerializeField] private bool doorIsLocked = false;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioClip[] opencloseClips;
@@ -32,22 +36,32 @@ public class Interactable_Door : Controller_Interactables
 
     public void ControlOpenCloseDoor() {
         if (!doorIsLocked) {
-            Vector3 playerPosition = Camera.main.transform.position;
-            Vector3 doorPosition = transform.position;
+            Vector3 targetRotation = Vector3.zero;
+            Vector3 currentRotation = transform.localEulerAngles;
+            
+            if (dependsOnPlayerLoc) {
+                Vector3 playerPosition = Camera.main.transform.position;
+                Vector3 doorPosition = transform.position;
 
-            Vector3 doorForward = transform.forward;
-            Vector3 playerToDoor = (playerPosition - doorPosition).normalized;
+                Vector3 doorForward = transform.forward;
+                Vector3 playerToDoor = (playerPosition - doorPosition).normalized;
 
-            float dotProduct = Vector3.Dot(doorForward, playerToDoor);
+                float dotProduct = Vector3.Dot(doorForward, playerToDoor);
 
-            float currentYRotation = transform.localEulerAngles.y;
-            float targetYRotation = isOpen ? currentYRotation - 90f : currentYRotation + 90f;
-
-            if (dotProduct < 0) {
-                targetYRotation = isOpen ? currentYRotation + 90f : currentYRotation - 90f;
+                if (dotProduct > 0) {
+                    targetRotation = isOpen ? currentRotation - rotVec : currentRotation + rotVec;
+                } 
+                else {
+                    targetRotation = isOpen ? currentRotation + rotVec : currentRotation - rotVec;
+                }
+            }
+            else {
+                targetRotation = isOpen ? Vector3.zero : rotVec;
             }
 
-            transform.DORotate(new Vector3(0f, targetYRotation, 0f), transitionTime);
+            transform
+                .DOLocalRotate(targetRotation, transitionTime)
+                .SetEase(Ease.InOutSine);
 
             Helper.Instance.PlayRandAudio(audioSource, opencloseClips);
 

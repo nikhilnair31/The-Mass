@@ -211,9 +211,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showThisText: open/close door?
-  transitionTime: 1
-  shakeTime: 0.2
+  dependsOnPlayerLoc: 1
+  rotVec: {x: 0, y: 90, z: 0}
   shakeVec: {x: 0, y: 5, z: 0}
+  shakeTime: 0.2
+  transitionTime: 1
   doorIsLocked: 0
   opencloseClips:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
