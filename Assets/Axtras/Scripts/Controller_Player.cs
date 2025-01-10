@@ -85,8 +85,10 @@ public class Controller_Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) {
             if (currentInteractable != null) {
                 if (currentInteractable.TryGetComponent(out Controller_Pickable pickable)) {
-                    pickable.PickInteractable();
-                    pickable.SetWasPicked(true);
+                    if (pickable.ReturnPickableBool()) {
+                        pickable.PickInteractable();
+                        pickable.SetWasPicked(true);
+                    }
                 }
                 
                 else if (currentInteractable.TryGetComponent(out Interactable_Blinds blinds)) {

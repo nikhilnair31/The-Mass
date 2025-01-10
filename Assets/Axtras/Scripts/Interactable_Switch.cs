@@ -1,5 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
+using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public class Interactable_Switch : Controller_Interactables 
 {
@@ -10,9 +12,9 @@ public class Interactable_Switch : Controller_Interactables
 
     [Header("Light Settings")]
     [SerializeField] private Light[] lightsList;
-    private MeshRenderer meshRenderer;
-    private Material[] matList;
-    private Color[] originalEmissionColors;
+    [SerializeField] private List<MeshRenderer> meshRenderers = new ();
+    private Material[][] matList;
+    private Color[][] originalEmissionColors;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioClip[] switchClips;
@@ -20,22 +22,34 @@ public class Interactable_Switch : Controller_Interactables
 
     public override void Start() {
         base.Start();
-        
-        // Store original emission colors
-        meshRenderer = GetComponent<MeshRenderer>();
-        matList = meshRenderer.materials;
-        originalEmissionColors = new Color[matList.Length];
-        for (int i = 0; i < matList.Length; i++) {
-            originalEmissionColors[i] = matList[i].GetColor("_EmissionColor");
+
+        if (meshRenderers.Count == 0) {
+            meshRenderers.Add(GetComponent<MeshRenderer>());
         }
 
-        // Set the initial switch button rotation
-        switchButton.localRotation = Quaternion.Euler(60f, 0f, 0f);
+        matList = new Material[meshRenderers.Count][];
+        originalEmissionColors = new Color[meshRenderers.Count][];
+
+        for (int i = 0; i < meshRenderers.Count; i++) {
+            matList[i] = meshRenderers[i].materials;
+            originalEmissionColors[i] = new Color[matList[i].Length];
+
+            for (int j = 0; j < matList[i].Length; j++)
+            {
+                originalEmissionColors[i][j] = matList[i][j].GetColor("_EmissionColor");
+            }
+        }
+
+        if (switchButton != null) {
+            switchButton.localRotation = Quaternion.Euler(60f, 0f, 0f);
+        }
     }
 
     public void ControlOnOffLight() {
-        float targetXRotation = isOn ? -60f : 60f;
-        switchButton.DOLocalRotate(new Vector3(targetXRotation, 0f, 0f), 0.5f);
+        if (switchButton != null) {
+            float targetXRotation = isOn ? 60f : -60f;
+            switchButton.DOLocalRotate(new Vector3(targetXRotation, 0f, 0f), 0.5f);
+        }
         
         Helper.Instance.PlayRandAudio(audioSource, switchClips);
 
@@ -50,18 +64,18 @@ public class Interactable_Switch : Controller_Interactables
         }
     }
     private void EmissionControl() {
-        for (int i = 0; i < matList.Length; i++) {
-            var material = matList[i];
+        for (int i = 0; i < meshRenderers.Count; i++) {
+            for (int j = 0; j < matList[i].Length; j++) {
+                var material = matList[i][j];
 
-            if (isOn) {
-                // Reset to the original emission color
-                material.SetColor("_EmissionColor", originalEmissionColors[i]);
-                material.EnableKeyword("_EMISSION");
-            } 
-            else {
-                // Set emission to black (off)
-                material.SetColor("_EmissionColor", Color.black);
-                material.DisableKeyword("_EMISSION");
+                if (isOn) {
+                    material.SetColor("_EmissionColor", originalEmissionColors[i][j]);
+                    material.EnableKeyword("_EMISSION");
+                }
+                else {
+                    material.SetColor("_EmissionColor", Color.black);
+                    material.DisableKeyword("_EMISSION");
+                }
             }
         }
     }
