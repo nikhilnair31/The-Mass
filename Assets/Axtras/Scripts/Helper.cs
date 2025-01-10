@@ -60,20 +60,4 @@ public class Helper : MonoBehaviour
         rb.isKinematic = !active;
     }
     #endregion
-
-    #region Tween Related
-    public void ScaleTween(Transform target, float waitTime = 1f) {
-        float duration = 0.15f;
-        if (target.localScale != Vector3.zero) {
-            target.DOScale(Vector3.zero, duration).OnComplete(() => {
-                target.DOScale(Vector3.one, duration)
-                      .OnComplete(() => target.DOScale(Vector3.zero, duration).SetDelay(waitTime));
-            });
-        }
-        else {
-            target.DOScale(Vector3.one, duration)
-                  .OnComplete(() => target.DOScale(Vector3.zero, duration).SetDelay(waitTime));
-        }
-    }
-    #endregion
 }
