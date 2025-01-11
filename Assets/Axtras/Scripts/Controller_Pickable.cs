@@ -8,16 +8,8 @@ public class Controller_Pickable : Controller_Interactables
     [Header("Pickable Settings")]
     [SerializeField] private bool isPickable = true;
     [SerializeField] internal bool wasHeld = false;
+    [SerializeField] private Vector3 heldRotEuler = Vector3.zero;
     #endregion
-
-    private void Update() {
-        if (wasHeld && playerController.heldInteractable == transform) {
-            transform.SetPositionAndRotation(
-                playerController.holdAtTransform.position,
-                playerController.holdAtTransform.rotation
-            );
-        }
-    }
     
     public virtual void PickInteractable() {
         var rb = transform.GetComponent<Rigidbody>();
@@ -26,10 +18,20 @@ public class Controller_Pickable : Controller_Interactables
         transform.SetParent(playerController.holdAtTransform);
         transform.localEulerAngles = Vector3.zero;
 
-        transform.DOLocalMove(Vector3.zero, 0.5f)
-        .OnComplete(() => {
-            playerController.heldInteractable = transform;
-        });
+        transform
+            .DOLocalMove(
+                Vector3.zero, 
+                0.5f
+            )
+            .OnComplete(() => {
+                playerController.heldInteractable = transform;
+            });
+        
+        transform
+            .DOLocalRotate(
+                heldRotEuler, 
+                0.5f
+            );
     }
     public virtual void DropInteractable() {
         var rb = transform.GetComponent<Rigidbody>();

@@ -639,6 +639,7 @@ MonoBehaviour:
   showThisText: just a vent cover
   isPickable: 0
   wasHeld: 0
+  heldRotEuler: {x: 0, y: 0, z: 0}
   throwForce: 10
   isBreakable: 0
   shatteredPrefab: {fileID: 0}
