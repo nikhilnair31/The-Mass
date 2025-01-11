@@ -5,7 +5,6 @@
 - [ ] Add items
   - room fresherner to spray with
   - bug spray and lighter to flamethrow with
-- [ ] Add zoom with right click
 - [ ] Add more things in closet and bedroom
 - [ ] Create a player vent movement controller
 - [ ] Add effects as vent is traversed
@@ -22,6 +21,7 @@
 
 ## Done
 
+- [x] Add zoom with right click
 - [x] Allow picked items to set specific rotation
 - [x] Create script for drawers
 - [x] Fix door rotation for various furniture

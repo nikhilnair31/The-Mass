@@ -1,4 +1,8 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using Unity.Cinemachine;
+using DG.Tweening;
 
 public class Controller_Player : MonoBehaviour
 {
@@ -29,6 +33,14 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] public Transform heldInteractable;
     private Transform currentInteractable;
     private RaycastHit hit;
+
+    [Header("Zoom Settings")]
+    [SerializeField] private Volume volume;
+    [SerializeField] private Vignette vignette;
+    [SerializeField] private CinemachineCamera cam;
+    [SerializeField] private float zoomFOV = 40f;
+    private float currFOV;
+    private bool isZoomed = false;
     #endregion
 
     private void Awake() {
@@ -41,12 +53,18 @@ public class Controller_Player : MonoBehaviour
     private void Start() {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        
+        if (volume.profile.TryGet(out Vignette v)) {
+            vignette = v;
+        }
+        currFOV = cam.Lens.FieldOfView;
     }
 
     private void Update() {
         HandleMouseLook();
         HandleMovement();
         HandleInteractable();
+        HandleZoom();
         CheckForInteractable();
     }
 
@@ -126,6 +144,40 @@ public class Controller_Player : MonoBehaviour
                 pokable.PokableInteractable();
             }
             throwLineGO.SetActive(false);
+        }
+    }
+    private void HandleZoom() {
+        if (Input.GetMouseButtonDown(1)) {
+            isZoomed = true;
+
+            DOTween.To(
+                () => cam.Lens.FieldOfView,
+                x => {
+                    var lens = cam.Lens;
+                    lens.FieldOfView = x;
+                    cam.Lens = lens;
+                },
+                zoomFOV,
+                0.5f
+            );
+
+            DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0.5f, 0.5f);
+        }
+        else if (Input.GetMouseButtonUp(1)) {
+            isZoomed = false;
+
+            DOTween.To(
+                () => cam.Lens.FieldOfView,
+                x => {
+                    var lens = cam.Lens;
+                    lens.FieldOfView = x;
+                    cam.Lens = lens;
+                },
+                currFOV,
+                0.5f
+            );
+
+            DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0f, 0.5f);
         }
     }
 

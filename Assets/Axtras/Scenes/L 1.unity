@@ -8002,6 +8002,10 @@ MonoBehaviour:
   holdAtTransform: {fileID: 1714296809}
   throwLineGO: {fileID: 1432886044}
   heldInteractable: {fileID: 0}
+  volume: {fileID: 2079075755}
+  vignette: {fileID: 0}
+  cam: {fileID: 977846282}
+  zoomFOV: 40
 --- !u!54 &488930031
 Rigidbody:
   m_ObjectHideFlags: 0
