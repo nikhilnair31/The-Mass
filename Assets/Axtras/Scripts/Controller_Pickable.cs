@@ -10,6 +10,12 @@ public class Controller_Pickable : Controller_Interactables
     [SerializeField] internal bool wasHeld = false;
     [SerializeField] private Vector3 heldRotEuler = Vector3.zero;
     #endregion
+
+    public override void Start() {
+        base.Start();
+
+        rgb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+    }
     
     public virtual void PickInteractable() {
         var rb = transform.GetComponent<Rigidbody>();
@@ -18,20 +24,13 @@ public class Controller_Pickable : Controller_Interactables
         transform.SetParent(playerController.holdAtTransform);
         transform.localEulerAngles = Vector3.zero;
 
-        transform
-            .DOLocalMove(
-                Vector3.zero, 
-                0.5f
-            )
+        var sequence = DOTween.Sequence();
+        sequence
+            .Append(transform.DOLocalMove(Vector3.zero, 0.5f))
+            .Join(transform.DOLocalRotate(heldRotEuler, 0.5f))
             .OnComplete(() => {
                 playerController.heldInteractable = transform;
             });
-        
-        transform
-            .DOLocalRotate(
-                heldRotEuler, 
-                0.5f
-            );
     }
     public virtual void DropInteractable() {
         var rb = transform.GetComponent<Rigidbody>();

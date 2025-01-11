@@ -132,18 +132,27 @@ public class Controller_Player : MonoBehaviour
         }
         
         if (Input.GetMouseButtonDown(0) && heldInteractable != null) {
-            if (heldInteractable.TryGetComponent(out Controller_Pickable pickable)) {
+            if (heldInteractable.TryGetComponent(out Interactable_Throwable throwable)) {
                 throwLineGO.SetActive(true);
+            }
+            else if (heldInteractable.TryGetComponent(out Interactable_Pokable pokable)) {
+                
+            }
+            else if (heldInteractable.TryGetComponent(out Interactable_Spray spray)) {
+                spray.StartSpray();
             }
         }
         if (Input.GetMouseButtonUp(0) && heldInteractable != null) {
             if (heldInteractable.TryGetComponent(out Interactable_Throwable throwable)) {
                 throwable.ThrowInteractable();
+                throwLineGO.SetActive(false);
             }
             else if (heldInteractable.TryGetComponent(out Interactable_Pokable pokable)) {
                 pokable.PokableInteractable();
             }
-            throwLineGO.SetActive(false);
+            else if (heldInteractable.TryGetComponent(out Interactable_Spray spray)) {
+                spray.StopSpray();
+            }
         }
     }
     private void HandleZoom() {
