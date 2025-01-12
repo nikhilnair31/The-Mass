@@ -38,9 +38,10 @@ public class Interactable_Switch : Controller_Interactables
             matList[i] = meshRenderers[i].materials;
             originalEmissionColors[i] = new Color[matList[i].Length];
 
-            for (int j = 0; j < matList[i].Length; j++)
-            {
-                originalEmissionColors[i][j] = matList[i][j].GetColor("_EmissionColor");
+            for (int j = 0; j < matList[i].Length; j++) {
+                if (matList[i][j].HasProperty("_EmissionColor")) {
+                    originalEmissionColors[i][j] = matList[i][j].GetColor("_EmissionColor");
+                }
             }
         }
 

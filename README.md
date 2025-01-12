@@ -2,7 +2,6 @@
 
 ## To-do
 
-- [ ] Add spray particle collision logic
 - [ ] Add logic to combine 2 pickables (spray and lighter)
 - [ ] Add spray and lighter models and preab
 - [ ] Add more things in closet and bedroom
@@ -21,6 +20,7 @@
 
 ## Done
 
+- [x] Add spray particle collision logic
 - [x] Add items
   - room fresherner to spray with
   - bug spray and lighter to flamethrow with

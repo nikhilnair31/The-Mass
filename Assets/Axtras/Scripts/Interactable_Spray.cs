@@ -27,16 +27,4 @@ public class Interactable_Spray : Controller_Pickable
         sprayPS.Stop();
         audioSource.Stop();
     }
-
-    private void OnParticleCollision(GameObject other) {
-        Debug.Log($"Particle from {sprayPS.name} collided with {other.name}");
-
-        if (other.TryGetComponent(out Rigidbody rb)) {
-            rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
-        }
-
-        if (other.TryGetComponent(out Renderer renderer)) {
-            renderer.material.color = Color.red;
-        }
-    }
 }
