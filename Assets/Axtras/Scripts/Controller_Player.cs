@@ -40,7 +40,6 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] private CinemachineCamera cam;
     [SerializeField] private float zoomFOV = 40f;
     private float currFOV;
-    private bool isZoomed = false;
     #endregion
 
     private void Awake() {
@@ -157,8 +156,6 @@ public class Controller_Player : MonoBehaviour
     }
     private void HandleZoom() {
         if (Input.GetMouseButtonDown(1)) {
-            isZoomed = true;
-
             DOTween.To(
                 () => cam.Lens.FieldOfView,
                 x => {
@@ -173,8 +170,6 @@ public class Controller_Player : MonoBehaviour
             DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0.5f, 0.5f);
         }
         else if (Input.GetMouseButtonUp(1)) {
-            isZoomed = false;
-
             DOTween.To(
                 () => cam.Lens.FieldOfView,
                 x => {
@@ -192,15 +187,29 @@ public class Controller_Player : MonoBehaviour
 
     private void CheckForInteractable() {
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer)) {
-            if (hit.transform != lookingAtInteractable) {
-                if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
-                    lookingAtInteractable = hit.transform;
-                    var showTextStr = interactable.ReturnInteractableText();
-                    Manager_Thoughts.Instance.UpdateThoughtText(showTextStr);
-                }
+            // Debug.Log($"hit.transform: {hit.transform} | lookingAtInteractable.name: {lookingAtInteractable.name}");
+            
+            var interactable = hit.transform.GetComponent<Controller_Interactables>();
+            
+            // Update if we hit a new interactable object
+            if (interactable != null && hit.transform != lookingAtInteractable) {
+                lookingAtInteractable = hit.transform;
+                var showTextStr = interactable.ReturnInteractableText();
+                Manager_Thoughts.Instance.UpdateThoughtText(showTextStr);
+                return;
+            }
+            // Skip if we hit the same interactable object
+            else if (interactable != null && hit.transform == lookingAtInteractable) {
+                return;
+            }
+            // Clear if we hit non-interactable object
+            else if (interactable == null) {
+                lookingAtInteractable = null;
+                Manager_Thoughts.Instance.ClearThoughtText();
             }
         }
         else {
+            // If we didn't hit anything in the interactable layer
             if (lookingAtInteractable != null) {
                 lookingAtInteractable = null;
                 Manager_Thoughts.Instance.ClearThoughtText();

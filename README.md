@@ -6,6 +6,7 @@
 - [ ] Add more things in closet and bedroom
 - [ ] Create a player vent movement controller
 - [ ] Add effects as vent is traversed
+- [ ] Fix the interactable text still showing when not looking at an interactable item
 
 ## Skipped
 
