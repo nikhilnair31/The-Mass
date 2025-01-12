@@ -18493,6 +18493,11 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!108 &867910526 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+  m_PrefabInstance: {fileID: 2004836538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &940767280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40907,6 +40912,11 @@ Transform:
   - {fileID: 543450653210103682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1378655860 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8675711310520646180, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+  m_PrefabInstance: {fileID: 2004836538}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1403644344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48394,6 +48404,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1637622912}
     m_Modifications:
+    - target: {fileID: 2991114553781699569, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: 'lightsList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 867910526}
+    - target: {fileID: 2991114553781699569, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: meshRenderers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991114553781699569, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: 'meshRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1378655860}
     - target: {fileID: 5517785163931550238, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.61209726
@@ -63379,10 +63401,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9de4156b1ff1a44ab9db61357af09ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addAudioSource: 0
-  addRigidbody: 0
+  addAudioSource: 1
+  addRigidbody: 1
   addMeshCollider: 0
-  addBoxCollider: 0
+  addBoxCollider: 1
   showThisText: open/close door?
   dependsOnPlayerLoc: 0
   rotVec: {x: -90, y: 90, z: 0}

@@ -23,9 +23,6 @@ public class Interactable_Switch : Controller_Interactables
     public override void Start() {
         base.Start();
 
-        rgb.isKinematic = true;
-        rgb.useGravity = false;
-
         if (meshRenderers.Count == 0) {
             meshRenderers.Add(GetComponent<MeshRenderer>());
         }

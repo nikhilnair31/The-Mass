@@ -31,7 +31,7 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] public Transform holdAtTransform;
     [SerializeField] private GameObject throwLineGO;
     [SerializeField] public Transform heldInteractable;
-    private Transform currentInteractable;
+    private Transform lookingAtInteractable;
     private RaycastHit hit;
 
     [Header("Zoom Settings")]
@@ -101,24 +101,24 @@ public class Controller_Player : MonoBehaviour
     }
     private void HandleInteractable() {
         if (Input.GetKeyDown(KeyCode.E)) {
-            if (currentInteractable != null) {
-                if (currentInteractable.TryGetComponent(out Controller_Pickable pickable)) {
-                    if (pickable.ReturnPickableBool()) {
+            if (lookingAtInteractable != null) {
+                if (lookingAtInteractable.TryGetComponent(out Controller_Pickable pickable)) {
+                    if (pickable.ReturnPickableBool() && !heldInteractable) {
                         pickable.PickInteractable();
                         pickable.SetWasPicked(true);
                     }
                 }
                 
-                else if (currentInteractable.TryGetComponent(out Interactable_Blinds blinds)) {
+                else if (lookingAtInteractable.TryGetComponent(out Interactable_Blinds blinds)) {
                     blinds.OpenCloseBlinds();
                 }
-                else if (currentInteractable.TryGetComponent(out Interactable_Door doors)) {
+                else if (lookingAtInteractable.TryGetComponent(out Interactable_Door doors)) {
                     doors.ControlOpenCloseDoor();
                 }
-                else if (currentInteractable.TryGetComponent(out Interactable_Drawer drawer)) {
+                else if (lookingAtInteractable.TryGetComponent(out Interactable_Drawer drawer)) {
                     drawer.ControlOpenCloseDrawer();
                 }
-                else if (currentInteractable.TryGetComponent(out Interactable_Switch switches)) {
+                else if (lookingAtInteractable.TryGetComponent(out Interactable_Switch switches)) {
                     switches.ControlOnOffLight();
                 }
             }
@@ -192,17 +192,17 @@ public class Controller_Player : MonoBehaviour
 
     private void CheckForInteractable() {
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer)) {
-            if (hit.transform != currentInteractable) {
+            if (hit.transform != lookingAtInteractable) {
                 if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
-                    currentInteractable = hit.transform;
+                    lookingAtInteractable = hit.transform;
                     var showTextStr = interactable.ReturnInteractableText();
                     Manager_Thoughts.Instance.UpdateThoughtText(showTextStr);
                 }
             }
         }
         else {
-            if (currentInteractable != null) {
-                currentInteractable = null;
+            if (lookingAtInteractable != null) {
+                lookingAtInteractable = null;
                 Manager_Thoughts.Instance.ClearThoughtText();
             }
         }

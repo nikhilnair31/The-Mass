@@ -436,7 +436,7 @@ MonoBehaviour:
   showThisText: turn on/off lights?
   switchButton: {fileID: 26003072213945625}
   lightsList:
-  - {fileID: 1399274206032739284}
+  - {fileID: 0}
   meshRenderers: []
   switchClips:
   - {fileID: 8300000, guid: 07c26cf6a45f0fe41b711f2db6ead26f, type: 3}
