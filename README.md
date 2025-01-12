@@ -3,7 +3,6 @@
 ## To-do
 
 - [ ] Add logic to combine 2 pickables (spray and lighter)
-- [ ] Add spray and lighter models and preab
 - [ ] Add more things in closet and bedroom
 - [ ] Create a player vent movement controller
 - [ ] Add effects as vent is traversed
@@ -20,6 +19,7 @@
 
 ## Done
 
+- [x] Add spray and lighter models and preab
 - [x] Add spray particle collision logic
 - [x] Add items
   - room fresherner to spray with
