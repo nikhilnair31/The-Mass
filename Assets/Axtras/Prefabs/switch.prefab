@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1399274206032739284}
   - component: {fileID: 4402797158375943630}
   m_Layer: 0
-  m_Name: Spot Light (3)
+  m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,7 +451,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2306411775453998711, guid: 6cbfa29ac45a839478eeb3e6dacbdcd6, type: 3}
       propertyPath: m_Name
-      value: circular light (1)
+      value: circular light
       objectReference: {fileID: 0}
     - target: {fileID: 3449652475395031928, guid: 6cbfa29ac45a839478eeb3e6dacbdcd6, type: 3}
       propertyPath: m_LocalPosition.x

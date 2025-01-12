@@ -23,6 +23,8 @@ public class Interactable_Blinds : Controller_Interactables
     }
 
     public void OpenCloseBlinds() {
+        Debug.Log($"OpenCloseBlinds");
+        
         transform.DOScale(isDown ? new (startScale.x, startScale.y, 0.05f) : startScale, transitionTime);
         
         Helper.Instance.PlayRandAudio(audioSource, opencloseClips);

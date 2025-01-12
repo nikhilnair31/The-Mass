@@ -3,10 +3,13 @@
 ## To-do
 
 - [ ] Add logic to combine 2 pickables (spray and lighter)
-- [ ] Add more things in closet and bedroom
 - [ ] Create a player vent movement controller
 - [ ] Add effects as vent is traversed
-- [ ] Fix the interactable text still showing when not looking at an interactable item
+- [ ] Make thoughts sytem more versatile
+  - Fix the interactable text still showing when not looking at an interactable item
+  - If looking at locked door text will "is roomate's. open/close it?". once tried it should switch to "it's locked easily". Another try should give "roomate's door seems locked"
+  - Don't show pickable item's text "pick up?" when holding something already
+- [ ] Fix the delay issue with phone call
 
 ## Skipped
 
@@ -20,6 +23,7 @@
 
 ## Done
 
+- [x] Add more things in closet and bedroom
 - [x] Add spray and lighter models and preab
 - [x] Add spray particle collision logic
 - [x] Add items

@@ -47,6 +47,8 @@ public class Interactable_Switch : Controller_Interactables
     }
 
     public void ControlOnOffLight() {
+        Debug.Log($"ControlOnOffLight");
+        
         if (switchButton != null) {
             float targetXRotation = isOn ? 60f : -60f;
             switchButton.DOLocalRotate(new Vector3(targetXRotation, 0f, 0f), 0.5f);

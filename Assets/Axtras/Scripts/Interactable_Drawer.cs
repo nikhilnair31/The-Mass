@@ -32,6 +32,8 @@ public class Interactable_Drawer : Controller_Interactables
     }
 
     public void ControlOpenCloseDrawer() {
+        Debug.Log($"ControlOpenCloseDrawer");
+        
         if (!drawerIsLocked) {
             Vector3 currPos = transform.localPosition;
             Vector3 targetPos = isOpen ? currPos - openPos : currPos + openPos;

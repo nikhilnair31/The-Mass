@@ -28,6 +28,8 @@ public class Controller_TheMass : MonoBehaviour
     }
 
     public void GotHit(string approach) {
+        Debug.Log($"GotHit by {approach}");
+        
         Manager_Game.Instance.AddAttempt(approach);
         Helper.Instance.PlayRandAudio(audioSource, impactClips);
     }

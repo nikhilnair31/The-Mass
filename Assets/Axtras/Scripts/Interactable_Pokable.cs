@@ -53,7 +53,11 @@ public class Interactable_Pokable : Controller_Pickable
     }
     
     private void OnCollisionEnter(Collision other) {
-        // Debug.Log($"{transform.name} - OnCollisionEnter - {other.transform.name} - {other.transform.tag}");
+        // Should have sufficient speed
+        if (rgb.linearVelocity.magnitude < 0.1f) return;
+
+        Debug.Log($"OnCollisionEnter transform.name: {transform.name} - linearVelocity: {rgb.linearVelocity.magnitude}");
+
         if (other.transform.CompareTag("Mass")) {
             Controller_TheMass.Instance.GotHit("Pokable");
         }

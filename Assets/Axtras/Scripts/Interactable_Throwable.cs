@@ -34,6 +34,11 @@ public class Interactable_Throwable : Controller_Pickable
     }
 
     private void OnCollisionEnter(Collision other) {
+        // Should have sufficient speed
+        if (rgb.linearVelocity.magnitude < 0.1f) return;
+
+        Debug.Log($"OnCollisionEnter transform.name: {transform.name} - linearVelocity: {rgb.linearVelocity.magnitude}");
+
         if (isBreakable && wasHeld) {
             var spawn = Instantiate(shatteredPrefab, transform.position, Quaternion.identity);
             foreach (ContactPoint contact in other.contacts) {

@@ -9,7 +9,6 @@ public class Controller_Phone : MonoBehaviour
     [Header("Phone Settings")]
     [SerializeField] private AudioSource phoneSource;
     [SerializeField] private float fullVolume = 2f;
-    [SerializeField] private float startDelay = 3f;
 
     [Header("Visuals Settings")]
     [SerializeField] private MeshRenderer meshRend;
@@ -17,6 +16,7 @@ public class Controller_Phone : MonoBehaviour
 
     [Header("Call Settings")]
     [SerializeField] private AudioClip ringtoneClip;
+    [SerializeField] private float startDelay = 3f;
     [SerializeField] private float ringtoneGapDelay = 2f;
     private bool callIsOn = false;
 
@@ -96,31 +96,33 @@ public class Controller_Phone : MonoBehaviour
                 // Store the initial rotation
                 initRot = transform.localEulerAngles;
 
-                // Enable material emission
-                screenMat.EnableKeyword("_EMISSION");
-
-                // Start playing the audio
+                // Set audio attributes
                 phoneSource.clip = ringtoneClip;
                 phoneSource.loop = false;
                 phoneSource.volume = fullVolume;
-                phoneSource.Play();
-
-                // Start shaking the object
-                transform.DOShakeRotation(audioDuration, shakeVec, 10, 90f);
+                
+                DOVirtual.DelayedCall(
+                    startDelay, 
+                    () => {
+                        // Enable material emission
+                        screenMat.EnableKeyword("_EMISSION");
+                        // Play the audio after some delay
+                        phoneSource.Play();
+                        // Start shaking the object
+                        transform.DOShakeRotation(audioDuration, shakeVec, 10, 90f);
+                    }
+                );
             })
             // Step 2: Delay for the duration of the audio
-            .AppendInterval(audioDuration)
+            .AppendInterval(
+                audioDuration
+            )
             .OnComplete(() => {
                 // Reset the rotation and disable material emission
                 transform.localEulerAngles = initRot;
 
                 // Repeat the notification with a random delay
-                DOVirtual.DelayedCall(
-                    startDelay, 
-                    () => {
-                        Helper.Instance.StartAudioLoop(phoneSource, ringtoneClip, ringtoneGapDelay);
-                    }
-                );
+                Helper.Instance.StartAudioLoop(phoneSource, ringtoneClip, ringtoneGapDelay);
             });
     }
 }
