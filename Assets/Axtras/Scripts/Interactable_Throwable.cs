@@ -51,7 +51,7 @@ public class Interactable_Throwable : Controller_Pickable
             gameObject.SetActive(false);
             
             if (other.transform.CompareTag("Mass")) {
-                Controller_TheMass.Instance.GotHit();
+                Controller_TheMass.Instance.GotHit("Throwable");
             }
         }
 

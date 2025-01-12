@@ -6,9 +6,14 @@ public class Controller_Interactables : MonoBehaviour
     internal Controller_Player playerController;
 
     [Header("Component Settings")]
+    [SerializeField] private bool addAudioSource;
+    [SerializeField] private bool addRigidbody;
+    [SerializeField] private bool addMeshCollider;
+    [SerializeField] private bool addBoxCollider;
     internal AudioSource audioSource;
-    internal BoxCollider coll;
     internal Rigidbody rgb;
+    internal MeshCollider meshColl;
+    internal BoxCollider boxColl;
 
     [Header("Interaction Settings")]
     [SerializeField] internal string showThisText;
@@ -17,23 +22,32 @@ public class Controller_Interactables : MonoBehaviour
     public virtual void Start() {
         playerController = FindFirstObjectByType<Controller_Player>();
 
-        if (!transform.TryGetComponent(out AudioSource source)) {
+        if (!transform.TryGetComponent(out AudioSource source) && addAudioSource) {
             audioSource = transform.gameObject.AddComponent<AudioSource>();
         } 
         else {
             audioSource = source;
         }
-        if (!transform.TryGetComponent(out BoxCollider bc)) {
-            coll = transform.gameObject.AddComponent<BoxCollider>();
-        } 
-        else {
-            coll = bc;
-        }
-        if (!transform.TryGetComponent(out Rigidbody rb)) {
+        if (!transform.TryGetComponent(out Rigidbody rb) && addRigidbody) {
             rgb = transform.gameObject.AddComponent<Rigidbody>();
         } 
         else {
-            rgb = rb;
+           rgb = rb;
+        }
+        if (!transform.TryGetComponent(out MeshCollider mc) && addMeshCollider) {
+            meshColl = transform.gameObject.AddComponent<MeshCollider>();
+            if (rgb != null) {
+                meshColl.convex = true;
+            }
+        } 
+        else {
+            meshColl = mc;
+        }
+        if (!transform.TryGetComponent(out BoxCollider bc) && addBoxCollider) {
+            boxColl = transform.gameObject.AddComponent<BoxCollider>();
+        } 
+        else {
+            boxColl = bc;
         }
 
         gameObject.layer = LayerMask.NameToLayer("Interactable");

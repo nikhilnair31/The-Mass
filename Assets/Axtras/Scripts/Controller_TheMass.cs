@@ -27,8 +27,8 @@ public class Controller_TheMass : MonoBehaviour
         currScale = transform.localScale;
     }
 
-    public void GotHit() {
-        Manager_Game.Instance.AddAttempt();
+    public void GotHit(string approach) {
+        Manager_Game.Instance.AddAttempt(approach);
         Helper.Instance.PlayRandAudio(audioSource, impactClips);
     }
     public void GrowTheMass() {

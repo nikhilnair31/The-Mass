@@ -103,6 +103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2427afba5c472094fa7994dafceeb6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addAudioSource: 1
+  addRigidbody: 1
+  addMeshCollider: 0
+  addBoxCollider: 1
   showThisText: pick?
   isPickable: 1
   wasHeld: 0

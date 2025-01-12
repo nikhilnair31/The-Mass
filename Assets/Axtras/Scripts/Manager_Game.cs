@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,9 +8,17 @@ public class Manager_Game : MonoBehaviour
     public static Manager_Game Instance { get; private set; }
 
     [Header("Attempts Settings")]
-    [SerializeField] private int numOfAttemptsCompleted = 5;
-    [SerializeField] private int numOfAttemptsAttempted;
+    [SerializeField] private int maxAttempts = 5;
+    [SerializeField] private int currentAttempts;
     [SerializeField] private bool addAttempt;
+    [SerializeField] private Dictionary<string, bool> approachUsed = new () {
+        { "Throwable", false },
+        { "Throwable_Breakable", false },
+        { "Pokable", false },
+        { "Spray", false },
+        { "Spray_Fire", false },
+        // { "Lights_Off", false }
+    };
 
     [Header("Vent Settings")]
     [SerializeField] private Transform ventTranform;
@@ -43,7 +52,11 @@ public class Manager_Game : MonoBehaviour
     #if UNITY_EDITOR
     private void OnValidate() {
         if (addAttempt) {
-            AddAttempt();
+            foreach (var approach in approachUsed) {
+                if (!approach.Value) {
+                    AddAttempt(approach.Key);
+                }
+            }
             addAttempt = false;
         }
     }
@@ -57,22 +70,38 @@ public class Manager_Game : MonoBehaviour
     }
 
     private void Start() {
-        numOfAttemptsAttempted = 0;
+        currentAttempts = 0;
         UpdateByAttempt();
     }
 
-    public void AddAttempt() {
-        numOfAttemptsAttempted++;
+    public bool AddAttempt(string approach) {
+        if (currentAttempts >= maxAttempts) {
+            Debug.Log("All attempts completed!");
+            UnlockVent();
+            return false;
+        }
+
+        if (!approachUsed.ContainsKey(approach)) {
+            Debug.LogError("Invalid approach type!");
+            return false;
+        }
+
+        if (approachUsed[approach]) {
+            Debug.LogWarning($"Approach '{approach}' has already been used!");
+            return false;
+        }
+
+        currentAttempts++;
+        approachUsed[approach] = true;
+        Debug.Log($"Attempt unlocked using '{approach}'. Total attempts: {currentAttempts}/{maxAttempts}");
 
         UpdateByAttempt();
 
-        if (numOfAttemptsAttempted >= numOfAttemptsCompleted) {
-            UnlockVent();
-        }
+        return true;
     }
 
     private void UpdateByAttempt() {
-        switch (numOfAttemptsAttempted) {
+        switch (currentAttempts) {
             case 0:
                 Attempt0();
                 break;
@@ -163,7 +192,7 @@ public class Manager_Game : MonoBehaviour
     }
 
     public bool GetIfAllAttemptsCompleted() {
-        return numOfAttemptsAttempted == numOfAttemptsCompleted;
+        return currentAttempts == maxAttempts;
     }
 
     private void UnlockVent() {

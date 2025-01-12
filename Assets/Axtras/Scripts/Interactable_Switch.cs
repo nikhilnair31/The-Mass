@@ -23,7 +23,6 @@ public class Interactable_Switch : Controller_Interactables
     public override void Start() {
         base.Start();
 
-        rgb.mass = 20;
         rgb.isKinematic = true;
         rgb.useGravity = false;
 

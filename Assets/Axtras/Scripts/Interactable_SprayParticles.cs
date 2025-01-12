@@ -12,7 +12,7 @@ public class Interactable_SprayParticles : MonoBehaviour
 
         if (!hasHitMass && other.transform.CompareTag("Mass")) {
             hasHitMass = true;
-            Controller_TheMass.Instance.GotHit();
+            Controller_TheMass.Instance.GotHit("Spray");
         }
     }    
 }
