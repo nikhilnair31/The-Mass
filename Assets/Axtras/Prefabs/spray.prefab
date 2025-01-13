@@ -112,6 +112,9 @@ MonoBehaviour:
   wasHeld: 0
   heldRotEuler: {x: -90, y: 0, z: 90}
   sprayPS: {fileID: 2536616301453069449}
+  isSprayingMass: 0
+  requiredSprayTime: 3
+  resetTime: 0.1
   sprayClip: {fileID: 8300000, guid: 729fa054fd8d9e142bafc17e3ee7fb00, type: 3}
 --- !u!1 &3102166277436874582
 GameObject:
@@ -4968,4 +4971,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21292293e1129b1488adee9b038144c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasHitMass: 0
+  sprayInteractable: {fileID: 6796791286951325812}

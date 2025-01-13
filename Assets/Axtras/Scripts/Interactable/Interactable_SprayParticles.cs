@@ -4,15 +4,12 @@ public class Interactable_SprayParticles : MonoBehaviour
 {
     #region Vars
     [Header("Spray Particles Settings")]
-    [SerializeField] private bool hasHitMass;
+    [SerializeField] private Interactable_Spray sprayInteractable;
     #endregion
 
     private void OnParticleCollision(GameObject other) {
-        // Debug.Log($"Particle from {transform.name} collided with {other.name}");
-
-        if (!hasHitMass && other.transform.CompareTag("Mass")) {
-            hasHitMass = true;
-            Controller_TheMass.Instance.GotHit("Spray");
+        if (other.transform.CompareTag("Mass")) {
+            sprayInteractable.SetSprayingMass(true);
         }
-    }    
+    }
 }

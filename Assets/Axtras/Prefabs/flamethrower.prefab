@@ -4856,7 +4856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21292293e1129b1488adee9b038144c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasHitMass: 0
+  sprayInteractable: {fileID: 6021776668082187364}
 --- !u!1 &4599825157134514024
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,7 +4875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3986879243804325154
 Transform:
   m_ObjectHideFlags: 0
@@ -4884,14 +4884,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4599825157134514024}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -7.1000004, y: 4.700001, z: 4.0613737}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7013938146745464535}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &1186039519953215225
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4961,9 +4961,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2427afba5c472094fa7994dafceeb6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addAudioSource: 0
+  addRigidbody: 0
+  addMeshCollider: 0
+  addBoxCollider: 0
   showThisText: pick?
   isPickable: 1
   wasHeld: 0
   heldRotEuler: {x: -90, y: 0, z: 90}
   sprayPS: {fileID: 5805662953777997608}
+  isSprayingMass: 0
+  requiredSprayTime: 5
+  resetTime: 0.1
   sprayClip: {fileID: 8300000, guid: 15221c20f6a429f4c94f4a0a37c8a8b9, type: 3}

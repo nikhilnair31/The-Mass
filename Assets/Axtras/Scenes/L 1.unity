@@ -66443,10 +66443,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: spray
       objectReference: {fileID: 0}
-    - target: {fileID: 1863286309880935998, guid: 276740170ad5b4f41bbd68ec013157fb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -69056,10 +69052,6 @@ PrefabInstance:
     - target: {fileID: 4599825157134514024, guid: ebc97244cbb087f44aa118667c4e3ada, type: 3}
       propertyPath: m_Name
       value: flamethrower
-      objectReference: {fileID: 0}
-    - target: {fileID: 4599825157134514024, guid: ebc97244cbb087f44aa118667c4e3ada, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
