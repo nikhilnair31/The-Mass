@@ -3910,7 +3910,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minKillSpeed: 0
+    minKillSpeed: 1.5
     maxKillSpeed: 100
     radiusScale: 1
     collidesWith:

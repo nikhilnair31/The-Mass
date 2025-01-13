@@ -14,11 +14,10 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] private float sprintSpeed = 8f;
     [SerializeField] private float crouchSpeed = 2.5f;
     [SerializeField] private float gravity = -9.81f;
-    [SerializeField] private float normalHeight = 2f;
     [SerializeField] private float crouchHeight = 1f;
-    [SerializeField] private Transform playerTransform;
     private Rigidbody rb;
     private Vector3 moveDirection;
+    private float camLocalY;
 
     [Header("Mouse Settings")]
     [SerializeField] private float mouseSensitivity = 100f;
@@ -50,13 +49,16 @@ public class Controller_Player : MonoBehaviour
     }
 
     private void Start() {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
-        
+        if (transform.TryGetComponent(out Rigidbody rgb)) {
+            rb = rgb;
+        }
         if (volume.profile.TryGet(out Vignette v)) {
             vignette = v;
         }
+
+        rb.freezeRotation = true;
         currFOV = cam.Lens.FieldOfView;
+        camLocalY = playerCamera.transform.position.y;
     }
 
     private void Update() {
@@ -85,11 +87,11 @@ public class Controller_Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftControl)) {
             rb.linearVelocity = new Vector3(moveDirection.x * crouchSpeed, rb.linearVelocity.y, moveDirection.z * crouchSpeed);
-            playerTransform.localScale = new Vector3(1f, crouchHeight / normalHeight, 1f); // Adjust height
+            playerCamera.DOMoveY(camLocalY - crouchHeight, 0.2f);
         } 
         else {
             rb.linearVelocity = new Vector3(moveDirection.x * moveSpeed, rb.linearVelocity.y, moveDirection.z * moveSpeed);
-            playerTransform.localScale = new Vector3(1f, 1f, 1f); // Reset height
+            playerCamera.DOMoveY(camLocalY, 0.2f);
         }
 
         if (Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.LeftControl)) {

@@ -2,6 +2,7 @@
 
 ## To-do
 
+- [ ] Setup UI Manager for start and pause canvii
 - [ ] Add logic to combine 2 pickables (spray and lighter)
 - [ ] Create a player vent movement controller
 - [ ] Add effects as vent is traversed
@@ -9,7 +10,11 @@
   - Fix the interactable text still showing when not looking at an interactable item
   - If looking at locked door text will "is roomate's. open/close it?". once tried it should switch to "it's locked easily". Another try should give "roomate's door seems locked"
   - Don't show pickable item's text "pick up?" when holding something already
+- [ ] Improve spray system to require more than a single contact to count as an attempt
 - [ ] Fix the delay issue with phone call
+- [ ] Look at phone call vibration on held
+- [ ] Fix the washer door rotation on closing
+- [ ] Setup Timeline
 
 ## Skipped
 
@@ -23,6 +28,7 @@
 
 ## Done
 
+- [x] Kill all spray particles on any impact
 - [x] Add more things in closet and bedroom
 - [x] Add spray and lighter models and preab
 - [x] Add spray particle collision logic
