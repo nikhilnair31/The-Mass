@@ -2,7 +2,6 @@
 
 ## To-do
 
-- [ ] Setup UI Manager for start and pause canvii
 - [ ] Add logic to combine 2 pickables (spray and lighter)
 - [ ] Create a player vent movement controller
 - [ ] Add effects as vent is traversed
@@ -28,6 +27,8 @@
 
 ## Done
 
+- [x] Added torch model and prefab
+- [x] Setup UI Manager for start and pause canvii
 - [x] Kill all spray particles on any impact
 - [x] Add more things in closet and bedroom
 - [x] Add spray and lighter models and preab

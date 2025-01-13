@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using TMPro;
@@ -9,8 +11,15 @@ public class Manager_UI : MonoBehaviour
     #region Vars
     public static Manager_UI Instance { get; private set; }
 
+    [Header("Menu UI")]
+    [SerializeField] private GameObject menuCanvasGO;
+    [SerializeField] private Button startGame_Menu_Button;
+    [SerializeField] private Button exitGame_Menu_Button;
+    [SerializeField] private PlayableDirector playableDirector;
+
     [Header("Game UI")]
     [SerializeField] private GameObject gameCanvasGO;
+    [SerializeField] private TMP_Text lookedAt_Text;
     private bool inGame = true;
 
     [Header("Pause UI")]
@@ -18,12 +27,9 @@ public class Manager_UI : MonoBehaviour
 
     [Header("Game Over UI")]
     [SerializeField] private GameObject gameoverCanvasGO;
-    [SerializeField] private Button restartGameButtonGO;
-    [SerializeField] private Button exitGameButtonGO;
+    [SerializeField] private Button restartGame_GameOver_Button;
+    [SerializeField] private Button exitGame_GameOver_Button;
     private bool gameOver = false;
-
-    [Header("Look At UI")]
-    [SerializeField] private TMP_Text lookedAtText;
     #endregion
 
     private void Awake() {
@@ -34,11 +40,14 @@ public class Manager_UI : MonoBehaviour
     }
     
     private void Start() {
-        restartGameButtonGO.onClick.AddListener(RestartGame);
-        exitGameButtonGO.onClick.AddListener(ExitGame);
+        startGame_Menu_Button?.onClick.AddListener(StartGame);
+        exitGame_Menu_Button?.onClick.AddListener(ExitGame);
+
+        restartGame_GameOver_Button?.onClick.AddListener(RestartGame);
+        exitGame_GameOver_Button?.onClick.AddListener(ExitGame);
         
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
 
         Time.timeScale = 1f;
     }
@@ -49,6 +58,17 @@ public class Manager_UI : MonoBehaviour
         }
     }
     
+    public void StartGame() {
+        menuCanvasGO.SetActive(false);
+        gameCanvasGO.SetActive(true);
+        pauseCanvasGO.SetActive(false);
+        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        playableDirector.Play();
+    }
+
     public void PauseGame() {
         if (inGame) {
             inGame = false;
@@ -86,10 +106,10 @@ public class Manager_UI : MonoBehaviour
     }
 
     public IEnumerator ShowTextWithSound(AudioSource source, AudioClip[] clips, float speed, string text) {
-        lookedAtText.text = text;
+        lookedAt_Text.text = text;
 
         for (int lettersDisplayed = 0; lettersDisplayed <= text.Length; lettersDisplayed++) {
-            lookedAtText.maxVisibleCharacters = lettersDisplayed;
+            lookedAt_Text.maxVisibleCharacters = lettersDisplayed;
 
             AudioClip clip = clips[Random.Range(0, clips.Length)];
             source.PlayOneShot(clip);
@@ -98,13 +118,13 @@ public class Manager_UI : MonoBehaviour
         }
     }
     public IEnumerator ClearText(float speed) {
-        int textLen = lookedAtText.text.Length;
+        int textLen = lookedAt_Text.text.Length;
         for (int lettersDisplayed = textLen; lettersDisplayed >= 0; lettersDisplayed--) {
-            lookedAtText.maxVisibleCharacters = lettersDisplayed;
+            lookedAt_Text.maxVisibleCharacters = lettersDisplayed;
 
             yield return new WaitForSeconds(speed);
         }
 
-        lookedAtText.text = "";
+        lookedAt_Text.text = "";
     }   
 }
