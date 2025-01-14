@@ -58,6 +58,8 @@ public class Manager_UI : MonoBehaviour
     }
     
     public void StartGame() {
+        Debug.Log($"StartGame");
+        
         menuCanvasGO.SetActive(false);
         gameCanvasGO.SetActive(true);
         pauseCanvasGO.SetActive(false);
