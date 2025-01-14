@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using TMPro;
@@ -66,7 +65,13 @@ public class Manager_UI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        playableDirector.Play();
+        if (!Manager_Game.Instance.GetIfCanSkipIntroCutscene()) {
+            playableDirector.Play();
+        }
+        else {
+            playableDirector.time = playableDirector.duration;
+            playableDirector.Evaluate();
+        }
     }
 
     public void PauseGame() {

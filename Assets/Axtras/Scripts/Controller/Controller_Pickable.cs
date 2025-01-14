@@ -39,6 +39,9 @@ public class Controller_Pickable : Controller_Interactables
         playerController.heldInteractable = null;
     }
     
+    public void SetIsPickable(bool active) {
+        isPickable = active;
+    }
     public void SetWasPicked(bool picked) {
         wasHeld = picked;
     }
