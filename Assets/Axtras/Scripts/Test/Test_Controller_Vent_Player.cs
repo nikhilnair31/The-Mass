@@ -2,49 +2,56 @@ using UnityEngine;
 
 public class Test_Controller_Vent_Player : MonoBehaviour 
 {
+    #region Vars
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float turnSpeed = 2f;
+    [SerializeField] private float moveSpeed;
+    private Rigidbody rb;
     
-    [Header("Look Constraints")]
-    [SerializeField] private Camera playerCamera;
-    [SerializeField] private float verticalLookLimit = 15f;
-    [SerializeField] private float horizontalLookLimit = 30f;
-    [SerializeField] private float cornerTurnAngle = 90f;
+    [Header("Look Settings")]
+    [SerializeField] private Transform camTransform;
+    [SerializeField] private float mouseSensitivity = 100f;
+    private float xRotation = 0f;
     
-    [Header("Corner Detection")]
+    [Header("Ray Settings")]
     [SerializeField] private float rayDistance = 1f;
     [SerializeField] private LayerMask ventWallLayer;
-    [SerializeField] private float cornerCheckSpacing = 0.2f;
-    [SerializeField] private bool isAtCorner = false;
-    
-    private Rigidbody rb;
-    private float xRotation = 0f;
-    private float yRotation = 0f;
-    private float baseYRotation = 0f; // Store the base forward direction
-    private float baseXRotation = 0f;
     private bool forwardWall;
     private bool leftWall;
     private bool rightWall;
     private bool upWall;
     private bool downWall;
-    
+    #endregion
+
     private void Start() {
         rb = GetComponent<Rigidbody>();
-        
-        // Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
 
-        // Store initial forward direction
-        baseYRotation = transform.eulerAngles.y;
-        baseXRotation = transform.eulerAngles.x;
+        rb.freezeRotation = true;
+        rb.useGravity = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
-    
+
     private void Update() {
         CheckSides();
-        CheckForCorner();
-        HandleLooking();
+        HandleMouseLook();
+        HandleMovement();
     }
+    private void HandleMouseLook() {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        xRotation -= mouseY;
+
+        transform.localRotation = Quaternion.Euler(xRotation, transform.localRotation.eulerAngles.y, 0f);
+        transform.Rotate(Vector3.up * mouseX);
+    }
+    private void HandleMovement() {
+        var vert = Input.GetAxis("Vertical");
+        var movement = transform.forward * vert * moveSpeed * Time.deltaTime;
+        rb.AddForce(movement, ForceMode.VelocityChange);
+    }
+
     private void CheckSides() {
         forwardWall = Physics.Raycast(transform.position, transform.forward, rayDistance, ventWallLayer);
         leftWall = Physics.Raycast(transform.position, -transform.right, rayDistance, ventWallLayer);
@@ -58,43 +65,4 @@ public class Test_Controller_Vent_Player : MonoBehaviour
         Debug.DrawRay(transform.position, transform.up * rayDistance, upWall ? Color.red : Color.green);
         Debug.DrawRay(transform.position, -transform.up * rayDistance, downWall ? Color.red : Color.green);
     }
-    private void CheckForCorner() {
-        isAtCorner = forwardWall && (leftWall || rightWall || upWall || downWall);
-    }
-    private void HandleLooking() {
-        float mouseX = Input.GetAxis("Mouse X") * turnSpeed;
-        float mouseY = Input.GetAxis("Mouse Y") * turnSpeed;
-
-        // Calculate rotation limits
-        float leftLimit = leftWall ? 90f : horizontalLookLimit;
-        float rightLimit = rightWall ? 90f : horizontalLookLimit;
-        float upLimit = upWall ? 90f : verticalLookLimit;
-        float downLimit = downWall ? 90f : verticalLookLimit;
-
-        // Update rotations with clamping
-        yRotation += mouseX;
-        xRotation -= mouseY;
-
-        // Apply limits relative to base forward direction
-        float relativeY = Mathf.DeltaAngle(baseYRotation, yRotation);
-        float relativeX = Mathf.DeltaAngle(baseXRotation, xRotation);
-
-        // Clamp relative angles
-        relativeY = Mathf.Clamp(relativeY, -leftLimit, rightLimit);
-        relativeX = Mathf.Clamp(relativeX, -downLimit, upLimit);
-
-        // Convert back to absolute angles
-        yRotation = baseYRotation + relativeY;
-        xRotation = baseXRotation + relativeX;
-
-        // Apply rotations
-        playerCamera.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
-    }
-
-    private void FixedUpdate() {
-        HandleMovement();
-    }
-    private void HandleMovement() {
-        rb.AddForce(Input.GetAxis("Vertical") * moveSpeed * transform.forward.normalized);
-    }    
 }
