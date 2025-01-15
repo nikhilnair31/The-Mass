@@ -48,7 +48,7 @@ public class Test_Controller_Vent_Player : MonoBehaviour
         // Get mouse input
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
+        
         // Calculate the potential new rotation
         float newXRotation = xRotation - mouseY;
         float newYRotation = yRotation + mouseX;
@@ -56,12 +56,33 @@ public class Test_Controller_Vent_Player : MonoBehaviour
         Quaternion potentialRotation = initialRotation * Quaternion.Euler(newXRotation, newYRotation, 0f);
         Vector3 potentialForward = potentialRotation * Vector3.forward;
 
-        // Check if this would exceed our angle limit
-        float angle = Vector3.Angle(initialForward, potentialForward);
+        // Project the potential forward vector onto the horizontal and vertical planes
+        Vector3 horizontalForward = new Vector3(potentialForward.x, 0, potentialForward.z).normalized;
+        Vector3 verticalForward = new Vector3(0, potentialForward.y, potentialForward.z).normalized;
+        
+        // Calculate separate angles for horizontal and vertical deviation
+        float horizontalAngle = Vector3.Angle(new Vector3(initialForward.x, 0, initialForward.z).normalized, horizontalForward);
+        float verticalAngle = Vector3.Angle(new Vector3(0, initialForward.y, initialForward.z).normalized, verticalForward);
 
-        // Only apply the rotation if we're within our limit
-        if (angle <= maxLookAngle)
-        {
+        bool allowRotation = true;
+
+        // Check horizontal constraints (left/right walls)
+        if (leftWall && horizontalAngle > maxLookAngle && Vector3.Dot(horizontalForward, -transform.right) > 0)
+            allowRotation = false;
+        if (rightWall && horizontalAngle > maxLookAngle && Vector3.Dot(horizontalForward, transform.right) > 0)
+            allowRotation = false;
+
+        // Check vertical constraints (up/down walls)
+        float upMaxAngle = upWall ? maxLookAngle : 85f;
+        float downMaxAngle = downWall ? maxLookAngle : 85f;
+
+        if (verticalAngle > upMaxAngle && potentialForward.y > initialForward.y)
+            allowRotation = false;
+        if (verticalAngle > downMaxAngle && potentialForward.y < initialForward.y)
+            allowRotation = false;
+
+        // Apply rotation if allowed
+        if (allowRotation) {
             xRotation = newXRotation;
             yRotation = newYRotation;
             transform.localRotation = potentialRotation;

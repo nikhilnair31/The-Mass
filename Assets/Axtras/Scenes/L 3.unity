@@ -1126,7 +1126,7 @@ MonoBehaviour:
   camTransform: {fileID: 977846283}
   mouseSensitivity: 30
   maxLookAngle: 15
-  rayDistance: 1.5
+  rayDistance: 1.4
   ventWallLayer:
     serializedVersion: 2
     m_Bits: 8
