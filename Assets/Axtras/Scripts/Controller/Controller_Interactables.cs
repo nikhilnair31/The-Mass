@@ -19,7 +19,7 @@ public class Controller_Interactables : MonoBehaviour
     [SerializeField] internal string showThisText;
     #endregion
 
-    public virtual void Start() {
+    private void Awake() {
         playerController = FindFirstObjectByType<Controller_Player>();
 
         if (!transform.TryGetComponent(out AudioSource source) && addAudioSource) {

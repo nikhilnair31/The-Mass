@@ -1073,6 +1073,10 @@ PrefabInstance:
       value: 0.0941
       objectReference: {fileID: 0}
     - target: {fileID: 2991114553781699569, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: isOn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991114553781699569, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: 'lightsList.Array.data[0]'
       value: 
       objectReference: {fileID: 98907089}
@@ -1466,8 +1470,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 92b97c1361e17e947a1a061fdcbfa816, type: 2}
-  - {fileID: -8896051167825165466, guid: 0ff1426fa0368fc48af6749656808281, type: 3}
+  - {fileID: 2100000, guid: ea467d4bf9676fd4f934d46a950beade, type: 2}
+  - {fileID: 2100000, guid: cf88c2f706a00d94881bd53a9621a14a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1732,7 +1736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1740,11 +1744,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.8627451}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.80784315}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.7254902}
-    m_DisabledColor: {r: 0.87169814, g: 0.87169814, b: 0.87169814, a: 0.5019608}
+    m_NormalColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0}
+    m_HighlightedColor: {r: 1, g: 0.23137257, b: 0.23137257, a: 0.06666667}
+    m_PressedColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0.13333334}
+    m_SelectedColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0.22352941}
+    m_DisabledColor: {r: 0.6981132, g: 0.20416509, b: 0.20416509, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1776,7 +1780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2037,7 +2041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2045,11 +2049,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.8627451}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.80784315}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.7254902}
-    m_DisabledColor: {r: 0.87169814, g: 0.87169814, b: 0.87169814, a: 0.5019608}
+    m_NormalColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0}
+    m_HighlightedColor: {r: 1, g: 0.23137257, b: 0.23137257, a: 0.06666667}
+    m_PressedColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0.13333334}
+    m_SelectedColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0.22352941}
+    m_DisabledColor: {r: 0.6981132, g: 0.20416509, b: 0.20416509, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2081,7 +2085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2939,8 +2943,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0034067077, y: -0.0008960099, z: 0.0060278475, w: 0.9999756}
-  m_LocalPosition: {x: -7.8166614, y: 2.3830779, z: 16.190557}
+  m_LocalRotation: {x: -0.2197602, y: -0.0021794355, z: 0.005691032, w: 0.9755349}
+  m_LocalPosition: {x: -17.91566, y: 2.699876, z: 17.891129}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14315,9 +14319,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ae29afc737e4dae48a7ab4409a13b16d, type: 2}
-  - {fileID: 2100000, guid: 067486ae0c9983d4caf64165c94e55da, type: 2}
-  - {fileID: 2100000, guid: 92b97c1361e17e947a1a061fdcbfa816, type: 2}
+  - {fileID: 2100000, guid: cf88c2f706a00d94881bd53a9621a14a, type: 2}
+  - {fileID: 2100000, guid: 3520f070ae7ee1b4fb7cf899b9fac478, type: 2}
+  - {fileID: 2100000, guid: ea467d4bf9676fd4f934d46a950beade, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -50827,7 +50831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -50835,11 +50839,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.8627451}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.80784315}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.7254902}
-    m_DisabledColor: {r: 0.87169814, g: 0.87169814, b: 0.87169814, a: 0.5019608}
+    m_NormalColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0}
+    m_HighlightedColor: {r: 1, g: 0.23137257, b: 0.23137257, a: 0.06666667}
+    m_PressedColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0.13333334}
+    m_SelectedColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0.22352941}
+    m_DisabledColor: {r: 0.6981132, g: 0.20416509, b: 0.20416509, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -50871,7 +50875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -51490,7 +51494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -51498,11 +51502,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.8627451}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.80784315}
-    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.7254902}
-    m_DisabledColor: {r: 0.87169814, g: 0.87169814, b: 0.87169814, a: 0.5019608}
+    m_NormalColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0}
+    m_HighlightedColor: {r: 1, g: 0.23137257, b: 0.23137257, a: 0.06666667}
+    m_PressedColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0.13333334}
+    m_SelectedColor: {r: 1, g: 0.23137255, b: 0.23137255, a: 0.22352941}
+    m_DisabledColor: {r: 0.6981132, g: 0.20416509, b: 0.20416509, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -51534,7 +51538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -51934,7 +51938,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 42034fff40539134a83f334778fb0932, type: 2}
-  - {fileID: 2100000, guid: 92b97c1361e17e947a1a061fdcbfa816, type: 2}
+  - {fileID: 2100000, guid: ea467d4bf9676fd4f934d46a950beade, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -67117,6 +67121,7 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: turn on/off lights?
   switchButton: {fileID: 380747198}
+  isOn: 0
   lightsList:
   - {fileID: 730351310}
   meshRenderers: []
@@ -67322,6 +67327,7 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: turn on/off lights?
   switchButton: {fileID: 0}
+  isOn: 0
   lightsList:
   - {fileID: 862299536}
   meshRenderers: []
@@ -67608,6 +67614,7 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: turn on/off lights?
   switchButton: {fileID: 380747198}
+  isOn: 0
   lightsList:
   - {fileID: 1566564903}
   meshRenderers: []

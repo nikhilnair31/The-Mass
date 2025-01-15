@@ -13,9 +13,7 @@ public class Interactable_Blinds : Controller_Interactables
     [SerializeField] private AudioClip[] opencloseClips;
     #endregion
 
-    public override void Start() {
-        base.Start();
-
+    public virtual void Start() {
         rgb.isKinematic = true;
         rgb.useGravity = false;
 

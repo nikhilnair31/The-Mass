@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class Test_Vent : MonoBehaviour 
 {
-    [SerializeField] private bool unlockVent;
+    [SerializeField] private bool unlockVentTrigger;
+    [SerializeField] private bool isVentUnlocked;
 
     #if UNITY_EDITOR
     private void OnValidate() {
-        if (unlockVent) {
+        if (unlockVentTrigger) {
             Manager_Game.Instance.UnlockVent();
-            unlockVent = false;
+            unlockVentTrigger = false;
         }
     }
     #endif
+
+    private void Start() {
+        if (isVentUnlocked) {
+            Manager_Game.Instance.UnlockVent();
+        }
+    }
 }

@@ -11,9 +11,7 @@ public class Controller_Pickable : Controller_Interactables
     [SerializeField] private Vector3 heldRotEuler = Vector3.zero;
     #endregion
 
-    public override void Start() {
-        base.Start();
-
+    public virtual void Start() {
         rgb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
     

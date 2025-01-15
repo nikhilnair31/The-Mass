@@ -22,9 +22,7 @@ public class Interactable_Door : Controller_Interactables
     [SerializeField] private AudioClip[] lockedClips;
     #endregion
 
-    public override void Start() {
-        base.Start();
-
+    public virtual void Start() {
         rgb.mass = 20;
         rgb.isKinematic = true;
         rgb.useGravity = false;

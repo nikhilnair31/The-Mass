@@ -8,7 +8,7 @@ public class Interactable_Switch : Controller_Interactables
     #region Vars
     [Header("Switch Settings")]
     [SerializeField] private Transform switchButton;
-    private bool isOn = false;
+    [SerializeField] private bool isOn = true;
 
     [Header("Light Settings")]
     [SerializeField] private Light[] lightsList;
@@ -20,9 +20,7 @@ public class Interactable_Switch : Controller_Interactables
     [SerializeField] private AudioClip[] switchClips;
     #endregion
 
-    public override void Start() {
-        base.Start();
-
+    public virtual void Start() {
         if (meshRenderers.Count == 0) {
             meshRenderers.Add(GetComponent<MeshRenderer>());
         }
@@ -44,11 +42,11 @@ public class Interactable_Switch : Controller_Interactables
         if (switchButton != null) {
             switchButton.localRotation = Quaternion.Euler(60f, 0f, 0f);
         }
+
+        ControlOnOffLight();
     }
 
     public void ControlOnOffLight() {
-        Debug.Log($"ControlOnOffLight");
-        
         if (switchButton != null) {
             float targetXRotation = isOn ? 60f : -60f;
             switchButton.DOLocalRotate(new Vector3(targetXRotation, 0f, 0f), 0.5f);

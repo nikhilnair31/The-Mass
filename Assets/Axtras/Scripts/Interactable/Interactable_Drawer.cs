@@ -19,9 +19,7 @@ public class Interactable_Drawer : Controller_Interactables
     [SerializeField] private AudioClip[] lockedClips;
     #endregion
 
-    public override void Start() {
-        base.Start();
-
+    public virtual void Start() {
         rgb.mass = 1;
         rgb.isKinematic = true;
         rgb.useGravity = false;
