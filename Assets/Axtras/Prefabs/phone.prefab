@@ -249,6 +249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0d67c8807fff841bf88342ecaf8f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addAudioSource: 0
+  addRigidbody: 0
+  addMeshCollider: 0
+  addBoxCollider: 0
   showThisText: pick up?
   isPickable: 1
   wasHeld: 0
@@ -274,11 +278,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phoneSource: {fileID: 4050518000696037760}
   fullVolume: 2
-  startDelay: 3
   meshRend: {fileID: 4543464319427822040}
   screenMat: {fileID: 0}
   ringtoneClip: {fileID: 8300000, guid: 9b234943d5f016841a5f8478648ffb90, type: 3}
-  ringtoneGapDelay: 2
+  startDelay: 5
+  ringtoneGapDelay: 1
   notifClip: {fileID: 8300000, guid: e94b124c49c81b744b7b1cb7ec59880a, type: 3}
-  notifRandDelay: 3
+  notifRandDelay: 6
   shakeVec: {x: 5, y: 5, z: 5}

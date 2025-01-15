@@ -210,9 +210,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9de4156b1ff1a44ab9db61357af09ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addAudioSource: 1
+  addRigidbody: 0
+  addMeshCollider: 0
+  addBoxCollider: 1
   showThisText: open/close door?
   dependsOnPlayerLoc: 1
   rotVec: {x: 0, y: 90, z: 0}
+  isOpen: 0
   shakeVec: {x: 0, y: 5, z: 0}
   shakeTime: 0.2
   transitionTime: 1

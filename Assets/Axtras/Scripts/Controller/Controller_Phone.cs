@@ -23,6 +23,7 @@ public class Controller_Phone : MonoBehaviour
     [Header("Notification Settings")]
     [SerializeField] private AudioClip notifClip;
     [SerializeField] private float notifRandDelay = 15f;
+    private Tween nextNotificationTween;
 
     [Header("Vinration Settings")]
     [SerializeField] private Vector3 shakeVec;
@@ -43,7 +44,7 @@ public class Controller_Phone : MonoBehaviour
             }
         }
 
-        RandNotification();    
+        RandNotification();
     }
     
     private void RandNotification() {
@@ -78,7 +79,7 @@ public class Controller_Phone : MonoBehaviour
                     screenMat.DisableKeyword("_EMISSION");
 
                     // Repeat the notification with a random delay
-                    DOVirtual.DelayedCall(
+                    nextNotificationTween = DOVirtual.DelayedCall(
                         Random.Range(notifRandDelay, notifRandDelay * 2),
                         RandNotification
                     );
@@ -87,42 +88,43 @@ public class Controller_Phone : MonoBehaviour
     }
 
     public void MakeCall() {
+        if (nextNotificationTween != null)
+        {
+            if (nextNotificationTween.IsPlaying())
+            {
+                nextNotificationTween.Kill();
+            }
+            nextNotificationTween = null;
+        }
+
         callIsOn = true;
+
         Vector3 initRot = new();
-        float audioDuration = ringtoneClip.length;
+        float audioDuration = ringtoneClip != null ? ringtoneClip.length : 0f;
+        phoneSource.clip = ringtoneClip;
+        phoneSource.loop = false;
+        phoneSource.volume = fullVolume;
+        
         Sequence callSequence = DOTween.Sequence();
         callSequence
             .OnStart(() => {
-                // Store the initial rotation
                 initRot = transform.localEulerAngles;
-
-                // Set audio attributes
-                phoneSource.clip = ringtoneClip;
-                phoneSource.loop = false;
-                phoneSource.volume = fullVolume;
-                
-                DOVirtual.DelayedCall(
-                    startDelay, 
-                    () => {
-                        // Enable material emission
-                        screenMat.EnableKeyword("_EMISSION");
-                        // Play the audio after some delay
-                        phoneSource.Play();
-                        // Start shaking the object
-                        transform.DOShakeRotation(audioDuration, shakeVec, 10, 90f);
-                    }
-                );
             })
-            // Step 2: Delay for the duration of the audio
             .AppendInterval(
-                audioDuration
+                startDelay
             )
+            .AppendCallback(() => {
+                screenMat.EnableKeyword("_EMISSION");
+                phoneSource.Play();
+                transform.DOShakeRotation(audioDuration, shakeVec, 10, 90f);
+            })
+            .AppendInterval(
+                ringtoneGapDelay
+            )
+            .SetLoops(-1, LoopType.Restart)
             .OnComplete(() => {
-                // Reset the rotation and disable material emission
                 transform.localEulerAngles = initRot;
-
-                // Repeat the notification with a random delay
-                Helper.Instance.StartAudioLoop(phoneSource, ringtoneClip, ringtoneGapDelay);
             });
+        callSequence.Play();
     }
 }

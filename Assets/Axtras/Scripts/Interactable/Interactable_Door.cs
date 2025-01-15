@@ -23,10 +23,6 @@ public class Interactable_Door : Controller_Interactables
     #endregion
 
     public virtual void Start() {
-        rgb.mass = 20;
-        rgb.isKinematic = true;
-        rgb.useGravity = false;
-
         audioSource.spatialBlend = 1;
         audioSource.playOnAwake = false;
         audioSource.loop = false;
