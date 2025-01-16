@@ -3,7 +3,6 @@
 ## To-do
 
 - [ ] Add logic to combine 2 pickables (spray and lighter)
-- [ ] Add effects as vent is traversed
 - [ ] Make thoughts sytem more versatile
   - Fix the interactable text still showing when not looking at an interactable item
   - If looking at locked door text will "is roomate's. open/close it?". once tried it should switch to "it's locked easily". Another try should give "roomate's door seems locked"
@@ -22,6 +21,7 @@
 
 ## Done
 
+- [x] Add an effect as vent is traversed
 - [x] Fix the washer door rotation on closing
 - [x] Look at phone call vibration on held
 - [x] Fix the delay issue with phone call
