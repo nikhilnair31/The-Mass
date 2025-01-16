@@ -8,8 +8,6 @@
   - Fix the interactable text still showing when not looking at an interactable item
   - If looking at locked door text will "is roomate's. open/close it?". once tried it should switch to "it's locked easily". Another try should give "roomate's door seems locked"
   - Don't show pickable item's text "pick up?" when holding something already
-- [ ] Look at phone call vibration on held
-- [ ] Fix the washer door rotation on closing
 - [ ] Setup Timeline
 
 ## Skipped
@@ -24,6 +22,8 @@
 
 ## Done
 
+- [x] Fix the washer door rotation on closing
+- [x] Look at phone call vibration on held
 - [x] Fix the delay issue with phone call
 - [x] Create a player vent movement controller
 - [x] Improve spray system to require more than a single contact to count as an attempt

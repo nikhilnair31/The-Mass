@@ -10,6 +10,7 @@ public class Interactable_Door : Controller_Interactables
     [SerializeField] private bool dependsOnPlayerLoc = true;
     [SerializeField] private Vector3 rotVec;
     [SerializeField] private bool isOpen = false;
+    private Vector3 initRotVec;
 
     [Header("Lock Settings")]
     [SerializeField] private Vector3 shakeVec;
@@ -27,6 +28,8 @@ public class Interactable_Door : Controller_Interactables
         audioSource.playOnAwake = false;
         audioSource.loop = false;
 
+        initRotVec = transform.localEulerAngles;
+
         if (isOpen) {
             transform.localEulerAngles = transform.localEulerAngles + rotVec;
         }
@@ -36,7 +39,7 @@ public class Interactable_Door : Controller_Interactables
         Debug.Log($"ControlOpenCloseDoor");
         
         if (!doorIsLocked) {
-            Vector3 targetRotation = Vector3.zero;
+            Vector3 targetRotation = new();
             Vector3 currentRotation = transform.localEulerAngles;
             
             if (dependsOnPlayerLoc) {
@@ -56,7 +59,7 @@ public class Interactable_Door : Controller_Interactables
                 }
             }
             else {
-                targetRotation = isOpen ? Vector3.zero : rotVec;
+                targetRotation = isOpen ? initRotVec : rotVec;
             }
 
             transform
