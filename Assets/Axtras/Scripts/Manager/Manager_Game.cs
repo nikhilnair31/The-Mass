@@ -84,7 +84,6 @@ public class Manager_Game : MonoBehaviour
     public bool AddAttempt(string approach) {
         if (currentAttempts >= maxAttempts) {
             Debug.Log("All attempts completed!");
-            UnlockVent();
             return false;
         }
 
@@ -187,6 +186,8 @@ public class Manager_Game : MonoBehaviour
         }
     }
     private void Attempt5() {
+        UnlockVent();
+        
         // Start playing steam to vent exit to draw attention
         DOVirtual.DelayedCall(
             3f, 

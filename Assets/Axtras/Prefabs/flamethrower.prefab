@@ -42,7 +42,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3649181207049426919}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 10
   simulationSpeed: 5
   stopAction: 0
   cullingMode: 0
@@ -117,7 +117,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 6
+      scalar: 10
       minScalar: 8
       maxCurve:
         serializedVersion: 2
@@ -666,7 +666,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 15
+    angle: 10
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -4968,6 +4968,7 @@ MonoBehaviour:
   showThisText: pick?
   isPickable: 1
   wasHeld: 0
+  heldPos: {x: 0, y: 0, z: 0}
   heldRotEuler: {x: -90, y: 0, z: 90}
   sprayPS: {fileID: 5805662953777997608}
   isFireSpray: 1

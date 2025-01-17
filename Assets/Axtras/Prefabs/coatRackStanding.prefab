@@ -108,7 +108,7 @@ MonoBehaviour:
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
   heldRotEuler: {x: 0, y: 0, z: 0}
-  endPos: {x: 0, y: 0, z: 3}
+  endPos: {x: 0, y: 0, z: 1}
   endRot: {x: 95, y: 0, z: 0}
   impactClips:
   - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}
