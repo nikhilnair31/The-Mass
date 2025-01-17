@@ -2036,7 +2036,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1001 &246280960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8755,6 +8754,11 @@ MonoBehaviour:
   vignette: {fileID: 0}
   cam: {fileID: 977846282}
   zoomFOV: 40
+  audioSource: {fileID: 488930032}
+  footstepClips:
+  - {fileID: 8300000, guid: 31c43732968140b41b5da1a7a75eebc2, type: 3}
+  - {fileID: 8300000, guid: af97d7853836c4749b7cce69740302de, type: 3}
+  footstepInterval: 0.5
 --- !u!54 &488930031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24791,7 +24795,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!82 &940767281
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25492,7 +25495,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!4 &998061411 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2c57f8e28c5b41e48a5ef89edf56c5a6, type: 3}
@@ -48132,6 +48134,18 @@ PrefabInstance:
       propertyPath: showThisText
       value: that's my roomate's place. open/close?
       objectReference: {fileID: 0}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: lockedClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: 'lockedClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: 'opencloseClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
     - target: {fileID: 6964663424176134988, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.345098
@@ -48569,6 +48583,18 @@ PrefabInstance:
       propertyPath: isOpen
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: lockedClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: 'lockedClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: 'opencloseClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
     - target: {fileID: 6964663424176134988, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.528903
@@ -49126,7 +49152,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1 &1470194853
 GameObject:
   m_ObjectHideFlags: 0
@@ -59507,6 +59532,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: doorwayOpen (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: lockedClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: 'lockedClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: 'opencloseClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
     - target: {fileID: 6964663424176134988, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.9879026
@@ -60994,7 +61031,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1 &1826026467
 GameObject:
   m_ObjectHideFlags: 0
@@ -67957,7 +67993,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1 &2077589582
 GameObject:
   m_ObjectHideFlags: 0
@@ -74688,6 +74723,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.0614
       objectReference: {fileID: 0}
+    - target: {fileID: 7451207869259075191, guid: 9ed7a59b493eb68429612dac8fef8b7b, type: 3}
+      propertyPath: sprayClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4f950a40c25e9044182669de51e95546, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75789,6 +75828,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: spray
       objectReference: {fileID: 0}
+    - target: {fileID: 6796791286951325812, guid: 276740170ad5b4f41bbd68ec013157fb, type: 3}
+      propertyPath: sprayClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 12b1fec663c5b2140ba04e1cbcbbd8d2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -76197,6 +76240,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: doorwayOpen
       objectReference: {fileID: 0}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: lockedClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: 'lockedClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
+    - target: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+      propertyPath: 'opencloseClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
     - target: {fileID: 6964663424176134988, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.486
@@ -77544,7 +77599,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!23 &5013735224066911113
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -77847,9 +77901,9 @@ MonoBehaviour:
   transitionTime: 1
   drawerIsLocked: 0
   opencloseClips:
-  - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
+  - {fileID: 8300000, guid: d41ae219f726a094e87bd284ce3c8157, type: 3}
+  - {fileID: 8300000, guid: 562e91178815a544e86a7f95cf9b4cec, type: 3}
   lockedClips:
-  - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
   - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1 &5528078467319907427
 GameObject:
@@ -77893,9 +77947,9 @@ MonoBehaviour:
   transitionTime: 1
   drawerIsLocked: 0
   opencloseClips:
-  - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
+  - {fileID: 8300000, guid: d41ae219f726a094e87bd284ce3c8157, type: 3}
+  - {fileID: 8300000, guid: 562e91178815a544e86a7f95cf9b4cec, type: 3}
   lockedClips:
-  - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
   - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1 &5528078467959985770
 GameObject:
@@ -77939,9 +77993,9 @@ MonoBehaviour:
   transitionTime: 1
   drawerIsLocked: 1
   opencloseClips:
-  - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
+  - {fileID: 8300000, guid: d41ae219f726a094e87bd284ce3c8157, type: 3}
+  - {fileID: 8300000, guid: 562e91178815a544e86a7f95cf9b4cec, type: 3}
   lockedClips:
-  - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
   - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!4 &5843041367632355347
 Transform:
@@ -78294,7 +78348,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1001 &6986648726009873881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78412,6 +78465,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6021776668082187364, guid: ebc97244cbb087f44aa118667c4e3ada, type: 3}
+      propertyPath: sprayClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4f950a40c25e9044182669de51e95546, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -78730,9 +78787,9 @@ MonoBehaviour:
   transitionTime: 1
   drawerIsLocked: 0
   opencloseClips:
-  - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
+  - {fileID: 8300000, guid: d41ae219f726a094e87bd284ce3c8157, type: 3}
+  - {fileID: 8300000, guid: 562e91178815a544e86a7f95cf9b4cec, type: 3}
   lockedClips:
-  - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
   - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1 &8332646425659297710
 GameObject:
@@ -78791,9 +78848,9 @@ MonoBehaviour:
   transitionTime: 1
   drawerIsLocked: 0
   opencloseClips:
-  - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
+  - {fileID: 8300000, guid: d41ae219f726a094e87bd284ce3c8157, type: 3}
+  - {fileID: 8300000, guid: 562e91178815a544e86a7f95cf9b4cec, type: 3}
   lockedClips:
-  - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
   - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1001 &8621653482958554956
 PrefabInstance:
@@ -78979,7 +79036,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!4 &8844765420511367561
 Transform:
   m_ObjectHideFlags: 0
@@ -79084,7 +79140,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!23 &8955983556254083709
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -79206,7 +79261,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!23 &9077926073852154842
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -79350,7 +79404,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!23 &9077926074208217206
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -79426,7 +79479,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
-  - {fileID: 8300000, guid: cfc28f6db4d4bda4dbd17b34d31ada10, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

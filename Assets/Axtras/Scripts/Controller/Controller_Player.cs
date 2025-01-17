@@ -39,6 +39,13 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] private CinemachineCamera cam;
     [SerializeField] private float zoomFOV = 40f;
     private float currFOV;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] footstepClips;
+    [SerializeField] private float footstepInterval = 0.5f;
+    private float footstepTimer = 0f;
+    private bool isMoving = false;
     #endregion
 
     private void Awake() {
@@ -66,6 +73,7 @@ public class Controller_Player : MonoBehaviour
         HandleMovement();
         HandleInteractable();
         HandleZoom();
+        PlayFootsteps();
         CheckForInteractable();
     }
 
@@ -84,6 +92,8 @@ public class Controller_Player : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         moveDirection = transform.right * x + transform.forward * z;
+
+        isMoving = moveDirection.magnitude > 0;
 
         if (Input.GetKey(KeyCode.LeftControl)) {
             rb.linearVelocity = new Vector3(moveDirection.x * crouchSpeed, rb.linearVelocity.y, moveDirection.z * crouchSpeed);
@@ -184,6 +194,20 @@ public class Controller_Player : MonoBehaviour
             );
 
             DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0f, 0.5f);
+        }
+    }
+
+    private void PlayFootsteps() {
+        if (isMoving && rb.linearVelocity.magnitude > 0.1f) {
+            footstepTimer += Time.deltaTime;
+
+            if (footstepTimer >= footstepInterval) {
+                Helper.Instance.PlayRandAudio(audioSource, footstepClips);
+                footstepTimer = 0f;
+            }
+        }
+        else {
+            footstepTimer = 0f;
         }
     }
 

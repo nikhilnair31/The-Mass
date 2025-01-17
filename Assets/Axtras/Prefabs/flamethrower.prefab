@@ -4974,4 +4974,4 @@ MonoBehaviour:
   isSprayingMass: 0
   requiredSprayTime: 5
   resetTime: 0.1
-  sprayClip: {fileID: 8300000, guid: 15221c20f6a429f4c94f4a0a37c8a8b9, type: 3}
+  sprayClip: {fileID: 8300000, guid: b27b630d2a4beff4d9e4a6f71d86ce87, type: 3}

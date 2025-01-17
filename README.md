@@ -21,6 +21,8 @@
 
 ## Done
 
+- [x] Fixed clock mat
+- [x] Fixed zoom vignette
 - [x] Improved switch script to avoid initial sound
 - [x] Added yoyoing scale of mass
 - [x] Add an effect as vent is traversed
