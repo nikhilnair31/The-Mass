@@ -21,6 +21,7 @@
 
 ## Done
 
+- [x] Improved switch script to avoid initial sound
 - [x] Added yoyoing scale of mass
 - [x] Add an effect as vent is traversed
 - [x] Fix the washer door rotation on closing

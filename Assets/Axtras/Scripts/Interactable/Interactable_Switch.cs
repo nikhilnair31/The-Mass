@@ -21,6 +21,11 @@ public class Interactable_Switch : Controller_Interactables
     #endregion
 
     public virtual void Start() {
+        SwitchControl();
+        RenderingSetup();
+        ControlOnOffLight(true);
+    }
+    private void RenderingSetup() {
         if (meshRenderers.Count == 0) {
             meshRenderers.Add(GetComponent<MeshRenderer>());
         }
@@ -38,30 +43,24 @@ public class Interactable_Switch : Controller_Interactables
                 }
             }
         }
-
-        if (switchButton != null) {
-            switchButton.localRotation = Quaternion.Euler(60f, 0f, 0f);
-        }
-
-        ControlOnOffLight();
     }
 
-    public void ControlOnOffLight() {
+    // TODO: Give this parameter a better name
+    public void ControlOnOffLight(bool nonInit = false) {
+        SwitchControl();
+        EmissionControl();
+        LightsControl();
+        
+        if (!nonInit) {
+            Helper.Instance.PlayRandAudio(audioSource, switchClips);
+            isOn = !isOn;
+        }
+    }
+
+    private void SwitchControl() {
         if (switchButton != null) {
             float targetXRotation = isOn ? 60f : -60f;
             switchButton.DOLocalRotate(new Vector3(targetXRotation, 0f, 0f), 0.5f);
-        }
-        
-        Helper.Instance.PlayRandAudio(audioSource, switchClips);
-
-        EmissionControl();
-        LightsControl();
-
-        isOn = !isOn;
-    }
-    private void LightsControl() {
-        foreach (var light in lightsList) {
-            light.enabled = isOn;
         }
     }
     private void EmissionControl() {
@@ -78,6 +77,11 @@ public class Interactable_Switch : Controller_Interactables
                     material.DisableKeyword("_EMISSION");
                 }
             }
+        }
+    }
+    private void LightsControl() {
+        foreach (var light in lightsList) {
+            light.enabled = isOn;
         }
     }
 }
