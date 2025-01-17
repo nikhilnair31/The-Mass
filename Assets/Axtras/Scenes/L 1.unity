@@ -8751,7 +8751,7 @@ MonoBehaviour:
   holdAtTransform: {fileID: 1714296809}
   throwLineGO: {fileID: 1432886044}
   heldInteractable: {fileID: 0}
-  volume: {fileID: 2079075755}
+  volume: {fileID: 977846284}
   vignette: {fileID: 0}
   cam: {fileID: 977846282}
   zoomFOV: 40
@@ -77205,10 +77205,6 @@ PrefabInstance:
     - target: {fileID: 3450066370314640055, guid: 48713782005aef84db48451747356a36, type: 3}
       propertyPath: m_Name
       value: plantSmall1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3450066370314640055, guid: 48713782005aef84db48451747356a36, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

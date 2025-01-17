@@ -34,7 +34,7 @@ public class Controller_Player : MonoBehaviour
     private RaycastHit hit;
 
     [Header("Zoom Settings")]
-    [SerializeField] private Volume volume;
+    [SerializeField] private CinemachineVolumeSettings volume;
     [SerializeField] private Vignette vignette;
     [SerializeField] private CinemachineCamera cam;
     [SerializeField] private float zoomFOV = 40f;
@@ -52,7 +52,7 @@ public class Controller_Player : MonoBehaviour
         if (transform.TryGetComponent(out Rigidbody rgb)) {
             rb = rgb;
         }
-        if (volume.profile.TryGet(out Vignette v)) {
+        if (volume.Profile.TryGet(out Vignette v)) {
             vignette = v;
         }
 
