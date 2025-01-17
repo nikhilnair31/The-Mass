@@ -21,6 +21,8 @@
 
 ## Done
 
+- [x] Fixed pokable movement and Mass impact
+- [x] Added player movement sounds
 - [x] Fixed clock mat
 - [x] Fixed zoom vignette
 - [x] Improved switch script to avoid initial sound

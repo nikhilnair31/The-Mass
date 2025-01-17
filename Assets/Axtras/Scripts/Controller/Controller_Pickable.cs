@@ -8,6 +8,7 @@ public class Controller_Pickable : Controller_Interactables
     [Header("Pickable Settings")]
     [SerializeField] private bool isPickable = true;
     [SerializeField] internal bool wasHeld = false;
+    [SerializeField] private Vector3 heldPos = Vector3.zero;
     [SerializeField] private Vector3 heldRotEuler = Vector3.zero;
     #endregion
 
@@ -20,11 +21,10 @@ public class Controller_Pickable : Controller_Interactables
         Helper.Instance.EnablePhysics(rb, false);
 
         transform.SetParent(playerController.holdAtTransform);
-        transform.localEulerAngles = Vector3.zero;
 
         var sequence = DOTween.Sequence();
         sequence
-            .Append(transform.DOLocalMove(Vector3.zero, 0.5f))
+            .Append(transform.DOLocalMove(heldPos, 0.5f))
             .Join(transform.DOLocalRotate(heldRotEuler, 0.5f))
             .OnComplete(() => {
                 playerController.heldInteractable = transform;

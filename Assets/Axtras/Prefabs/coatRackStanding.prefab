@@ -100,13 +100,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   addAudioSource: 1
+  addRigidbody: 1
   addMeshCollider: 1
   addBoxCollider: 0
-  addRigidbody: 1
   showThisText: pick up?
   isPickable: 1
   wasHeld: 0
+  heldPos: {x: 0, y: 0, z: 0}
   heldRotEuler: {x: 0, y: 0, z: 0}
-  moveDir: {x: 0, y: 0, z: 3}
+  endPos: {x: 0, y: 0, z: 3}
+  endRot: {x: 95, y: 0, z: 0}
   impactClips:
   - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}

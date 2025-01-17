@@ -147,7 +147,7 @@ public class Controller_Player : MonoBehaviour
                 throwLineGO.SetActive(true);
             }
             else if (heldInteractable.TryGetComponent(out Interactable_Pokable pokable)) {
-                
+                pokable.PokableInteractable();
             }
             else if (heldInteractable.TryGetComponent(out Interactable_Spray spray)) {
                 spray.StartSpray();
@@ -159,7 +159,7 @@ public class Controller_Player : MonoBehaviour
                 throwLineGO.SetActive(false);
             }
             else if (heldInteractable.TryGetComponent(out Interactable_Pokable pokable)) {
-                pokable.PokableInteractable();
+
             }
             else if (heldInteractable.TryGetComponent(out Interactable_Spray spray)) {
                 spray.StopSpray();

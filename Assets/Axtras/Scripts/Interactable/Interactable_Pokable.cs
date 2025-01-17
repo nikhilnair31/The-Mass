@@ -5,7 +5,9 @@ public class Interactable_Pokable : Controller_Pickable
 {
     #region Vars
     [Header("Pokable Settings")]
-    [SerializeField] private Vector3 moveDir;
+    [SerializeField] private Vector3 endPos;
+    [SerializeField] private Vector3 endRot;
+    private Sequence pokableSequence;
     private Vector3 initPos;
     private Vector3 initRot;
 
@@ -18,43 +20,32 @@ public class Interactable_Pokable : Controller_Pickable
 
         rgb.isKinematic = false;
         rgb.useGravity = true;
-        
-        initPos = transform.localPosition;
-        initRot = transform.localEulerAngles;
     }
 
     public void PokableInteractable() {
-        // var initPos = transform.localPosition;
-        // var initRot = transform.localEulerAngles;
-        transform
-            .DOLocalRotate(
-                initRot + new Vector3(90f, 0f, 0f), 
-                0.3f
-            )
+        if (pokableSequence != null) return;
+
+        pokableSequence = DOTween.Sequence();
+        pokableSequence
+            .OnStart(() => {
+                initPos = transform.localPosition;
+                initRot = transform.localEulerAngles;
+            })
+            .Append(transform.DOLocalRotate(endRot, 0.6f))
+            .Append(transform.DOShakeRotation(1f, 2f, 10, 90f))
+            .Append(transform.DOLocalMove(endPos, 0.2f))
+            .AppendInterval(2f)
+            .Append(transform.DOLocalRotate(initRot, 1f))
+            .Join(transform.DOLocalMove(initPos, 1f))
             .OnComplete(() => {
-                transform
-                    .DOLocalMove(
-                        initPos + moveDir, 
-                        0.3f
-                    )
-                    .OnComplete(() => {
-                        transform
-                            .DOLocalMove(
-                                initPos, 
-                                0.6f
-                            );
-                        transform
-                            .DOLocalRotate(
-                                initRot, 
-                                0.3f
-                            );
-                    });
+                pokableSequence = null;
             });
+        ;
     }
     
     private void OnCollisionEnter(Collision other) {
         // Should have sufficient speed
-        if (rgb.linearVelocity.magnitude < 0.1f) return;
+        // if (rgb.linearVelocity.magnitude < 0.1f) return;
 
         Debug.Log($"OnCollisionEnter transform.name: {transform.name} - linearVelocity: {rgb.linearVelocity.magnitude}");
 
