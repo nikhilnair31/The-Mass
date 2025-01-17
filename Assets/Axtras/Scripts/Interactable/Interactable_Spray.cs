@@ -7,6 +7,7 @@ public class Interactable_Spray : Controller_Pickable
 
     [Header("Spray Settings")]
     [SerializeField] private ParticleSystem sprayPS;
+    [SerializeField] private bool isFireSpray = false;
     [SerializeField] private bool isSprayingMass = false;
     [SerializeField] private float requiredSprayTime = 5f;
     [SerializeField] private float resetTime = 0.1f;
@@ -37,7 +38,12 @@ public class Interactable_Spray : Controller_Pickable
             sprayTimer += Time.deltaTime;
 
             if (sprayTimer >= requiredSprayTime) {
-                Controller_TheMass.Instance.GotHit("Spray");
+                if (isFireSpray) {
+                    Controller_TheMass.Instance.GotHit("Spray_Fire");
+                }
+                else if (!isFireSpray) {
+                    Controller_TheMass.Instance.GotHit("Spray_Gas");
+                }
             }
         }
     }

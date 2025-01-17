@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4717901421466388619}
   - component: {fileID: 2228561456353777569}
   - component: {fileID: 5023817750285345612}
-  - component: {fileID: 1374095533961542727}
+  - component: {fileID: 7451207869259075191}
   m_Layer: 0
   m_Name: lighter
   m_TagString: Untagged
@@ -89,7 +89,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1374095533961542727
+--- !u!114 &7451207869259075191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2954942787363969387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e742615c1759c5142b3ce1f6d37177b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2427afba5c472094fa7994dafceeb6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   addAudioSource: 1
@@ -109,6 +109,12 @@ MonoBehaviour:
   isPickable: 1
   wasHeld: 0
   heldRotEuler: {x: -90, y: 0, z: 0}
+  sprayPS: {fileID: 7008901248157887608}
+  isFireSpray: 1
+  isSprayingMass: 0
+  requiredSprayTime: 3
+  resetTime: 0.1
+  sprayClip: {fileID: 8300000, guid: 3d55f0fc9ff9ccc4d8843206e535fa35, type: 3}
 --- !u!1 &5675008036571043731
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +727,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: -0.05
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4965,4 +4971,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21292293e1129b1488adee9b038144c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasHitMass: 0
+  sprayInteractable: {fileID: 0}

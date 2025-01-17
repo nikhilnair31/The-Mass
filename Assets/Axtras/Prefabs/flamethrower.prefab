@@ -4961,15 +4961,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2427afba5c472094fa7994dafceeb6c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addAudioSource: 0
-  addRigidbody: 0
+  addAudioSource: 1
+  addRigidbody: 1
   addMeshCollider: 0
-  addBoxCollider: 0
+  addBoxCollider: 1
   showThisText: pick?
   isPickable: 1
   wasHeld: 0
   heldRotEuler: {x: -90, y: 0, z: 90}
   sprayPS: {fileID: 5805662953777997608}
+  isFireSpray: 1
   isSprayingMass: 0
   requiredSprayTime: 5
   resetTime: 0.1

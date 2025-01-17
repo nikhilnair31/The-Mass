@@ -15,10 +15,10 @@ public class Manager_Game : MonoBehaviour
     [SerializeField] private int currentAttempts;
     [SerializeField] private bool addAttempt;
     [SerializeField] private Dictionary<string, bool> approachUsed = new () {
-        { "Throwable", false },
+        { "Throwable_Regular", false },
         { "Throwable_Breakable", false },
         { "Pokable", false },
-        { "Spray", false },
+        { "Spray_Gas", false },
         { "Spray_Fire", false },
         // { "Lights_Off", false }
     };

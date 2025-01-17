@@ -39,24 +39,31 @@ public class Interactable_Throwable : Controller_Pickable
 
         Debug.Log($"OnCollisionEnter transform.name: {transform.name} - linearVelocity: {rgb.linearVelocity.magnitude}");
 
-        if (isBreakable && wasHeld) {
-            var spawn = Instantiate(shatteredPrefab, transform.position, Quaternion.identity);
-            foreach (ContactPoint contact in other.contacts) {
-                Vector3 explosionPoint = contact.point;
-                Vector3 explosionDirection = contact.normal;
+        if (wasHeld) {
+            if (!isBreakable) {
+                if (other.transform.CompareTag("Mass")) {
+                    Controller_TheMass.Instance.GotHit("Throwable_Regular");
+                }
+            }
+            else if (isBreakable) {
+                var spawn = Instantiate(shatteredPrefab, transform.position, Quaternion.identity);
+                foreach (ContactPoint contact in other.contacts) {
+                    Vector3 explosionPoint = contact.point;
+                    Vector3 explosionDirection = contact.normal;
 
-                foreach (var rb in spawn.GetComponentsInChildren<Rigidbody>()) {
-                    rb.AddExplosionForce(explosionForce, explosionPoint, explosionRadius, upwardsModifier: 0f, ForceMode.Impulse);
-                    rb.AddForce(explosionDirection * explosionForce, ForceMode.Impulse);
+                    foreach (var rb in spawn.GetComponentsInChildren<Rigidbody>()) {
+                        rb.AddExplosionForce(explosionForce, explosionPoint, explosionRadius, upwardsModifier: 0f, ForceMode.Impulse);
+                        rb.AddForce(explosionDirection * explosionForce, ForceMode.Impulse);
+                    }
+
+                    break;
                 }
 
-                break;
-            }
-
-            gameObject.SetActive(false);
-            
-            if (other.transform.CompareTag("Mass")) {
-                Controller_TheMass.Instance.GotHit("Throwable");
+                gameObject.SetActive(false);
+                
+                if (other.transform.CompareTag("Mass")) {
+                    Controller_TheMass.Instance.GotHit("Throwable_Breakable");
+                }
             }
         }
 
