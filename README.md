@@ -21,6 +21,7 @@
 
 ## Done
 
+- [x] Added yoyoing scale of mass
 - [x] Add an effect as vent is traversed
 - [x] Fix the washer door rotation on closing
 - [x] Look at phone call vibration on held

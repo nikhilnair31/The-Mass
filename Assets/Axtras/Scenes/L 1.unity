@@ -52689,7 +52689,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f53e5bdd5f374845a4b5e27c9665fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growScale: {x: 0.5, y: 0.5, z: 0.5}
+  growScale: {x: 0.03, y: 0.03, z: 0.03}
+  shakeScale: {x: 0.05, y: 0.05, z: 0.05}
+  shakeForTime: 10
+  growAfterTime: 0
+  growInTime: 10
   impactClips:
   - {fileID: 8300000, guid: 48a104c847d6ab74e85fb01a5ac1a4f4, type: 3}
 --- !u!82 &2010977248
