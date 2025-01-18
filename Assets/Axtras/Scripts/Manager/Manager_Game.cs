@@ -28,6 +28,9 @@ public class Manager_Game : MonoBehaviour
     [SerializeField] private GameObject ventColliderGO;
     [SerializeField] private ParticleSystem ventExitSteamPS;
 
+    [Header("Door Settings")]
+    [SerializeField] private Interactable_Door roomateDoorInteractable;
+
     [Header("Snowstorm Settings")]
     [SerializeField] private ParticleSystem snowstormPS;
     [SerializeField] private AudioSource snowstormSource;
@@ -184,10 +187,21 @@ public class Manager_Game : MonoBehaviour
                 door.SetIsDoorLocked(false);
             }
         }
+
+        // Open roomate door
+        roomateDoorInteractable.ControlOpenCloseDoor();
     }
-    private void Attempt5() {
-        UnlockVent();
-        
+    public void Attempt5() {
+        // Unlock the vent cover
+        if (ventTranform.TryGetComponent(out Rigidbody rb)) {
+            var throwable = ventTranform.GetComponent<Controller_Pickable>();
+            throwable.SetInteractionText("pick up?");
+            throwable.SetIsPickable(true);
+
+            Helper.Instance.EnablePhysics(rb, true);
+        }
+        ventColliderGO.SetActive(true);
+
         // Start playing steam to vent exit to draw attention
         DOVirtual.DelayedCall(
             3f, 
@@ -204,19 +218,5 @@ public class Manager_Game : MonoBehaviour
     }
     public bool GetIfCanSkipIntroCutscene() {
         return skipIntroCutscene;
-    }
-
-    public void UnlockVent() {
-        Debug.Log($"UnlockVent");
-        
-        if (ventTranform.TryGetComponent(out Rigidbody rb)) {
-            var throwable = ventTranform.GetComponent<Controller_Pickable>();
-            throwable.SetInteractionText("pick up?");
-            throwable.SetIsPickable(true);
-
-            Helper.Instance.EnablePhysics(rb, true);
-        }
-
-        ventColliderGO.SetActive(true);
     }
 }

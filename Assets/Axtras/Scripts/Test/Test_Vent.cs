@@ -8,7 +8,7 @@ public class Test_Vent : MonoBehaviour
     #if UNITY_EDITOR
     private void OnValidate() {
         if (unlockVentTrigger) {
-            Manager_Game.Instance.UnlockVent();
+            Manager_Game.Instance.Attempt5();
             unlockVentTrigger = false;
         }
     }
@@ -16,7 +16,7 @@ public class Test_Vent : MonoBehaviour
 
     private void Start() {
         if (isVentUnlocked) {
-            Manager_Game.Instance.UnlockVent();
+            Manager_Game.Instance.Attempt5();
         }
     }
 }

@@ -20,7 +20,7 @@ GameObject:
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &8513264069249925269
 Transform:
@@ -248,9 +248,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0d67c8807fff841bf88342ecaf8f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addAudioSource: 0
+  addRigidbody: 0
+  addMeshCollider: 0
+  addBoxCollider: 0
   showThisText: pick up?
   isPickable: 1
   wasHeld: 0
+  heldPos: {x: 0, y: 0, z: 0}
+  heldRotEuler: {x: 0, y: 0, z: 0}
   throwForce: 3
   isBreakable: 1
   shatteredPrefab: {fileID: 7506700693728338330, guid: 3d66ce0387c20274aa5d8ae06ffe63e0, type: 3}

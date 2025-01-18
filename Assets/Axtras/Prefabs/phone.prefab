@@ -21,7 +21,7 @@ GameObject:
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &6874260215175032069
 Transform:
@@ -256,6 +256,7 @@ MonoBehaviour:
   showThisText: pick up?
   isPickable: 1
   wasHeld: 0
+  heldPos: {x: 0, y: 0, z: 0}
   heldRotEuler: {x: -270, y: -180, z: 90}
   throwForce: 3
   isBreakable: 0
