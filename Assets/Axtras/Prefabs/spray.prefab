@@ -108,8 +108,10 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: pick?
+  showForTime: -1
   isPickable: 1
   wasHeld: 0
+  heldPos: {x: 0, y: 0, z: 0}
   heldRotEuler: {x: -90, y: 0, z: 90}
   sprayPS: {fileID: 2536616301453069449}
   isFireSpray: 0

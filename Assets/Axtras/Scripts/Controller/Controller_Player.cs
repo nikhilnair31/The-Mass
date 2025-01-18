@@ -1,8 +1,8 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using Unity.Cinemachine;
 using DG.Tweening;
+using System.ComponentModel.Design;
 
 public class Controller_Player : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class Controller_Player : MonoBehaviour
     public static Controller_Player Instance { get; private set; }
 
     [Header("Movement Settings")]
+    [SerializeField] private bool canMove = true;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sprintSpeed = 8f;
     [SerializeField] private float crouchSpeed = 2.5f;
@@ -20,6 +21,7 @@ public class Controller_Player : MonoBehaviour
     private float camLocalY;
 
     [Header("Mouse Settings")]
+    [SerializeField] private bool canLook = true;
     [SerializeField] private float mouseSensitivity = 100f;
     [SerializeField] private Transform playerCamera;
     private float xRotation = 0f;
@@ -30,7 +32,8 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] public Transform holdAtTransform;
     [SerializeField] private GameObject throwLineGO;
     [SerializeField] public Transform heldInteractable;
-    private Transform lookingAtInteractable;
+    private Coroutine currentShowTextCoroutine;
+    private Controller_Interactables showTextInteractable;
     private RaycastHit hit;
 
     [Header("Zoom Settings")]
@@ -78,6 +81,8 @@ public class Controller_Player : MonoBehaviour
     }
 
     private void HandleMouseLook() {
+        if (!canLook) return;
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
@@ -88,6 +93,8 @@ public class Controller_Player : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
     }
     private void HandleMovement() {
+        if (!canMove) return;
+        
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -112,24 +119,24 @@ public class Controller_Player : MonoBehaviour
     }
     private void HandleInteractable() {
         if (Input.GetKeyDown(KeyCode.E)) {
-            if (lookingAtInteractable != null) {
-                if (lookingAtInteractable.TryGetComponent(out Controller_Pickable pickable)) {
+            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer)) {
+                if (hit.transform.TryGetComponent(out Controller_Pickable pickable)) {
                     if (pickable.ReturnPickableBool() && !heldInteractable) {
                         pickable.PickInteractable();
                         pickable.SetWasPicked(true);
                     }
                 }
                 
-                else if (lookingAtInteractable.TryGetComponent(out Interactable_Blinds blinds)) {
+                else if (hit.transform.TryGetComponent(out Interactable_Blinds blinds)) {
                     blinds.OpenCloseBlinds();
                 }
-                else if (lookingAtInteractable.TryGetComponent(out Interactable_Door doors)) {
+                else if (hit.transform.TryGetComponent(out Interactable_Door doors)) {
                     doors.ControlOpenCloseDoor();
                 }
-                else if (lookingAtInteractable.TryGetComponent(out Interactable_Drawer drawer)) {
+                else if (hit.transform.TryGetComponent(out Interactable_Drawer drawer)) {
                     drawer.ControlOpenCloseDrawer();
                 }
-                else if (lookingAtInteractable.TryGetComponent(out Interactable_Switch switches)) {
+                else if (hit.transform.TryGetComponent(out Interactable_Switch switches)) {
                     switches.ControlOnOffLight();
                 }
             }
@@ -213,34 +220,42 @@ public class Controller_Player : MonoBehaviour
 
     private void CheckForInteractable() {
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer)) {
-            // Debug.Log($"hit.transform: {hit.transform} | lookingAtInteractable.name: {lookingAtInteractable.name}");
+            // Debug.Log($"hit.transform: {hit.transform.name}");
             
-            var interactable = hit.transform.GetComponent<Controller_Interactables>();
-            
-            // Update if we hit a new interactable object
-            if (interactable != null && hit.transform != lookingAtInteractable) {
-                lookingAtInteractable = hit.transform;
-                var showTextStr = interactable.ReturnInteractableText();
-                Manager_Thoughts.Instance.UpdateThoughtText(showTextStr);
+            if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
+                // Only start a new coroutine if the text is different
+                if (interactable != showTextInteractable) {
+                    if (currentShowTextCoroutine != null) {
+                        StopCoroutine(currentShowTextCoroutine);
+                    }
+                    showTextInteractable = interactable;
+                    
+                    var showTextStr = interactable.ReturnInteractableText();
+                    var showForTime = interactable.ReturnShowForTime();
+                    // Debug.Log($"showTextStr: {showTextStr} | showForTime: {showForTime}");
+
+                    currentShowTextCoroutine = StartCoroutine(
+                        Manager_Thoughts.Instance.ShowTextSequence(showTextStr, showForTime)
+                    );
+                }
                 return;
             }
-            // Skip if we hit the same interactable object
-            else if (interactable != null && hit.transform == lookingAtInteractable) {
-                return;
-            }
-            // Clear if we hit non-interactable object
-            else if (interactable == null) {
-                lookingAtInteractable = null;
+            else {
+                currentShowTextCoroutine = null;
+                showTextInteractable = null;
                 Manager_Thoughts.Instance.ClearThoughtText();
             }
         }
         else {
-            // If we didn't hit anything in the interactable layer
-            if (lookingAtInteractable != null) {
-                lookingAtInteractable = null;
-                Manager_Thoughts.Instance.ClearThoughtText();
-            }
+            currentShowTextCoroutine = null;
+            showTextInteractable = null;
+            Manager_Thoughts.Instance.ClearThoughtText();
         }
+    }
+
+    public void ControlCanMoveAndLook(bool active) {
+        canMove = active;
+        canLook = active;
     }
 
     private void OnDrawGizmos() {

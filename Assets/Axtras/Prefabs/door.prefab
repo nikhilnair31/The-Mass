@@ -215,6 +215,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 1
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0

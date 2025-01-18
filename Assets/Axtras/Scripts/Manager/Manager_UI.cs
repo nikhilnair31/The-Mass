@@ -112,6 +112,12 @@ public class Manager_UI : MonoBehaviour
         Application.Quit();
     }
 
+    public void SetShowText(string text) {
+        lookedAt_Text.text = text;
+    }
+    public void ClearShowText() {
+        lookedAt_Text.text = "";
+    }
     public IEnumerator ShowTextWithSound(AudioSource source, AudioClip[] clips, float speed, string text) {
         lookedAt_Text.text = text;
 

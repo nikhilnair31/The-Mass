@@ -104,11 +104,12 @@ MonoBehaviour:
   addMeshCollider: 1
   addBoxCollider: 0
   showThisText: pick up?
+  showForTime: -1
   isPickable: 1
   wasHeld: 1
   heldPos: {x: 0, y: -0.6, z: -0.4}
   heldRotEuler: {x: 0, y: 0, z: 0}
-  endPos: {x: -0.45, y: 0.3, z: 2}
+  endPos: {x: -0.45, y: 0.3, z: 0.5}
   endRot: {x: -285, y: 0, z: 0}
   impactClips:
   - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}

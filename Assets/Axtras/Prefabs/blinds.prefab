@@ -247,7 +247,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88a1bc8709f8c114bbe16e0d0e05b657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addAudioSource: 0
+  addRigidbody: 0
+  addMeshCollider: 0
+  addBoxCollider: 0
   showThisText: open the blinds?
+  showForTime: -1
   transitionTime: 3
   opencloseClips:
   - {fileID: 8300000, guid: db4049d6c0a60834a9d9ee2877ba58a8, type: 3}

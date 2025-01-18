@@ -28,16 +28,18 @@ public class Interactable_Pokable : Controller_Pickable
         pokableSequence = DOTween.Sequence();
         pokableSequence
             .OnStart(() => {
+                playerController.ControlCanMoveAndLook(false);
                 initPos = transform.localPosition;
                 initRot = transform.localEulerAngles;
             })
-            .Append(transform.DOLocalRotate(endRot, 0.6f))
-            .Append(transform.DOShakeRotation(1f, 2f, 10, 90f))
-            .Append(transform.DOLocalMove(endPos, 0.2f))
-            .AppendInterval(2f)
-            .Append(transform.DOLocalRotate(initRot, 1f))
-            .Join(transform.DOLocalMove(initPos, 1f))
+            .Append(transform.DOLocalRotate(endRot, 0.4f))
+            .Append(transform.DOShakeRotation(1f, 3f, 10, 90f))
+            .Append(transform.DOLocalMove(endPos, 0.15f))
+            .AppendInterval(1f)
+            .Append(transform.DOLocalRotate(initRot, 0.5f))
+            .Join(transform.DOLocalMove(initPos, 0.5f))
             .OnComplete(() => {
+                playerController.ControlCanMoveAndLook(true);
                 pokableSequence = null;
             });
         ;

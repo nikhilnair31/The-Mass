@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Manager_Thoughts : MonoBehaviour 
@@ -19,20 +20,30 @@ public class Manager_Thoughts : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void UpdateThoughtText(string showTextStr) {
+    public IEnumerator ShowTextSequence(string text, float showTime) {
+        // Debug.Log($"ShowTextSequence");
 
-        StopAllCoroutines();
-        StartCoroutine(Manager_UI.Instance.ShowTextWithSound(
-            thoughtsAudioSource,
-            typingClips,
-            showTypingSpeed,
-            showTextStr
-        ));
+        Manager_UI.Instance.SetShowText(text);
+        // StopAllCoroutines();
+        // StartCoroutine(Manager_UI.Instance.ShowTextWithSound(
+        //     thoughtsAudioSource,
+        //     typingClips,
+        //     showTypingSpeed,
+        //     text
+        // ));
+
+        if (showTime >= 0) {
+            yield return new WaitForSeconds(showTime);
+            ClearThoughtText();
+        }
     }
     public void ClearThoughtText() {
-        StopAllCoroutines();
-        StartCoroutine(Manager_UI.Instance.ClearText(
-            hideTypingSpeed
-        ));
+        // Debug.Log($"ClearThoughtText");
+        
+        Manager_UI.Instance.ClearShowText();
+        // StopAllCoroutines();
+        // StartCoroutine(Manager_UI.Instance.ClearText(
+        //     hideTypingSpeed
+        // ));
     }    
 }

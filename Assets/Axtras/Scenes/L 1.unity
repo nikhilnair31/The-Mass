@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 20408b629241f0d44bbc3f5cbfd5406c, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: bb75846e3102f444f92e9df8e31fe35e, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: e78071c3f45d3034cacca8c7e9d4442e, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -807,7 +807,6 @@ GameObject:
   - component: {fileID: 66872115}
   - component: {fileID: 66872114}
   - component: {fileID: 66872118}
-  - component: {fileID: 66872120}
   m_Layer: 0
   m_Name: vent cover bottom
   m_TagString: Untagged
@@ -900,6 +899,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: just a vent cover
+  showForTime: 3
   isPickable: 0
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -911,20 +911,6 @@ MonoBehaviour:
   explosionRadius: 1
   impactClips:
   - {fileID: 8300000, guid: 211f07d8def4de44683433990c74d27e, type: 3}
---- !u!114 &66872120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66872112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1278e98fc076e64f932cf3fb8ef9f6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlockVentTrigger: 0
-  isVentUnlocked: 0
 --- !u!1001 &67665231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1089,15 +1075,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_Color.b
-      value: 0.74509805
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_Color.g
-      value: 0.49803925
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_Color.r
-      value: 0.59607846
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_Intensity
@@ -1105,7 +1091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_SpotAngle
-      value: 179
+      value: 142.0026
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_Lightmapping
@@ -1113,11 +1099,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_InnerSpotAngle
-      value: 49.283474
+      value: 80.71141
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_BounceIntensity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: m_ColorTemperature
+      value: 3195
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_Shadows.m_NearPlane
@@ -1125,11 +1119,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_UseColorTemperature
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_Shadows.m_Resolution
       value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -3.1240955e+29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.12e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 3.18e-43
       objectReference: {fileID: 0}
     - target: {fileID: 2991114553781699569, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: isOn
@@ -1453,6 +1459,7 @@ MonoBehaviour:
   ventTranform: {fileID: 66872113}
   ventColliderGO: {fileID: 1750890968}
   ventExitSteamPS: {fileID: 524540030}
+  roomateDoorInteractable: {fileID: 1629284015}
   snowstormPS: {fileID: 816074031}
   snowstormSource: {fileID: 266666800}
   kitchenTapWaterSource: {fileID: 1297582853}
@@ -1462,7 +1469,7 @@ MonoBehaviour:
   toiletTapWaterWeakPS: {fileID: 1573373897}
   toiletTapWaterStrongPS: {fileID: 1044816082}
   coldPlayerBreathSource: {fileID: 2023649118}
-  coldPlayerBreathPS: {fileID: 0}
+  coldPlayerBreathPS: {fileID: 2016383469}
   weakTapWaterClip: {fileID: 8300000, guid: 729fa054fd8d9e142bafc17e3ee7fb00, type: 3}
   strongTapWaterClip: {fileID: 8300000, guid: 891c1de706e3fa348ad9844b83b5c9be, type: 3}
   coldBreathClip: {fileID: 8300000, guid: 3b30e604c98c62441bf208cf660e61f0, type: 3}
@@ -1951,6 +1958,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 0
   showThisText: just some extra clothes
+  showForTime: 3
 --- !u!4 &207624001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5517785163931550238, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
@@ -2104,6 +2112,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -2835,9 +2844,9 @@ Transform:
   - {fileID: 543450651788303733}
   - {fileID: 543450651640901525}
   - {fileID: 1419731935}
-  - {fileID: 1432432652358152209}
   - {fileID: 543450652916737535}
   - {fileID: 1505490704}
+  - {fileID: 1432432652358152209}
   - {fileID: 543450653052251278}
   - {fileID: 231109350}
   - {fileID: 1590845569}
@@ -8469,6 +8478,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 0
   showThisText: I can't turn it on yet...
+  showForTime: 3
 --- !u!65 &449888866
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8829,11 +8839,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4ca6d1788c038439c126c538e6ed1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
   moveSpeed: 2
   sprintSpeed: 8
   crouchSpeed: 1
   gravity: -9.81
   crouchHeight: 1.5
+  canLook: 1
   mouseSensitivity: 35
   playerCamera: {fileID: 977846283}
   maxDistance: 6
@@ -14344,6 +14356,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: it's too cold already
+  showForTime: 3
 --- !u!1 &704393094
 GameObject:
   m_ObjectHideFlags: 0
@@ -14508,7 +14521,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.03
+    m_NearPlane: 0.81
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -14535,13 +14548,13 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
   m_ColorTemperature: 3457
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 4.972e-42, y: 2.524355e-29, z: 0, w: 3.9415303e+12}
+  m_BoundingSphereOverride: {x: 1.19e-43, y: NaN, z: 2.1e-44, w: 4.5918e-41}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -20010,6 +20023,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: pick up?
+  showForTime: -1
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -24880,6 +24894,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: no i can't leave with <b><color=red>that</color></b> still in there...
+  showForTime: -1
   dependsOnPlayerLoc: 1
   rotVec: {x: 0, y: 0, z: 0}
   isOpen: 0
@@ -25375,9 +25390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86024b9a4cfc886499b79ec3acc35fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderType: 2
-  firstTextStr: 
-  secondTextStr: 
+  colliderType: 3
+  showThisText: ERROR
+  showForTime: -1
 --- !u!1 &977846281
 GameObject:
   m_ObjectHideFlags: 0
@@ -25594,6 +25609,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: -90, z: 0}
   isOpen: 0
@@ -30831,8 +30847,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 635720189177084443, guid: 8864d830dacc7e3468f9623298d0f9e1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 635720189177084443, guid: 8864d830dacc7e3468f9623298d0f9e1, type: 3}
       propertyPath: m_BounceIntensity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 635720189177084443, guid: 8864d830dacc7e3468f9623298d0f9e1, type: 3}
+      propertyPath: m_Shadows.m_NearPlane
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 6357749292913371140, guid: 8864d830dacc7e3468f9623298d0f9e1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31268,10 +31292,10 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 0.59607846, g: 0.49803925, b: 0.74509805, a: 1}
-  m_Intensity: 4
+  m_Intensity: 6
   m_Range: 7
-  m_SpotAngle: 179
-  m_InnerSpotAngle: 49.283474
+  m_SpotAngle: 142.0026
+  m_InnerSpotAngle: 80.71141
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -31313,7 +31337,7 @@ Light:
   m_BounceIntensity: 0
   m_ColorTemperature: 4151
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 9.1837e-41, y: -1.06e-43, z: 3e-43, w: 1e-45}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -48365,6 +48389,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: just some general kitchen stuff
+  showForTime: 3
 --- !u!1001 &1403644344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48601,6 +48626,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: pick up?
+  showForTime: -1
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -48679,8 +48705,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderType: 0
-  firstTextStr: wait what is this??
-  secondTextStr: i can't reach that thing directly but i need to know what it is...
+  showThisText: i can't even reach it?!
+  showForTime: 3
 --- !u!1 &1421718486
 GameObject:
   m_ObjectHideFlags: 0
@@ -49425,6 +49451,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -49969,7 +49996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1558214175
 Transform:
   m_ObjectHideFlags: 0
@@ -49979,7 +50006,7 @@ Transform:
   m_GameObject: {fileID: 1558214174}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2.2355814, y: 4.6209974, z: 0.7072543}
+  m_LocalPosition: {x: -2.2355814, y: 4.020997, z: 0.70725423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50152,7 +50179,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.07
+    m_NearPlane: 0.43
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -50179,13 +50206,13 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0.05
   m_ColorTemperature: 4091
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 6.88e-43, y: 1.944268e-38, z: 6.88e-43, w: 1.09002504e+27}
+  m_BoundingSphereOverride: {x: 4.1272477e+30, y: 2.760364e+20, z: 1.8096657e+22, w: 2.2647436e+20}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -60154,6 +60181,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 09e29428f6cffe5479ac219df7423944, type: 3}
   m_PrefabInstance: {fileID: 436149301}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1629284015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1008461011512171379, guid: 41374902256b19a42adc0ea4c33c6902, type: 3}
+  m_PrefabInstance: {fileID: 1403644344}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9de4156b1ff1a44ab9db61357af09ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1637598996
 GameObject:
   m_ObjectHideFlags: 0
@@ -61061,8 +61099,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderType: 1
-  firstTextStr: Enter the vent?
-  secondTextStr: 
+  showThisText: enter?
+  showForTime: -1
 --- !u!1 &1756548837
 GameObject:
   m_ObjectHideFlags: 0
@@ -61403,6 +61441,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -61681,6 +61720,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: pick?
+  showForTime: -1
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -61811,11 +61851,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 19813493672181850, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 697703339857873601, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1124705461201169749, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -61993,6 +62033,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: pick up?
+  showForTime: -1
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -62336,6 +62377,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: huh why'd he leave his tea in the sink?
+  showForTime: 3
 --- !u!1 &1975446203 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f260c5eac1ecb541829923ab7f48b23, type: 3}
@@ -62363,6 +62405,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: oh god that's disgusting
+  showForTime: 3
 --- !u!1 &1992623903
 GameObject:
   m_ObjectHideFlags: 0
@@ -62562,6 +62605,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: pick up?
+  showForTime: -1
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -62604,6 +62648,22 @@ PrefabInstance:
     - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_BounceIntensity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0.00087519555
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0.0009325062
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.1705309e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.2393039e+28
       objectReference: {fileID: 0}
     - target: {fileID: 2488852888117086160, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_Enabled
@@ -68390,6 +68450,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -74496,6 +74557,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8642504011368983010, guid: 5aa742bac4b1f4b4ebef894cff5a1eb1, type: 3}
+      propertyPath: showForTime
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75004,6 +75069,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1075168842}
     m_Modifications:
+    - target: {fileID: 2464950588727419823, guid: 5c6133242d8bcff4487a3634411577ad, type: 3}
+      propertyPath: showForTime
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7788296057025694237, guid: 5c6133242d8bcff4487a3634411577ad, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.7359991
@@ -75217,15 +75286,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844101393250963855, guid: e9d2583f0d163004bb30ac78755c2fd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.1492419
+      value: 6.858202
       objectReference: {fileID: 0}
     - target: {fileID: 4844101393250963855, guid: e9d2583f0d163004bb30ac78755c2fd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0397336
+      value: 3.039691
       objectReference: {fileID: 0}
     - target: {fileID: 4844101393250963855, guid: e9d2583f0d163004bb30ac78755c2fd3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.000826
+      value: 0.7133169
       objectReference: {fileID: 0}
     - target: {fileID: 4844101393250963855, guid: e9d2583f0d163004bb30ac78755c2fd3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -76692,6 +76761,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1075168842}
     m_Modifications:
+    - target: {fileID: 309298176579264003, guid: 268f179fe3a9d414d804dae9d8878c4b, type: 3}
+      propertyPath: showForTime
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6524074133480865432, guid: 268f179fe3a9d414d804dae9d8878c4b, type: 3}
       propertyPath: m_Name
       value: bottleOil
@@ -76981,6 +77054,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 0
   showThisText: turn on/off lights?
+  showForTime: -1
   switchButton: {fileID: 380747198}
   isOn: 1
   lightsList:
@@ -77187,6 +77261,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 0
   showThisText: turn on/off lights?
+  showForTime: 0
   switchButton: {fileID: 0}
   isOn: 1
   lightsList:
@@ -77355,6 +77430,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: pick?
+  showForTime: -1
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -77483,6 +77559,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 0
   showThisText: turn on/off lights?
+  showForTime: -1
   switchButton: {fileID: 380747198}
   isOn: 1
   lightsList:
@@ -78118,6 +78195,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: -90, y: 0, z: 90}
   isOpen: 0
@@ -78188,7 +78266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2306411775453998711, guid: 6cbfa29ac45a839478eeb3e6dacbdcd6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3449652475395031928, guid: 6cbfa29ac45a839478eeb3e6dacbdcd6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78282,6 +78360,10 @@ PrefabInstance:
     - target: {fileID: 2228353568424604723, guid: 7bf28fb6da8f7ba47ba1a81e9d5e32b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549212488332495171, guid: 7bf28fb6da8f7ba47ba1a81e9d5e32b8, type: 3}
+      propertyPath: showForTime
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5609796611443003558, guid: 7bf28fb6da8f7ba47ba1a81e9d5e32b8, type: 3}
       propertyPath: m_Name
@@ -78429,6 +78511,7 @@ MonoBehaviour:
   addMeshCollider: 1
   addBoxCollider: 0
   showThisText: open?
+  showForTime: -1
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -78475,6 +78558,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open?
+  showForTime: -1
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -78521,6 +78605,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open?
+  showForTime: -1
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -78573,6 +78658,10 @@ PrefabInstance:
     - target: {fileID: 1124705461201169749, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.933
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2991114553781699569, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
       propertyPath: isOn
@@ -78871,6 +78960,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -78953,15 +79043,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3986879243804325154, guid: ebc97244cbb087f44aa118667c4e3ada, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.7074924
+      value: 17.24975
       objectReference: {fileID: 0}
     - target: {fileID: 3986879243804325154, guid: ebc97244cbb087f44aa118667c4e3ada, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.044493
+      value: 3.246
       objectReference: {fileID: 0}
     - target: {fileID: 3986879243804325154, guid: ebc97244cbb087f44aa118667c4e3ada, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.0815039
+      value: -5.5416684
       objectReference: {fileID: 0}
     - target: {fileID: 3986879243804325154, guid: ebc97244cbb087f44aa118667c4e3ada, type: 3}
       propertyPath: m_LocalRotation.w
@@ -79100,6 +79190,14 @@ PrefabInstance:
       propertyPath: m_Range
       value: 6.44
       objectReference: {fileID: 0}
+    - target: {fileID: 635720189177084443, guid: 8864d830dacc7e3468f9623298d0f9e1, type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 635720189177084443, guid: 8864d830dacc7e3468f9623298d0f9e1, type: 3}
+      propertyPath: m_Shadows.m_NearPlane
+      value: 0.42
+      objectReference: {fileID: 0}
     - target: {fileID: 6357749292913371140, guid: 8864d830dacc7e3468f9623298d0f9e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.9300008
@@ -79198,6 +79296,10 @@ PrefabInstance:
     - target: {fileID: 1569518591487422965, guid: f7c62327be4fa9347986f887061519cc, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680279559079499315, guid: f7c62327be4fa9347986f887061519cc, type: 3}
+      propertyPath: showForTime
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6155610643608912287, guid: f7c62327be4fa9347986f887061519cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -79327,6 +79429,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open?
+  showForTime: -1
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -79388,6 +79491,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open?
+  showForTime: -1
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -79575,6 +79679,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 0, z: 0}
   isOpen: 0
@@ -79679,6 +79784,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: -90, z: 0}
   isOpen: 0
@@ -79800,6 +79906,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -79943,6 +80050,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -80018,6 +80126,7 @@ MonoBehaviour:
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: open/close door?
+  showForTime: -1
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0

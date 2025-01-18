@@ -105,6 +105,7 @@ MonoBehaviour:
   addMeshCollider: 1
   addBoxCollider: 0
   showThisText: pick up?
+  showForTime: -1
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}

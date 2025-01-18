@@ -17,6 +17,7 @@ public class Controller_Interactables : MonoBehaviour
 
     [Header("Interaction Settings")]
     [SerializeField] internal string showThisText;
+    [SerializeField] internal float showForTime = -1f;
     #endregion
 
     private void Awake() {
@@ -59,5 +60,8 @@ public class Controller_Interactables : MonoBehaviour
 
     public string ReturnInteractableText() {
         return showThisText;
+    }
+    public float ReturnShowForTime() {
+        return showForTime;
     }
 }
