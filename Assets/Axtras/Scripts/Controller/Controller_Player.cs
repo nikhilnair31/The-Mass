@@ -32,7 +32,6 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] public Transform holdAtTransform;
     [SerializeField] private GameObject throwLineGO;
     [SerializeField] public Transform heldInteractable;
-    private Coroutine currentShowTextCoroutine;
     private Controller_Interactables showTextInteractable;
     private RaycastHit hit;
 
@@ -220,34 +219,23 @@ public class Controller_Player : MonoBehaviour
 
     private void CheckForInteractable() {
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer)) {
-            // Debug.Log($"hit.transform: {hit.transform.name}");
-            
             if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
-                // Only start a new coroutine if the text is different
                 if (interactable != showTextInteractable) {
-                    if (currentShowTextCoroutine != null) {
-                        StopCoroutine(currentShowTextCoroutine);
-                    }
                     showTextInteractable = interactable;
                     
                     var showTextStr = interactable.ReturnInteractableText();
                     var showForTime = interactable.ReturnShowForTime();
-                    // Debug.Log($"showTextStr: {showTextStr} | showForTime: {showForTime}");
 
-                    currentShowTextCoroutine = StartCoroutine(
-                        Manager_Thoughts.Instance.ShowTextSequence(showTextStr, showForTime)
-                    );
+                    Manager_Thoughts.Instance.ShowText(showTextStr, showForTime);
                 }
                 return;
             }
             else {
-                currentShowTextCoroutine = null;
                 showTextInteractable = null;
                 Manager_Thoughts.Instance.ClearThoughtText();
             }
         }
         else {
-            currentShowTextCoroutine = null;
             showTextInteractable = null;
             Manager_Thoughts.Instance.ClearThoughtText();
         }

@@ -2,10 +2,6 @@
 
 ## To-do
 
-- [ ] Make thoughts sytem more versatile
-  - Fix the interactable text still showing when not looking at an interactable item
-  - If looking at locked door text will "is roomate's. open/close it?". once tried it should switch to "it's locked easily". Another try should give "roomate's door seems locked"
-  - Don't show pickable item's text "pick up?" when holding something already
 - [ ] Setup initial cutscenes to enter and exit vent
 
 ## Skipped
@@ -21,6 +17,10 @@
 
 ## Done
 
+- [x] Make thoughts sytem more versatile
+  - Fix the interactable text still showing when not looking at an interactable item
+  - If looking at locked door text will "is roomate's. open/close it?". once tried it should switch to "it's locked easily". Another try should give "roomate's door seems locked"
+  - Don't show pickable item's text "pick up?" when holding something already
 - [x] Fixed pokable movement and Mass impact
 - [x] Added player movement sounds
 - [x] Fixed clock mat

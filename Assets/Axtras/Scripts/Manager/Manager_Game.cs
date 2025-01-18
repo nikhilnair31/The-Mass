@@ -20,7 +20,6 @@ public class Manager_Game : MonoBehaviour
         { "Pokable", false },
         { "Spray_Gas", false },
         { "Spray_Fire", false },
-        // { "Lights_Off", false }
     };
 
     [Header("Vent Settings")]
