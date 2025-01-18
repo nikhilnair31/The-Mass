@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Controller_Collider : MonoBehaviour 
 {
@@ -16,17 +17,29 @@ public class Controller_Collider : MonoBehaviour
     #endregion
 
     private void OnCollisionEnter(Collision other) {
-        Debug.Log($"OnCollisionEnter\nother.transform.tag: {other.transform.tag}\ncolliderType: {colliderType}");
         if (other.transform.CompareTag("Player")) {
-            if (
-                colliderType == ColliderType.Barrier || colliderType == ColliderType.Barrier ||
-                colliderType == ColliderType.VentTop
-            ) {
-                Manager_Thoughts.Instance.ShowText(showThisText, showForTime, true);
-            }
+            ShowText();
         }
     }
     private void OnCollisionExit(Collision other) {
         Manager_Thoughts.Instance.ClearThoughtText(true);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.transform.CompareTag("Player")) {
+            ShowText();
+        }
+    }
+    private void OnTriggerExit(Collider other) {
+        Manager_Thoughts.Instance.ClearThoughtText(true);
+    }
+
+    private void ShowText() {
+        if (
+            colliderType == ColliderType.Barrier || colliderType == ColliderType.Barrier ||
+            colliderType == ColliderType.VentTop
+        ) {
+            Manager_Thoughts.Instance.ShowText(showThisText, showForTime, true);
+        }
     }
 }
