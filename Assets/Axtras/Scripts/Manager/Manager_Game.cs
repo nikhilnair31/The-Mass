@@ -164,6 +164,10 @@ public class Manager_Game : MonoBehaviour
         Helper.Instance.StartAudioLoop(toiletTapWaterSource, weakTapWaterClip, 0f);
     }
     private void Attempt3() {
+        // Visible breath as it gets colder 
+        coldPlayerBreathPS.Play();
+        Helper.Instance.StartAudioLoop(coldPlayerBreathSource, coldBreathClip, 1f);
+
         // Clocks speed up rapidly
         Controller_Clock.Instance.SetTimeMul(20f);
 
@@ -174,20 +178,25 @@ public class Manager_Game : MonoBehaviour
         Helper.Instance.StartAudioLoop(toiletTapWaterSource, strongTapWaterClip, 0f);
     }
     private void Attempt4() {
-        // Visible breath as it gets colder 
-        coldPlayerBreathPS.Play();
-        Helper.Instance.StartAudioLoop(coldPlayerBreathSource, coldBreathClip, 1f);
-
-        // Locked door room opens
+        // Locked doors open
         var allDoors = FindObjectsByType<Interactable_Door>(FindObjectsSortMode.None);
         foreach (var door in allDoors) {
             if (door.GetIsDoorLocked()) {
                 door.SetIsDoorLocked(false);
+                door.SetInteractionText("open/close door?");
+                door.ControlOpenCloseDoor();
             }
         }
 
-        // Open roomate door
-        roomateDoorInteractable.ControlOpenCloseDoor();
+        // Locked drawers open
+        var allDrawers = FindObjectsByType<Interactable_Drawer>(FindObjectsSortMode.None);
+        foreach (var drawer in allDrawers) {
+            if (drawer.GetIsDrawerLocked()) {
+                drawer.SetIsDrawerLocked(false);
+                drawer.SetInteractionText("open/close drawer?");
+                drawer.ControlOpenCloseDrawer();
+            }
+        }
     }
     public void Attempt5() {
         // Unlock the vent cover

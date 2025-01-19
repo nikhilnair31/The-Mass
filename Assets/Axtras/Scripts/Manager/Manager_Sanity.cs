@@ -43,6 +43,8 @@ public class Manager_Sanity : MonoBehaviour
     }
 
     private void Update() {
+        if (mass == null) return;
+        
         bool closeToMass  = Vector3.Distance(mass.position, transform.position) < withinRangeOfMass;
         float currentSanityRate = closeToMass ? sanityRate * sanityScaleRate : sanityRate;
         sanityLostInTime += currentSanityRate * Time.deltaTime;

@@ -134,31 +134,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 665022236803952968, guid: a6adb19c164c6344fa937b6c44800dd2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3824358
+      value: 1.3821406
       objectReference: {fileID: 0}
     - target: {fileID: 665022236803952968, guid: a6adb19c164c6344fa937b6c44800dd2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.0261183
+      value: 2.0262008
       objectReference: {fileID: 0}
     - target: {fileID: 665022236803952968, guid: a6adb19c164c6344fa937b6c44800dd2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.42374802
+      value: 0.42371464
       objectReference: {fileID: 0}
     - target: {fileID: 665022236803952968, guid: a6adb19c164c6344fa937b6c44800dd2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.08010251
+      value: -0.08017244
       objectReference: {fileID: 0}
     - target: {fileID: 665022236803952968, guid: a6adb19c164c6344fa937b6c44800dd2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6716204
+      value: -0.67174095
       objectReference: {fileID: 0}
     - target: {fileID: 665022236803952968, guid: a6adb19c164c6344fa937b6c44800dd2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.072213694
+      value: 0.07217375
       objectReference: {fileID: 0}
     - target: {fileID: 665022236803952968, guid: a6adb19c164c6344fa937b6c44800dd2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.733004
+      value: 0.7328898
       objectReference: {fileID: 0}
     - target: {fileID: 665022236803952968, guid: a6adb19c164c6344fa937b6c44800dd2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clockTimeText: {fileID: 1486327643}
   isClockRunning: 1
-  timeMultiplier: 12
+  timeMultiplier: 200
 --- !u!65 &40346784
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -900,8 +900,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: just a vent cover
   showForTime: 3
-  lookedAtMax: 1
-  lookedAtCnt: 0
   isPickable: 0
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -996,7 +994,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1075168842}
+    m_TransformParent: {fileID: 736138618}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 29ee8088ffba41f42b4878b48ac1d735, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1008,7 +1006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ee8088ffba41f42b4878b48ac1d735, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.03
+      value: 0.029999733
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 29ee8088ffba41f42b4878b48ac1d735, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1386,6 +1384,7 @@ GameObject:
   - component: {fileID: 140932113}
   - component: {fileID: 140932112}
   - component: {fileID: 140932111}
+  - component: {fileID: 140932114}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1456,7 +1455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skipIntroCutscene: 1
   maxAttempts: 5
-  currentAttempts: 4
+  currentAttempts: 0
   addAttempt: 0
   ventTranform: {fileID: 66872113}
   ventColliderGO: {fileID: 1750890968}
@@ -1511,6 +1510,51 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 15b83a0de19f4314ea175e6d1f732dfc, type: 3}
   showTypingSpeed: 0
   hideTypingSpeed: 0
+--- !u!114 &140932114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140932107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: ebdff3c1c7624ec4ab32deaf15a82fe5, type: 2}
+    - {fileID: 11400000, guid: 9c0850dbb6a2ea54f96381a570db196c, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 140932110}
+          m_TargetAssemblyTypeName: Manager_UI, Assembly-CSharp
+          m_MethodName: SetShowText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: WHAT THE FUCK
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 140932110}
+          m_TargetAssemblyTypeName: Manager_UI, Assembly-CSharp
+          m_MethodName: SetShowText
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: oh fuck oh fuck oh fuck
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &143287961 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b1da5fbd85d00be4e89e28396b2bdd66, type: 3}
@@ -1961,8 +2005,6 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: just some extra clothes
   showForTime: 3
-  lookedAtMax: 1
-  lookedAtCnt: 0
 --- !u!4 &207624001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5517785163931550238, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
@@ -2117,8 +2159,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -2519,7 +2559,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1075168842}
+    m_TransformParent: {fileID: 736138618}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cc85a76db62a6124ba7479589f3dcef6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2584,7 +2624,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1075168842}
+    m_TransformParent: {fileID: 736138618}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a8ace4ba25ac8354cb5068ad2a67d4a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2945,7 +2985,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0.21643934, y: 0.00000054844463, z: 0.00000012158708, w: 0.9762961}
-  m_LocalPosition: {x: -18.1, y: 2.6999998, z: 16.800001}
+  m_LocalPosition: {x: -17.903612, y: 2.699972, z: 17.897953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8484,8 +8524,6 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: I can't turn it on yet...
   showForTime: 3
-  lookedAtMax: 1
-  lookedAtCnt: 0
 --- !u!65 &449888866
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8826,7 +8864,7 @@ Transform:
   m_GameObject: {fileID: 488930024}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000001872535, y: 0.00000056176054, z: -1.0519163e-13, w: 1}
-  m_LocalPosition: {x: -18.1, y: 1.6999999, z: 16.800001}
+  m_LocalPosition: {x: -17.903612, y: 1.6999719, z: 17.897953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -8851,7 +8889,7 @@ MonoBehaviour:
   sprintSpeed: 8
   crouchSpeed: 1
   gravity: -9.81
-  crouchHeight: 1.5
+  crouchHeight: 2
   canLook: 1
   mouseSensitivity: 35
   playerCamera: {fileID: 977846283}
@@ -8896,7 +8934,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!82 &488930032
 AudioSource:
@@ -14364,8 +14402,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: it's too cold already
   showForTime: 3
-  lookedAtMax: 1
-  lookedAtCnt: 0
 --- !u!1 &704393094
 GameObject:
   m_ObjectHideFlags: 0
@@ -14603,6 +14639,82 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.74375, y: 0.98349994, z: 0.74375}
   m_Center: {x: 0.371875, y: 0.49174997, z: 0.371875}
+--- !u!1 &736138617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736138618}
+  - component: {fileID: 736138619}
+  - component: {fileID: 736138620}
+  m_Layer: 7
+  m_Name: Food Stuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &736138618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736138617}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1287203722}
+  - {fileID: 2088623245}
+  - {fileID: 401236926}
+  - {fileID: 25866813}
+  m_Father: {fileID: 1075168842}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &736138619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736138617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744d27400c19d8e43a02c96bb50bf990, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addAudioSource: 0
+  addRigidbody: 0
+  addMeshCollider: 0
+  addBoxCollider: 0
+  showThisText: good god why can't he just clean up
+  showForTime: 3
+--- !u!65 &736138620
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736138617}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6556454, y: 0.3884712, z: 0.7832937}
+  m_Center: {x: -10.054063, y: 0.9707277, z: -0.21819067}
 --- !u!1 &737246887
 GameObject:
   m_ObjectHideFlags: 0
@@ -20033,8 +20145,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick up?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -24906,8 +25016,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: no i can't leave with <b><color=red>that</color></b> still in there...
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 1
   rotVec: {x: 0, y: 0, z: 0}
   isOpen: 0
@@ -25622,8 +25730,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: -90, z: 0}
   isOpen: 0
@@ -31529,14 +31635,11 @@ Transform:
   - {fileID: 543450651760205447}
   - {fileID: 543450651611180352}
   - {fileID: 543450651879471047}
+  - {fileID: 736138618}
   - {fileID: 1999036364}
   - {fileID: 1213050636}
   - {fileID: 1899009751}
-  - {fileID: 1287203722}
-  - {fileID: 2088623245}
-  - {fileID: 401236926}
   - {fileID: 1685196344}
-  - {fileID: 25866813}
   - {fileID: 700144141}
   - {fileID: 1974201130}
   - {fileID: 1975446206}
@@ -48406,8 +48509,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: just some general kitchen stuff
   showForTime: 3
-  lookedAtMax: 1
-  lookedAtCnt: 0
 --- !u!1001 &1403644344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48645,8 +48746,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick up?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -49471,8 +49570,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -61456,17 +61553,15 @@ MonoBehaviour:
   addRigidbody: 0
   addMeshCollider: 0
   addBoxCollider: 1
-  showThisText: open/close door?
+  showThisText: ugh he's locked it again
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
   shakeVec: {x: 0, y: 5, z: 0}
   shakeTime: 0.2
   transitionTime: 1
-  doorIsLocked: 0
+  doorIsLocked: 1
   opencloseClips:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
@@ -61739,8 +61834,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -62122,8 +62215,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick up?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -62395,6 +62486,12 @@ PlayableDirector:
     value: {fileID: 1437609037}
   - key: {fileID: -7976739151261996935, guid: 78dedd7429a5045439643f1e4d2ae884, type: 2}
     value: {fileID: 2082415438}
+  - key: {fileID: 8607712265122006005, guid: 78dedd7429a5045439643f1e4d2ae884, type: 2}
+    value: {fileID: 140932114}
+  - key: {fileID: 9006660268794470648, guid: 78dedd7429a5045439643f1e4d2ae884, type: 2}
+    value: {fileID: 2010977242}
+  - key: {fileID: 2301912743380939420, guid: 78dedd7429a5045439643f1e4d2ae884, type: 2}
+    value: {fileID: 1432432652358152217}
   m_ExposedReferences:
     m_References: []
 --- !u!65 &1920383652
@@ -62468,8 +62565,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: huh why'd he leave his tea in the sink?
   showForTime: 3
-  lookedAtMax: 1
-  lookedAtCnt: 0
 --- !u!1 &1975446203 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f260c5eac1ecb541829923ab7f48b23, type: 3}
@@ -62498,8 +62593,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: oh god that's disgusting
   showForTime: 3
-  lookedAtMax: 1
-  lookedAtCnt: 0
 --- !u!1 &1992623903
 GameObject:
   m_ObjectHideFlags: 0
@@ -62700,8 +62793,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick up?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -62856,7 +62947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2010977243
 Transform:
   m_ObjectHideFlags: 0
@@ -63095,7 +63186,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1075168842}
+    m_TransformParent: {fileID: 736138618}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 09e29428f6cffe5479ac219df7423944, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68340,6 +68431,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1999036365}
   m_SourcePrefab: {fileID: 100100000, guid: 4d6ab9bb7fd845242a3a349f3456d37c, type: 3}
+--- !u!1 &2030357023 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5043800587102697611, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
+  m_PrefabInstance: {fileID: 661979607492829199}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2040305539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68547,8 +68643,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -74677,6 +74771,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 325743933}
     m_Modifications:
+    - target: {fileID: 4050518000696037760, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5043800587102697611, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
       propertyPath: m_Name
       value: phone
@@ -74728,7 +74826,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5043800587102697611, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1432432652358152217}
   m_SourcePrefab: {fileID: 100100000, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
 --- !u!4 &745452593988150533 stripped
 Transform:
@@ -75293,6 +75394,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6874260215175032069, guid: b6c9d56635423324486cb8b399f60ca8, type: 3}
   m_PrefabInstance: {fileID: 661979607492829199}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1432432652358152217
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030357023}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1629860560543731193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76437,13 +76560,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4607668393831226825}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.5272545, y: -0.47117162, z: -0.5272545, w: 0.47117162}
   m_LocalPosition: {x: 0.531335, y: 0.79700243, z: 0.9318239}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652133177601}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -96.43}
 --- !u!1001 &1836207984946155535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77137,8 +77260,6 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: turn on/off lights?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   switchButton: {fileID: 380747198}
   isOn: 1
   lightsList:
@@ -77346,8 +77467,6 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: turn on/off lights?
   showForTime: 0
-  lookedAtMax: 1
-  lookedAtCnt: 0
   switchButton: {fileID: 0}
   isOn: 1
   lightsList:
@@ -77517,8 +77636,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -77648,8 +77765,6 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: turn on/off lights?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   switchButton: {fileID: 380747198}
   isOn: 1
   lightsList:
@@ -78286,8 +78401,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: -90, y: 0, z: 90}
   isOpen: 0
@@ -78604,8 +78717,6 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: open?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -78653,8 +78764,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -78700,10 +78809,8 @@ MonoBehaviour:
   addRigidbody: 1
   addMeshCollider: 0
   addBoxCollider: 1
-  showThisText: open?
+  showThisText: it's jammed i can't open it
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -79059,8 +79166,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -79518,8 +79623,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -79582,8 +79685,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -79772,10 +79873,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
-  rotVec: {x: 0, y: 0, z: 0}
+  rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
   shakeVec: {x: 0, y: 5, z: 0}
   shakeTime: 0.2
@@ -79879,8 +79978,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: -90, z: 0}
   isOpen: 0
@@ -80003,8 +80100,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -80149,8 +80244,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -80227,8 +80320,6 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0

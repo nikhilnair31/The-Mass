@@ -32,7 +32,7 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] public Transform holdAtTransform;
     [SerializeField] private GameObject throwLineGO;
     [SerializeField] public Transform heldInteractable;
-    private Controller_Interactables showTextInteractable;
+    private string showTextStr;
     private RaycastHit hit;
 
     [Header("Zoom Settings")]
@@ -224,21 +224,20 @@ public class Controller_Player : MonoBehaviour
 
             if (interactable != null) {
                 if (heldInteractable == null || (heldInteractable != null && pickable == null)) {
-                    if (interactable == showTextInteractable) return;
-
-                    showTextInteractable = interactable;
-                        
                     var (text, duration) = interactable.ReturnInfo();
+                    if (text == showTextStr) return;
+
+                    showTextStr = text;
                     Manager_Thoughts.Instance.ShowText(text, duration);
                 }
             }
             else {
-                showTextInteractable = null;
+                showTextStr = null;
                 Manager_Thoughts.Instance.ClearThoughtText();
             }
         }
         else {
-            showTextInteractable = null;
+            showTextStr = null;
             Manager_Thoughts.Instance.ClearThoughtText();
         }
     }
