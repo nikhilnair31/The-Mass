@@ -224,9 +224,9 @@ public class Controller_Player : MonoBehaviour
 
             if (interactable != null) {
                 if (heldInteractable == null || (heldInteractable != null && pickable == null)) {
-                    if (interactable != showTextInteractable) {
-                        showTextInteractable = interactable;
-                    }
+                    if (interactable == showTextInteractable) return;
+
+                    showTextInteractable = interactable;
                         
                     var (text, duration) = interactable.ReturnInfo();
                     Manager_Thoughts.Instance.ShowText(text, duration);
