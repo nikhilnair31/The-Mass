@@ -21,9 +21,8 @@ public class Interactable_Switch : Controller_Interactables
     #endregion
 
     public virtual void Start() {
-        SwitchControl();
         RenderingSetup();
-        ControlOnOffLight(true);
+        InitializeSwitchState(isOn);
     }
     private void RenderingSetup() {
         if (meshRenderers.Count == 0) {
@@ -44,19 +43,22 @@ public class Interactable_Switch : Controller_Interactables
             }
         }
     }
+    private void InitializeSwitchState(bool initialState) {
+        isOn = initialState;
+        UpdateSwitchVisuals();
+    }
 
-    // TODO: Give this parameter a better name
-    public void ControlOnOffLight(bool nonInit = false) {
+    public void ToggleSwitch() {
+        isOn = !isOn;
+        UpdateSwitchVisuals();
+        Helper.Instance.PlayRandAudio(audioSource, switchClips);
+    }
+    
+    private void UpdateSwitchVisuals() {
         SwitchControl();
         EmissionControl();
         LightsControl();
-        
-        if (!nonInit) {
-            Helper.Instance.PlayRandAudio(audioSource, switchClips);
-            isOn = !isOn;
-        }
     }
-
     private void SwitchControl() {
         if (switchButton != null) {
             float targetXRotation = isOn ? 60f : -60f;

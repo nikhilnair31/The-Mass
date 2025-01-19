@@ -136,7 +136,7 @@ public class Controller_Player : MonoBehaviour
                     drawer.ControlOpenCloseDrawer();
                 }
                 else if (hit.transform.TryGetComponent(out Interactable_Switch switches)) {
-                    switches.ControlOnOffLight();
+                    switches.ToggleSwitch();
                 }
             }
         }
