@@ -7,12 +7,15 @@ public class Interactable_Spray : Controller_Pickable
 
     [Header("Spray Settings")]
     [SerializeField] private ParticleSystem sprayPS;
-    [SerializeField] private bool isFireSpray = false;
     [SerializeField] private bool isSprayingMass = false;
     [SerializeField] private float requiredSprayTime = 5f;
     [SerializeField] private float resetTime = 0.1f;
     private float sprayTimer = 0f;
     private float lastCollisionTime = 0f;
+
+    [Header("Fire Settings")]
+    [SerializeField] private bool isFireSpray = false;
+    [SerializeField] private Light fireLight;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioClip sprayClip;
@@ -53,6 +56,10 @@ public class Interactable_Spray : Controller_Pickable
         audioSource.clip = sprayClip;
         audioSource.loop = true;
         audioSource.Play();
+
+        if (isFireSpray) {
+            fireLight.enabled = true;
+        }
     }
 
     public void StopSpray() {
@@ -60,6 +67,10 @@ public class Interactable_Spray : Controller_Pickable
         sprayTimer = 0f;
         sprayPS.Stop();
         audioSource.Stop();
+        
+        if (isFireSpray) {
+            fireLight.enabled = false;
+        }
     }
 
     public void SetSprayingMass(bool active) {

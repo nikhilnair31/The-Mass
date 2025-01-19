@@ -4,14 +4,7 @@ using UnityEngine.Events;
 public class Controller_Collider : MonoBehaviour 
 {
     #region Vars
-    public enum ColliderType {
-        Barrier,
-        VentBottom,
-        VentTop,
-        None
-    }
     [Header("Collider Settings")]
-    [SerializeField] private ColliderType colliderType;
     [SerializeField] private string showThisText;
     [SerializeField] private float showForTime = 0f;
     #endregion
@@ -35,11 +28,6 @@ public class Controller_Collider : MonoBehaviour
     }
 
     private void ShowText() {
-        if (
-            colliderType == ColliderType.Barrier || colliderType == ColliderType.Barrier ||
-            colliderType == ColliderType.VentTop
-        ) {
-            Manager_Thoughts.Instance.ShowText(showThisText, showForTime, true);
-        }
+        Manager_Thoughts.Instance.ShowText(showThisText, showForTime, true);
     }
 }

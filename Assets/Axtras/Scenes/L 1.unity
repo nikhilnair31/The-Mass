@@ -900,6 +900,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: just a vent cover
   showForTime: 3
+  lookedAtMax: 1
+  lookedAtCnt: 0
   isPickable: 0
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -1454,7 +1456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skipIntroCutscene: 1
   maxAttempts: 5
-  currentAttempts: 0
+  currentAttempts: 4
   addAttempt: 0
   ventTranform: {fileID: 66872113}
   ventColliderGO: {fileID: 1750890968}
@@ -1959,6 +1961,8 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: just some extra clothes
   showForTime: 3
+  lookedAtMax: 1
+  lookedAtCnt: 0
 --- !u!4 &207624001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5517785163931550238, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
@@ -2113,6 +2117,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -8478,6 +8484,8 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: I can't turn it on yet...
   showForTime: 3
+  lookedAtMax: 1
+  lookedAtCnt: 0
 --- !u!65 &449888866
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14356,6 +14364,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: it's too cold already
   showForTime: 3
+  lookedAtMax: 1
+  lookedAtCnt: 0
 --- !u!1 &704393094
 GameObject:
   m_ObjectHideFlags: 0
@@ -20023,6 +20033,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick up?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -24894,6 +24906,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: no i can't leave with <b><color=red>that</color></b> still in there...
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 1
   rotVec: {x: 0, y: 0, z: 0}
   isOpen: 0
@@ -25389,12 +25403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86024b9a4cfc886499b79ec3acc35fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderType: 3
   showThisText: ERROR
   showForTime: -1
-  customEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &977846281
 GameObject:
   m_ObjectHideFlags: 0
@@ -25612,6 +25622,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: -90, z: 0}
   isOpen: 0
@@ -48394,6 +48406,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: just some general kitchen stuff
   showForTime: 3
+  lookedAtMax: 1
+  lookedAtCnt: 0
 --- !u!1001 &1403644344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48631,6 +48645,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick up?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -48708,12 +48724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86024b9a4cfc886499b79ec3acc35fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderType: 0
   showThisText: i can't even reach it?!
   showForTime: 3
-  customEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1421718486
 GameObject:
   m_ObjectHideFlags: 0
@@ -49459,6 +49471,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -49905,10 +49919,6 @@ PrefabInstance:
     - target: {fileID: 5284641553110864341, guid: b54c1da990f961e4fb99bbb2049f7384, type: 3}
       propertyPath: m_Name
       value: glass (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5284641553110864341, guid: b54c1da990f961e4fb99bbb2049f7384, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -61105,12 +61115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86024b9a4cfc886499b79ec3acc35fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderType: 1
   showThisText: enter?
   showForTime: -1
-  customEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1756548837
 GameObject:
   m_ObjectHideFlags: 0
@@ -61452,6 +61458,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -61731,6 +61739,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -61787,24 +61797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86024b9a4cfc886499b79ec3acc35fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderType: 0
-  showThisText: i can't even reach it?!
+  showThisText: ...why...why is it empty
   showForTime: 3
-  customEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 140932110}
-        m_TargetAssemblyTypeName: Manager_UI, Assembly-CSharp
-        m_MethodName: SetShowText
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: i can't see anything
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!65 &1851994405
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62128,6 +62122,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick up?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -62472,6 +62468,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: huh why'd he leave his tea in the sink?
   showForTime: 3
+  lookedAtMax: 1
+  lookedAtCnt: 0
 --- !u!1 &1975446203 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f260c5eac1ecb541829923ab7f48b23, type: 3}
@@ -62500,6 +62498,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: oh god that's disgusting
   showForTime: 3
+  lookedAtMax: 1
+  lookedAtCnt: 0
 --- !u!1 &1992623903
 GameObject:
   m_ObjectHideFlags: 0
@@ -62700,6 +62700,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick up?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -68545,6 +68547,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -75341,22 +75345,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 7380401759701398305, guid: 9ed7a59b493eb68429612dac8fef8b7b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7380401759701398305, guid: 9ed7a59b493eb68429612dac8fef8b7b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7380401759701398305, guid: 9ed7a59b493eb68429612dac8fef8b7b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.0614
-      objectReference: {fileID: 0}
-    - target: {fileID: 7451207869259075191, guid: 9ed7a59b493eb68429612dac8fef8b7b, type: 3}
-      propertyPath: sprayClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4f950a40c25e9044182669de51e95546, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -77149,6 +77137,8 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: turn on/off lights?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   switchButton: {fileID: 380747198}
   isOn: 1
   lightsList:
@@ -77356,6 +77346,8 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: turn on/off lights?
   showForTime: 0
+  lookedAtMax: 1
+  lookedAtCnt: 0
   switchButton: {fileID: 0}
   isOn: 1
   lightsList:
@@ -77525,6 +77517,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: pick?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   isPickable: 1
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
@@ -77654,6 +77648,8 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: turn on/off lights?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   switchButton: {fileID: 380747198}
   isOn: 1
   lightsList:
@@ -78290,6 +78286,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: -90, y: 0, z: 90}
   isOpen: 0
@@ -78606,6 +78604,8 @@ MonoBehaviour:
   addBoxCollider: 0
   showThisText: open?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -78653,6 +78653,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -78700,6 +78702,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -79055,6 +79059,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -79179,18 +79185,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: flamethrower
       objectReference: {fileID: 0}
-    - target: {fileID: 4599825157134514024, guid: ebc97244cbb087f44aa118667c4e3ada, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4599825157134514024, guid: ebc97244cbb087f44aa118667c4e3ada, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6021776668082187364, guid: ebc97244cbb087f44aa118667c4e3ada, type: 3}
-      propertyPath: sprayClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4f950a40c25e9044182669de51e95546, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -79524,6 +79518,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -79586,6 +79582,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   openPos: {x: 0, y: 0, z: -0.5}
   shakeVec: {x: 1, y: 1, z: 2}
   shakeTime: 0.1
@@ -79774,6 +79772,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 0, z: 0}
   isOpen: 0
@@ -79879,6 +79879,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: -90, z: 0}
   isOpen: 0
@@ -80001,6 +80003,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -80145,6 +80149,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0
@@ -80221,6 +80227,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: open/close door?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   dependsOnPlayerLoc: 0
   rotVec: {x: 0, y: 90, z: 0}
   isOpen: 0

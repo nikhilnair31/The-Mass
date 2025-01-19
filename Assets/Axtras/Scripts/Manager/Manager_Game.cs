@@ -57,12 +57,12 @@ public class Manager_Game : MonoBehaviour
     #if UNITY_EDITOR
     private void OnValidate() {
         if (addAttempt) {
+            addAttempt = false;
             foreach (var approach in approachUsed) {
                 if (!approach.Value) {
                     AddAttempt(approach.Key);
                 }
             }
-            addAttempt = false;
         }
     }
     #endif
@@ -75,7 +75,6 @@ public class Manager_Game : MonoBehaviour
     }
 
     private void Start() {
-        currentAttempts = 0;
         UpdateByAttempt();
         
         if (GetIfCanSkipIntroCutscene()) {

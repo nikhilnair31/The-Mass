@@ -22,9 +22,6 @@ public class Manager_Thoughts : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void ShowTextDefault(string text) {
-        ShowText(text);
-    }
     public void ShowText(string text, float showTime = 3f, bool isCollision = false) {
         if (currentShowTextCoroutine != null) {
             StopCoroutine(currentShowTextCoroutine);

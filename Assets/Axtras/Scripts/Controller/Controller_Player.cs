@@ -219,16 +219,18 @@ public class Controller_Player : MonoBehaviour
 
     private void CheckForInteractable() {
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, maxDistance, interactableLayer)) {
-            if (hit.transform.TryGetComponent(out Controller_Interactables interactable)) {
-                if (interactable != showTextInteractable) {
-                    showTextInteractable = interactable;
-                    
-                    var showTextStr = interactable.ReturnInteractableText();
-                    var showForTime = interactable.ReturnShowForTime();
+            var interactable = hit.transform.GetComponent<Controller_Interactables>();
+            var pickable = hit.transform.GetComponent<Controller_Pickable>();
 
-                    Manager_Thoughts.Instance.ShowText(showTextStr, showForTime);
+            if (interactable != null) {
+                if (heldInteractable == null || (heldInteractable != null && pickable == null)) {
+                    if (interactable != showTextInteractable) {
+                        showTextInteractable = interactable;
+                    }
+                        
+                    var (text, duration) = interactable.ReturnInfo();
+                    Manager_Thoughts.Instance.ShowText(text, duration);
                 }
-                return;
             }
             else {
                 showTextInteractable = null;

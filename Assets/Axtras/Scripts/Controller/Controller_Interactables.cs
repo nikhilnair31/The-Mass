@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Controller_Interactables : MonoBehaviour 
@@ -53,15 +54,15 @@ public class Controller_Interactables : MonoBehaviour
 
         gameObject.layer = LayerMask.NameToLayer("Interactable");
     }
-
+    
+    private void Start() {
+    }
+    
     public void SetInteractionText(string newtext) {
         showThisText = newtext;
     }
 
-    public string ReturnInteractableText() {
-        return showThisText;
-    }
-    public float ReturnShowForTime() {
-        return showForTime;
+    public (string text, float duration) ReturnInfo() {
+        return new(showThisText, showForTime);
     }
 }

@@ -218,7 +218,6 @@ GameObject:
   - component: {fileID: 5517785163931550238}
   - component: {fileID: 7147578236386088414}
   - component: {fileID: 882295848071784333}
-  - component: {fileID: 6494947555528928028}
   - component: {fileID: 2488852888117086160}
   - component: {fileID: 2991114553781699569}
   m_Layer: 7
@@ -299,27 +298,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6494947555528928028
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8780656626487459045}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.21426463, y: 0.04, z: 0.3856763}
-  m_Center: {x: 0, y: 0.0016627987, z: -0.00000013411046}
 --- !u!82 &2488852888117086160
 AudioSource:
   m_ObjectHideFlags: 0
@@ -435,6 +413,8 @@ MonoBehaviour:
   addBoxCollider: 1
   showThisText: turn on/off lights?
   showForTime: -1
+  lookedAtMax: 1
+  lookedAtCnt: 0
   switchButton: {fileID: 26003072213945625}
   isOn: 0
   lightsList:
