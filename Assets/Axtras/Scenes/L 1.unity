@@ -1601,7 +1601,7 @@ MonoBehaviour:
   currentAttempts: 0
   addAttempt: 0
   ventTranform: {fileID: 66872113}
-  ventColliderGO: {fileID: 1750890968}
+  ventEntryColliderGO: {fileID: 0}
   ventExitSteamPS: {fileID: 524540030}
   roomateDoorInteractable: {fileID: 1629284015}
   snowstormPS: {fileID: 816074031}
@@ -9259,7 +9259,7 @@ MonoBehaviour:
   footstepClips:
   - {fileID: 8300000, guid: 31c43732968140b41b5da1a7a75eebc2, type: 3}
   - {fileID: 8300000, guid: af97d7853836c4749b7cce69740302de, type: 3}
-  footstepInterval: 0.5
+  footstepInterval: 0.6
 --- !u!54 &488930031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -25768,7 +25768,8 @@ MonoBehaviour:
   addRigidbody: 1
   addMeshCollider: 0
   addBoxCollider: 1
-  showThisText: no i can't leave with <b><color=red>that</color></b> still in there...
+  showThisText: no i can't leave with that <b><color=red>MASS</color></b> still in
+    there...
   showForTime: -1
   dependsOnPlayerLoc: 1
   rotVec: {x: 0, y: 0, z: 0}

@@ -11,17 +11,17 @@ public class Manager_Game : MonoBehaviour
     [SerializeField] private int maxAttempts = 5;
     [SerializeField] private int currentAttempts;
     [SerializeField] private bool addAttempt;
-    [SerializeField] private Dictionary<string, bool> approachUsed = new () {
-        { "Throwable_Regular", false },
-        { "Throwable_Breakable", false },
-        { "Pokable", false },
-        { "Spray_Gas", false },
-        { "Spray_Fire", false },
+    [SerializeField] private List<Data_Approach> approaches = new() {
+        new Data_Approach { Name = "Throwable_Regular", IsUsed = false, ThoughtText = "i should just throw something at it" },
+        new Data_Approach { Name = "Throwable_Breakable", IsUsed = false, ThoughtText = "something that would shatter" },
+        new Data_Approach { Name = "Pokable", IsUsed = false, ThoughtText = "something long..." },
+        new Data_Approach { Name = "Spray_Gas", IsUsed = false, ThoughtText = "maybe it's just some bug?" },
+        new Data_Approach { Name = "Spray_Fire", IsUsed = false, ThoughtText = "i have to burn that ... that <b><color=red>MASS</color></b> away" }
     };
 
     [Header("Vent Settings")]
     [SerializeField] private Transform ventTranform;
-    [SerializeField] private GameObject ventColliderGO;
+    [SerializeField] private GameObject ventEntryColliderGO;
     [SerializeField] private ParticleSystem ventExitSteamPS;
 
     [Header("Door Settings")]
@@ -55,9 +55,9 @@ public class Manager_Game : MonoBehaviour
     private void OnValidate() {
         if (addAttempt) {
             addAttempt = false;
-            foreach (var approach in approachUsed) {
-                if (!approach.Value) {
-                    AddAttempt(approach.Key);
+            foreach (var approach in approaches) {
+                if (!approach.IsUsed) {
+                    AddAttempt(approach.Name);
                 }
             }
         }
@@ -74,26 +74,27 @@ public class Manager_Game : MonoBehaviour
     private void Start() {
         UpdateByAttempt();
     }
-
-    public bool AddAttempt(string approach) {
+ 
+    public bool AddAttempt(string approachName) {
         if (currentAttempts >= maxAttempts) {
             Debug.Log("All attempts completed!");
             return false;
         }
 
-        if (!approachUsed.ContainsKey(approach)) {
+        var approach = approaches.Find(a => a.Name == approachName);
+        if (approach == null) {
             Debug.LogError("Invalid approach type!");
             return false;
         }
 
-        if (approachUsed[approach]) {
-            Debug.LogWarning($"Approach '{approach}' has already been used!");
+        if (approach.IsUsed) {
+            Debug.LogWarning($"Approach '{approachName}' has already been used!");
             return false;
         }
 
         currentAttempts++;
-        approachUsed[approach] = true;
-        Debug.Log($"Attempt unlocked using '{approach}'. Total attempts: {currentAttempts}/{maxAttempts}");
+        approach.IsUsed = true;
+        Debug.Log($"Attempt unlocked using '{approachName}'. Total attempts: {currentAttempts}/{maxAttempts}");
 
         UpdateByAttempt();
 
@@ -123,6 +124,9 @@ public class Manager_Game : MonoBehaviour
             default:
                 break;
         }
+
+        // In some time make the player think of what else to attempt
+        NextAttemptThought();
     }
     private void Attempt0() {
         ventExitSteamPS.Stop();
@@ -131,11 +135,9 @@ public class Manager_Game : MonoBehaviour
             Helper.Instance.EnablePhysics(rb, false);
         }
 
-        ventColliderGO.SetActive(false);
+        ventEntryColliderGO.SetActive(false);
     }
     private void Attempt1() {
-        // EMP effects that make the phone ring adn lights get brighter
-        
         // Call audio
         Controller_Phone.Instance.MakeCall();
     }
@@ -200,7 +202,7 @@ public class Manager_Game : MonoBehaviour
 
             Helper.Instance.EnablePhysics(rb, true);
         }
-        ventColliderGO.SetActive(true);
+        ventEntryColliderGO.SetActive(true);
 
         // Start playing steam to vent exit to draw attention
         DOVirtual.DelayedCall(
@@ -211,6 +213,29 @@ public class Manager_Game : MonoBehaviour
         // Some objects move from their previous place
         
         // New small objects appear 
+    }
+
+    private void NextAttemptThought() {
+        string nextAttemptThought = "what do i do next?";
+
+        foreach (var approach in approaches) {
+            Debug.Log($"approach: {approach}");
+            if (!approach.IsUsed) {
+                nextAttemptThought = approach.ThoughtText;
+                break;
+            }
+        }
+
+        DOVirtual.DelayedCall(
+            3f, 
+            () => {
+                Manager_Thoughts.Instance.ShowText(
+                    nextAttemptThought, 
+                    5f,
+                    Manager_Thoughts.TextPriority.Player
+                );
+            }
+        );
     }
 
     public bool GetIfAllAttemptsCompleted() {
