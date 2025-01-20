@@ -132,13 +132,13 @@ GameObject:
   - component: {fileID: 3371573236163842409}
   - component: {fileID: 3651524937535441820}
   - component: {fileID: 8767669967459162852}
-  - component: {fileID: 734020507418812977}
+  - component: {fileID: 684040408982001733}
   m_Layer: 0
   m_Name: torch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &3371573236163842409
 Transform:
@@ -187,7 +187,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3aaac80297fce0d47b7b3fae16484d5a, type: 2}
+  - {fileID: 2100000, guid: cefc344f44368f64dad8b41747c97b15, type: 2}
   - {fileID: 2100000, guid: 825404fd47cc65b4c9c201f2d333f20c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -210,7 +210,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &734020507418812977
+--- !u!114 &684040408982001733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8340185191316168732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c0d67c8807fff841bf88342ecaf8f2d, type: 3}
+  m_Script: {fileID: 11500000, guid: c7b7a2fe07fbfc04fb9360edbb7d9a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   addAudioSource: 1
@@ -232,10 +232,9 @@ MonoBehaviour:
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
   heldRotEuler: {x: 0, y: 0, z: 0}
-  throwForce: 3
-  isBreakable: 0
-  shatteredPrefab: {fileID: 0}
-  explosionForce: 5
-  explosionRadius: 1
-  impactClips:
-  - {fileID: 8300000, guid: 2f16f85fc15bbf34fb5ac27e93b5db10, type: 3}
+  isOn: 0
+  lightsList:
+  - {fileID: 8544897657589057846}
+  switchClips:
+  - {fileID: 8300000, guid: 07c26cf6a45f0fe41b711f2db6ead26f, type: 3}
+  - {fileID: 8300000, guid: 37604ceb446fbcc4faa0931b67bb75a6, type: 3}

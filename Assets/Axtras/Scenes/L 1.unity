@@ -1600,6 +1600,22 @@ MonoBehaviour:
   maxAttempts: 5
   currentAttempts: 0
   addAttempt: 0
+  approaches:
+  - Name: Throwable_Regular
+    IsUsed: 0
+    ThoughtText: i should just throw something at it
+  - Name: Throwable_Breakable
+    IsUsed: 0
+    ThoughtText: something that would shatter
+  - Name: Pokable
+    IsUsed: 0
+    ThoughtText: something long...
+  - Name: Spray_Gas
+    IsUsed: 0
+    ThoughtText: maybe it's just some bug?
+  - Name: Spray_Fire
+    IsUsed: 0
+    ThoughtText: i have to burn that ... that <b><color=red>MASS</color></b> away
   ventTranform: {fileID: 66872113}
   ventEntryColliderGO: {fileID: 0}
   ventExitSteamPS: {fileID: 524540030}
@@ -81061,14 +81077,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: torch
       objectReference: {fileID: 0}
-    - target: {fileID: 8340185191316168732, guid: b92794c31f701df4aae5517484296d19, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8767669967459162852, guid: b92794c31f701df4aae5517484296d19, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: cefc344f44368f64dad8b41747c97b15, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

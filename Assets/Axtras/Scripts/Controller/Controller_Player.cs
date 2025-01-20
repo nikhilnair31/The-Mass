@@ -159,6 +159,9 @@ public class Controller_Player : MonoBehaviour
             else if (heldInteractable.TryGetComponent(out Interactable_Spray spray)) {
                 spray.StartSpray();
             }
+            else if (heldInteractable.TryGetComponent(out Interactable_Torch torch)) {
+                torch.ToggleSwitch();
+            }
         }
         if (Input.GetMouseButtonUp(0) && heldInteractable != null) {
             if (heldInteractable.TryGetComponent(out Interactable_Throwable throwable)) {
@@ -170,6 +173,9 @@ public class Controller_Player : MonoBehaviour
             }
             else if (heldInteractable.TryGetComponent(out Interactable_Spray spray)) {
                 spray.StopSpray();
+            }
+            else if (heldInteractable.TryGetComponent(out Interactable_Torch torch)) {
+
             }
         }
     }
