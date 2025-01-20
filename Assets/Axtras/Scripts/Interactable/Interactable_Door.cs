@@ -1,6 +1,4 @@
 using DG.Tweening;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Interactable_Door : Controller_Interactables 

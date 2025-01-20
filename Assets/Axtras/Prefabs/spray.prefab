@@ -114,11 +114,12 @@ MonoBehaviour:
   heldPos: {x: 0, y: 0, z: 0}
   heldRotEuler: {x: -90, y: 0, z: 90}
   sprayPS: {fileID: 2536616301453069449}
-  isFireSpray: 0
   isSprayingMass: 0
   requiredSprayTime: 3
   resetTime: 0.1
-  sprayClip: {fileID: 8300000, guid: 1fa80c43a1b036d409c9c2d761965756, type: 3}
+  isFireSpray: 0
+  fireLight: {fileID: 0}
+  sprayClip: {fileID: 8300000, guid: 12b1fec663c5b2140ba04e1cbcbbd8d2, type: 3}
 --- !u!1 &3102166277436874582
 GameObject:
   m_ObjectHideFlags: 0

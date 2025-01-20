@@ -2,6 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+/Versions/
 /[Aa]ssets/TextMesh Pro/
 /[Aa]ssets/Plugins/
 

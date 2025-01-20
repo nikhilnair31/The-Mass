@@ -12,15 +12,10 @@ public class Controller_TheMass : MonoBehaviour
     [SerializeField] private float shakeForTime;
     [SerializeField] private float growAfterTime;
     [SerializeField] private float growInTime;
-    private float scaleIncrease = 1f;
-    private Vector3 originalScale;
-    private Sequence scaleSequence;
-    private Vector3 targetScale;
-    private Vector3 prevScale;
 
     [Header("Audio Settings")]
+    [SerializeField] private AudioSource impactAudioSource;
     [SerializeField] private AudioClip[] impactClips;
-    private AudioSource audioSource;
     #endregion
 
     private void Awake() {
@@ -31,8 +26,6 @@ public class Controller_TheMass : MonoBehaviour
     }
 
     private void Start() {
-        audioSource = GetComponent<AudioSource>();
-
         GrowTheMass();
     }
 
@@ -40,13 +33,13 @@ public class Controller_TheMass : MonoBehaviour
         Debug.Log($"GotHit by {approach}");
         
         Manager_Game.Instance.AddAttempt(approach);
-        Helper.Instance.PlayRandAudio(audioSource, impactClips);
+        Helper.Instance.PlayRandAudio(impactAudioSource, impactClips);
     }
     
     private void GrowTheMass() {
-        prevScale = transform.localScale;
-        targetScale = transform.localScale + growScale;
-        Sequence growthSequence = DOTween.Sequence();
+        var prevScale = transform.localScale;
+        var targetScale = transform.localScale + growScale;
+        var growthSequence = DOTween.Sequence();
         growthSequence
             .Join(transform.DOShakeRotation(shakeForTime, shakeScale, 3, 90f))
             .Join(transform.DOScale(transform.localScale + growScale, growInTime))

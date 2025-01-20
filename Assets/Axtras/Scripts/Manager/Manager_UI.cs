@@ -44,7 +44,7 @@ public class Manager_UI : MonoBehaviour
         restartGame_GameOver_Button?.onClick.AddListener(RestartGame);
         exitGame_GameOver_Button?.onClick.AddListener(ExitGame);
         
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 
         Time.timeScale = 1f;

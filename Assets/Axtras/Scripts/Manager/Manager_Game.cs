@@ -164,7 +164,7 @@ public class Manager_Game : MonoBehaviour
         Helper.Instance.StartAudioLoop(coldPlayerBreathSource, coldBreathClip, 1f);
 
         // Clocks speed up rapidly
-        Controller_Clock.Instance.SetTimeMul(20f);
+        Controller_Clock.Instance.SetTimeMul(200f);
 
         // Water from taps flows much faster
         kitchenTapWaterStrongPS.Play();

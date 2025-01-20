@@ -407,14 +407,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c467472664bc6514bb96414b799f8b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addAudioSource: 1
+  addAudioSource: 0
   addRigidbody: 0
   addMeshCollider: 0
   addBoxCollider: 1
   showThisText: turn on/off lights?
   showForTime: -1
-  lookedAtMax: 1
-  lookedAtCnt: 0
   switchButton: {fileID: 26003072213945625}
   isOn: 0
   lightsList:
