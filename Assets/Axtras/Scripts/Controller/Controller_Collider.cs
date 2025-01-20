@@ -1,7 +1,5 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 public class Controller_Collider : MonoBehaviour 
 {
@@ -15,6 +13,11 @@ public class Controller_Collider : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         if (other.transform.CompareTag("Player")) {
             ShowText();
+        }
+    }
+    private void OnCollisionStay(Collision other) {
+        if (Input.GetKeyDown(KeyCode.E)) {
+            invokeEvent.Invoke();
         }
     }
     private void OnCollisionExit(Collision other) {
@@ -39,10 +42,12 @@ public class Controller_Collider : MonoBehaviour
         Manager_Thoughts.Instance.ShowText(
             showThisText, 
             showForTime,
-            true
+            Manager_Thoughts.TextPriority.Collider
         );
     }
     private void ClearText() {
-        Manager_Thoughts.Instance.ClearThoughtText(true);
+        Manager_Thoughts.Instance.ClearThoughtText(
+            Manager_Thoughts.TextPriority.Collider
+        );
     }
 }

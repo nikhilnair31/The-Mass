@@ -5,14 +5,16 @@ public class Manager_Thoughts : MonoBehaviour
 {
     #region Vars
     public static Manager_Thoughts Instance { get; private set; }
+
+    public enum TextPriority { None, Item, Collider, Player }
     
     [Header("Thoughts Settings")]
     [SerializeField] private AudioSource thoughtsAudioSource;
     [SerializeField] private AudioClip[] typingClips;
     [SerializeField] private float showTypingSpeed = 0.05f;
     [SerializeField] private float hideTypingSpeed = 0.02f;
+    private TextPriority currentTextPriority = TextPriority.None;
     private Coroutine currentShowTextCoroutine;
-    private bool isShowingCollisionText = false;
     #endregion
 
     private void Awake() {
@@ -22,12 +24,12 @@ public class Manager_Thoughts : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void ShowText(string text, float showTime = 3f, bool isCollision = false) {
+    public void ShowText(string text, float showTime, TextPriority priority) {
         if (currentShowTextCoroutine != null) {
             StopCoroutine(currentShowTextCoroutine);
         }
 
-        isShowingCollisionText = isCollision;
+        currentTextPriority = priority;
         currentShowTextCoroutine = StartCoroutine(
             ShowTextSequence(text, showTime)
         );
@@ -38,14 +40,14 @@ public class Manager_Thoughts : MonoBehaviour
 
         if (showTime >= 0) {
             yield return new WaitForSeconds(showTime);
-            ClearThoughtText();
+            ClearThoughtText(TextPriority.Item);
         }
     }
-    public void ClearThoughtText(bool isCollision = false) {
-        if (isShowingCollisionText == isCollision) {
+    public void ClearThoughtText(TextPriority priority) {
+        if (currentTextPriority == priority) {
             currentShowTextCoroutine = null;
+            currentTextPriority = TextPriority.None;
             Manager_UI.Instance.ClearShowText();
-            isShowingCollisionText = false;
         }
     }    
 }

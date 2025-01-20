@@ -236,7 +236,8 @@ public class Controller_Player : MonoBehaviour
                         showTextStr = text;
                         Manager_Thoughts.Instance.ShowText(
                             text, 
-                            duration
+                            duration,
+                            Manager_Thoughts.TextPriority.Item
                         );
                     }
                     return;
@@ -246,7 +247,9 @@ public class Controller_Player : MonoBehaviour
 
         // If no interactable is detected or conditions aren't met, clear text
         showTextStr = null;
-        Manager_Thoughts.Instance.ClearThoughtText();
+        Manager_Thoughts.Instance.ClearThoughtText(
+            Manager_Thoughts.TextPriority.Item
+        );
     }
 
     public void ControlCanMoveAndLook(bool active) {
