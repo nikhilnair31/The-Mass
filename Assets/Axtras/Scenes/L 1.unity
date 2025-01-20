@@ -1271,6 +1271,11 @@ Light:
   m_CorrespondingSourceObject: {fileID: 1399274206032739284, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
   m_PrefabInstance: {fileID: 98907086}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &98907090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8780656626487459045, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+  m_PrefabInstance: {fileID: 98907086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &108473413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,6 +1522,11 @@ PrefabInstance:
 --- !u!4 &135091091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5517785163931550238, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+  m_PrefabInstance: {fileID: 135091090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &135091092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8780656626487459045, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
   m_PrefabInstance: {fileID: 135091090}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &140932107
@@ -3346,8 +3356,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.2197602, y: -0.0021794355, z: 0.005691032, w: 0.9755349}
-  m_LocalPosition: {x: -17.91566, y: 2.699876, z: 17.891129}
+  m_LocalRotation: {x: -0.21643934, y: 0.00000054844463, z: 0.00000012158708, w: 0.9762961}
+  m_LocalPosition: {x: -17.903612, y: 2.699972, z: 17.897953}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26209,7 +26219,7 @@ GameObject:
   - component: {fileID: 973803160}
   - component: {fileID: 973803161}
   m_Layer: 0
-  m_Name: Vent Exit Collider
+  m_Name: Vent Exit Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50680,6 +50690,59 @@ MonoBehaviour:
   - {fileID: 8300000, guid: aefa50cc794d6da4898e67862cac7584, type: 3}
   lockedClips:
   - {fileID: 8300000, guid: 914209e00e5b27e469e575cf2b2e4823, type: 3}
+--- !u!1 &1462458651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1462458652}
+  - component: {fileID: 1462458654}
+  m_Layer: 0
+  m_Name: Vent Entrance Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 0
+--- !u!4 &1462458652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462458651}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.45090294, y: -0.030356705, z: -0.0027446747}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1998583685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1462458654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462458651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 191
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.506331, y: 1.1107535, z: 2.332899}
+  m_Center: {x: 0.3339913, y: 0.055376768, z: 0}
 --- !u!1 &1470194853
 GameObject:
   m_ObjectHideFlags: 0
@@ -62017,6 +62080,16 @@ PlayableDirector:
     value: {fileID: 488930024}
   - key: {fileID: 7200158100924115102, guid: fa8a567879988b642aaf1bfbe9f8f0f5, type: 2}
     value: {fileID: 108473413}
+  - key: {fileID: 1071691055161174831, guid: fa8a567879988b642aaf1bfbe9f8f0f5, type: 2}
+    value: {fileID: 5909361458687355976}
+  - key: {fileID: -4746563286337266512, guid: fa8a567879988b642aaf1bfbe9f8f0f5, type: 2}
+    value: {fileID: 2004836540}
+  - key: {fileID: 7971295756825242649, guid: fa8a567879988b642aaf1bfbe9f8f0f5, type: 2}
+    value: {fileID: 135091092}
+  - key: {fileID: 6525843509024967442, guid: fa8a567879988b642aaf1bfbe9f8f0f5, type: 2}
+    value: {fileID: 98907090}
+  - key: {fileID: 4382383528724256808, guid: fa8a567879988b642aaf1bfbe9f8f0f5, type: 2}
+    value: {fileID: 1462458651}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &1665487333
@@ -62629,7 +62702,7 @@ GameObject:
   - component: {fileID: 1750890970}
   - component: {fileID: 1750890971}
   m_Layer: 0
-  m_Name: Vent Entrance Collider
+  m_Name: Vent Entrance Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62916,9 +62989,12 @@ MonoBehaviour:
   wasHeld: 0
   heldPos: {x: 0, y: 0, z: 0}
   heldRotEuler: {x: 0, y: 0, z: 0}
-  isOn: 0
+  isOn: 1
   lightsList:
   - {fileID: 567680194}
+  minFlickerInterval: 0.03
+  maxFlickerInterval: 0.6
+  flickerChance: 0.1
   switchClips:
   - {fileID: 8300000, guid: 07c26cf6a45f0fe41b711f2db6ead26f, type: 3}
   - {fileID: 8300000, guid: 37604ceb446fbcc4faa0931b67bb75a6, type: 3}
@@ -64428,6 +64504,7 @@ Transform:
   - {fileID: 66872113}
   - {fileID: 1637598997}
   - {fileID: 1750890969}
+  - {fileID: 1462458652}
   - {fileID: 973803159}
   - {fileID: 524540028}
   m_Father: {fileID: 0}
@@ -64587,6 +64664,11 @@ PrefabInstance:
 --- !u!4 &2004836539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5517785163931550238, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+  m_PrefabInstance: {fileID: 2004836538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2004836540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8780656626487459045, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
   m_PrefabInstance: {fileID: 2004836538}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2010977242
@@ -80615,6 +80697,11 @@ PrefabInstance:
       addedObject: {fileID: 1488658313}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+--- !u!1 &5909361458687355976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8780656626487459045, guid: 5497b6aae5744f04aae546e518249ec1, type: 3}
+  m_PrefabInstance: {fileID: 5909361458687355975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6163453967050297001
 Transform:
   m_ObjectHideFlags: 0

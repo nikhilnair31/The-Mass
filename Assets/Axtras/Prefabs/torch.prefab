@@ -235,6 +235,9 @@ MonoBehaviour:
   isOn: 0
   lightsList:
   - {fileID: 8544897657589057846}
+  minFlickerInterval: 0.03
+  maxFlickerInterval: 0.6
+  flickerChance: 0.03
   switchClips:
   - {fileID: 8300000, guid: 07c26cf6a45f0fe41b711f2db6ead26f, type: 3}
   - {fileID: 8300000, guid: 37604ceb446fbcc4faa0931b67bb75a6, type: 3}
