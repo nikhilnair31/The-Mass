@@ -10,6 +10,7 @@ public class Manager_Timeline : MonoBehaviour
     [SerializeField] private bool skipIntroCutscene;
     [SerializeField] private PlayableDirector startGameCutscene;
     [SerializeField] private PlayableDirector ventEnterCutscene;
+    [SerializeField] private PlayableDirector ventExitCutscene;
     #endregion 
 
     private void Awake() {
@@ -38,6 +39,6 @@ public class Manager_Timeline : MonoBehaviour
         ventEnterCutscene.Play();
     }
     public void PlayCutscene_VentExit() {
-        ventEnterCutscene.Play();
+        ventExitCutscene.Play();
     }
 }

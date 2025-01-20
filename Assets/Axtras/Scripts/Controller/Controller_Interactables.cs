@@ -4,7 +4,7 @@ using UnityEngine;
 public class Controller_Interactables : MonoBehaviour 
 {
     #region Vars
-    internal Controller_Player playerController;
+    internal Controller_Player_Normal playerController;
 
     [Header("Component Settings")]
     [SerializeField] private bool addAudioSource;
@@ -22,7 +22,7 @@ public class Controller_Interactables : MonoBehaviour
     #endregion
 
     private void Awake() {
-        playerController = FindFirstObjectByType<Controller_Player>();
+        playerController = FindFirstObjectByType<Controller_Player_Normal>();
 
         if (!transform.TryGetComponent(out AudioSource source) && addAudioSource) {
             audioSource = transform.gameObject.AddComponent<AudioSource>();
