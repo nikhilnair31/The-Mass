@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class Controller_Collider : MonoBehaviour 
 {
@@ -7,6 +9,7 @@ public class Controller_Collider : MonoBehaviour
     [Header("Collider Settings")]
     [SerializeField] private string showThisText;
     [SerializeField] private float showForTime = 0f;
+    [SerializeField] private UnityEvent invokeEvent;
     #endregion
 
     private void OnCollisionEnter(Collision other) {
@@ -15,7 +18,7 @@ public class Controller_Collider : MonoBehaviour
         }
     }
     private void OnCollisionExit(Collision other) {
-        Manager_Thoughts.Instance.ClearThoughtText(true);
+        ClearText();
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -23,11 +26,23 @@ public class Controller_Collider : MonoBehaviour
             ShowText();
         }
     }
+    private void OnTriggerStay(Collider other) {
+        if (Input.GetKeyDown(KeyCode.E)) {
+            invokeEvent.Invoke();
+        }
+    }
     private void OnTriggerExit(Collider other) {
-        Manager_Thoughts.Instance.ClearThoughtText(true);
+        ClearText();
     }
 
     private void ShowText() {
-        Manager_Thoughts.Instance.ShowText(showThisText, showForTime, true);
+        Manager_Thoughts.Instance.ShowText(
+            showThisText, 
+            showForTime,
+            true
+        );
+    }
+    private void ClearText() {
+        Manager_Thoughts.Instance.ClearThoughtText(true);
     }
 }

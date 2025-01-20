@@ -17,6 +17,7 @@ public class Controller_Player : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float crouchHeight = 1f;
     private Rigidbody rb;
+    private Vector3 previousPosition;
     private Vector3 moveDirection;
     private float camLocalY;
 
@@ -204,7 +205,8 @@ public class Controller_Player : MonoBehaviour
     }
 
     private void PlayFootsteps() {
-        if (isMoving && rb.linearVelocity.magnitude > 0.1f) {
+        bool hasMoved = Vector3.Distance(transform.position, previousPosition) > 0.01f;
+        if (isMoving && hasMoved && rb.linearVelocity.magnitude > 1f) {
             footstepTimer += Time.deltaTime;
 
             if (footstepTimer >= footstepInterval) {
@@ -215,6 +217,7 @@ public class Controller_Player : MonoBehaviour
         else {
             footstepTimer = 0f;
         }
+        previousPosition = transform.position;
     }
 
     private void CheckForInteractable() {
@@ -222,24 +225,28 @@ public class Controller_Player : MonoBehaviour
             var interactable = hit.transform.GetComponent<Controller_Interactables>();
             var pickable = hit.transform.GetComponent<Controller_Pickable>();
 
+            // If the object is interactable
             if (interactable != null) {
+                // Only show text if no interactable is held or the object isn't pickable
                 if (heldInteractable == null || (heldInteractable != null && pickable == null)) {
+                    // Get interaction info
                     var (text, duration) = interactable.ReturnInfo();
-                    if (text == showTextStr) return;
-
-                    showTextStr = text;
-                    Manager_Thoughts.Instance.ShowText(text, duration);
+                    // Update text only if it has changed
+                    if (text != showTextStr) {
+                        showTextStr = text;
+                        Manager_Thoughts.Instance.ShowText(
+                            text, 
+                            duration
+                        );
+                    }
+                    return;
                 }
             }
-            else {
-                showTextStr = null;
-                Manager_Thoughts.Instance.ClearThoughtText();
-            }
         }
-        else {
-            showTextStr = null;
-            Manager_Thoughts.Instance.ClearThoughtText();
-        }
+
+        // If no interactable is detected or conditions aren't met, clear text
+        showTextStr = null;
+        Manager_Thoughts.Instance.ClearThoughtText();
     }
 
     public void ControlCanMoveAndLook(bool active) {

@@ -37,7 +37,10 @@ public class Manager_Sanity : MonoBehaviour
             chromaticAberration.intensity.value = 0f;
         }
 
-        mass = GameObject.FindGameObjectWithTag("Mass").transform;
+        var massGO = GameObject.FindGameObjectWithTag("Mass");
+        if (massGO != null) {
+            mass = massGO.transform;
+        }
 
         sanityAudioSource.volume = 0f;
     }

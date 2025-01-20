@@ -14,7 +14,6 @@ public class Manager_UI : MonoBehaviour
     [SerializeField] private GameObject menuCanvasGO;
     [SerializeField] private Button startGame_Menu_Button;
     [SerializeField] private Button exitGame_Menu_Button;
-    [SerializeField] private PlayableDirector playableDirector;
 
     [Header("Game UI")]
     [SerializeField] private GameObject gameCanvasGO;
@@ -45,7 +44,7 @@ public class Manager_UI : MonoBehaviour
         restartGame_GameOver_Button?.onClick.AddListener(RestartGame);
         exitGame_GameOver_Button?.onClick.AddListener(ExitGame);
         
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = true;
 
         Time.timeScale = 1f;
@@ -67,13 +66,7 @@ public class Manager_UI : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        if (!Manager_Game.Instance.GetIfCanSkipIntroCutscene()) {
-            playableDirector.Play();
-        }
-        else {
-            playableDirector.time = playableDirector.duration;
-            playableDirector.Evaluate();
-        }
+        Manager_Timeline.Instance.PlayCutscene_GameStart();
     }
 
     public void PauseGame() {

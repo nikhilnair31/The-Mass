@@ -7,9 +7,6 @@ public class Manager_Game : MonoBehaviour
     #region Vars
     public static Manager_Game Instance { get; private set; }
 
-    [Header("Game Settings")]
-    [SerializeField] private bool skipIntroCutscene;
-
     [Header("Attempts Settings")]
     [SerializeField] private int maxAttempts = 5;
     [SerializeField] private int currentAttempts;
@@ -76,10 +73,6 @@ public class Manager_Game : MonoBehaviour
 
     private void Start() {
         UpdateByAttempt();
-        
-        if (GetIfCanSkipIntroCutscene()) {
-            Manager_UI.Instance.StartGame();            
-        }
     }
 
     public bool AddAttempt(string approach) {
@@ -222,8 +215,5 @@ public class Manager_Game : MonoBehaviour
 
     public bool GetIfAllAttemptsCompleted() {
         return currentAttempts == maxAttempts;
-    }
-    public bool GetIfCanSkipIntroCutscene() {
-        return skipIntroCutscene;
     }
 }
