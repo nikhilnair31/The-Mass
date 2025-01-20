@@ -24,6 +24,9 @@ public class Test_Controller_Vent_Player : MonoBehaviour
     private bool rightWall;
     private bool upWall;
     private bool downWall;
+    
+    [Header("Torch Settings")]
+    [SerializeField] private Interactable_Torch torch;
     #endregion
 
     private void Start() {
@@ -43,6 +46,7 @@ public class Test_Controller_Vent_Player : MonoBehaviour
         CheckSides();
         HandleMouseLook();
         HandleMovement();
+        HandleInteractable();
     }
     private void HandleMouseLook() {
         // Get mouse input
@@ -92,6 +96,13 @@ public class Test_Controller_Vent_Player : MonoBehaviour
         var vert = Input.GetAxis("Vertical");
         var movement = transform.forward * vert * moveSpeed * Time.deltaTime;
         rb.AddForce(movement, ForceMode.VelocityChange);
+    }
+    private void HandleInteractable() {
+        if (Input.GetMouseButtonDown(0)) {
+            if (torch != null) {
+                torch.ToggleSwitch();
+            }
+        }
     }
 
     private void CheckSides() {
