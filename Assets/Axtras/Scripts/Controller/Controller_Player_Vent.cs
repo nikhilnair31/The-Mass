@@ -115,16 +115,22 @@ public class Controller_Player_Vent : MonoBehaviour
     }
 
     private void CheckSides() {
-        forwardWall = Physics.Raycast(transform.position, transform.forward, rayDistance, ventWallLayer);
-        leftWall = Physics.Raycast(transform.position, -transform.right, rayDistance, ventWallLayer);
-        rightWall = Physics.Raycast(transform.position, transform.right, rayDistance, ventWallLayer);
-        upWall = Physics.Raycast(transform.position, transform.up, rayDistance, ventWallLayer);
-        downWall = Physics.Raycast(transform.position, -transform.up, rayDistance, ventWallLayer);
+        // forwardWall = Physics.Raycast(transform.position, transform.forward, rayDistance, ventWallLayer);
+        // leftWall = Physics.Raycast(transform.position, -transform.right, rayDistance, ventWallLayer);
+        // rightWall = Physics.Raycast(transform.position, transform.right, rayDistance, ventWallLayer);
+        // upWall = Physics.Raycast(transform.position, transform.up, rayDistance, ventWallLayer);
+        // downWall = Physics.Raycast(transform.position, -transform.up, rayDistance, ventWallLayer);
 
-        Debug.DrawRay(transform.position, transform.forward * rayDistance, forwardWall ? Color.red : Color.green);
-        Debug.DrawRay(transform.position, -transform.right * rayDistance, leftWall ? Color.red : Color.green);
-        Debug.DrawRay(transform.position, transform.right * rayDistance, rightWall ? Color.red : Color.green);
-        Debug.DrawRay(transform.position, transform.up * rayDistance, upWall ? Color.red : Color.green);
-        Debug.DrawRay(transform.position, -transform.up * rayDistance, downWall ? Color.red : Color.green);
+        // Debug.DrawRay(transform.position, transform.forward * rayDistance, forwardWall ? Color.red : Color.green);
+        // Debug.DrawRay(transform.position, -transform.right * rayDistance, leftWall ? Color.red : Color.green);
+        // Debug.DrawRay(transform.position, transform.right * rayDistance, rightWall ? Color.red : Color.green);
+        // Debug.DrawRay(transform.position, transform.up * rayDistance, upWall ? Color.red : Color.green);
+        // Debug.DrawRay(transform.position, -transform.up * rayDistance, downWall ? Color.red : Color.green);
+
+        forwardWall = true;
+        leftWall = true;
+        rightWall = true;
+        upWall = true;
+        downWall = true;
     }
 }

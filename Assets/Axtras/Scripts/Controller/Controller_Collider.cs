@@ -25,12 +25,15 @@ public class Controller_Collider : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
+        Debug.Log($"OnTriggerEnter: {other.transform.name} | {other.transform.tag}");
         if (other.transform.CompareTag("Player")) {
             ShowText();
         }
     }
     private void OnTriggerStay(Collider other) {
+        Debug.Log($"OnTriggerStay: {other.transform.name} | {other.transform.tag}");
         if (Input.GetKeyDown(KeyCode.E)) {
+            Debug.Log($"Pressed E");
             invokeEvent.Invoke();
         }
     }
