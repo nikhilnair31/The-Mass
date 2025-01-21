@@ -29,6 +29,7 @@ public class Manager_Timeline : MonoBehaviour
     public void PlayCutscene_GameStart() {
         if (!skipIntroCutscene) {
             startGameCutscene.Play();
+            startGameCutscene.playableGraph.GetRootPlayable(0).SetSpeed(1f);
         }
         else {
             startGameCutscene.time = startGameCutscene.duration;

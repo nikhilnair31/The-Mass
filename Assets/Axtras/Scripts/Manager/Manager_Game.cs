@@ -51,18 +51,18 @@ public class Manager_Game : MonoBehaviour
     [SerializeField] private AudioClip coldBreathClip;
     #endregion
 
-    #if UNITY_EDITOR
-    private void OnValidate() {
-        if (addAttempt) {
-            addAttempt = false;
-            foreach (var approach in approaches) {
-                if (!approach.IsUsed) {
-                    AddAttempt(approach.Name);
-                }
-            }
-        }
-    }
-    #endif
+    // #if UNITY_EDITOR
+    // private void OnValidate() {
+    //     if (addAttempt) {
+    //         addAttempt = false;
+    //         foreach (var approach in approaches) {
+    //             if (!approach.IsUsed) {
+    //                 AddAttempt(approach.Name);
+    //             }
+    //         }
+    //     }
+    // }
+    // #endif
 
     private void Awake() {
         if (Instance == null)

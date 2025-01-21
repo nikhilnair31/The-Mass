@@ -8,6 +8,7 @@ public class Controller_Player_Vent : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed;
     private Rigidbody rb;
+    private Vector3 previousPosition;
     
     [Header("Look Settings")]
     [SerializeField] private Transform camTransform;
@@ -29,6 +30,13 @@ public class Controller_Player_Vent : MonoBehaviour
     
     [Header("Torch Settings")]
     [SerializeField] private Interactable_Torch torch;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] footstepClips;
+    [SerializeField] private float footstepInterval = 0.5f;
+    private float footstepTimer = 0f;
+    private bool isMoving = false;
     #endregion
 
     private void Awake() {
@@ -56,54 +64,25 @@ public class Controller_Player_Vent : MonoBehaviour
         HandleMouseLook();
         HandleMovement();
         HandleInteractable();
+        PlayFootsteps();
     }
     private void HandleMouseLook() {
-        // Get mouse input
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         
-        // Calculate the potential new rotation
         float newXRotation = xRotation - mouseY;
         float newYRotation = yRotation + mouseX;
         
         Quaternion potentialRotation = initialRotation * Quaternion.Euler(newXRotation, newYRotation, 0f);
-        Vector3 potentialForward = potentialRotation * Vector3.forward;
 
-        // Project the potential forward vector onto the horizontal and vertical planes
-        Vector3 horizontalForward = new Vector3(potentialForward.x, 0, potentialForward.z).normalized;
-        Vector3 verticalForward = new Vector3(0, potentialForward.y, potentialForward.z).normalized;
-        
-        // Calculate separate angles for horizontal and vertical deviation
-        float horizontalAngle = Vector3.Angle(new Vector3(initialForward.x, 0, initialForward.z).normalized, horizontalForward);
-        float verticalAngle = Vector3.Angle(new Vector3(0, initialForward.y, initialForward.z).normalized, verticalForward);
-
-        bool allowRotation = true;
-
-        // Check horizontal constraints (left/right walls)
-        if (leftWall && horizontalAngle > maxLookAngle && Vector3.Dot(horizontalForward, -transform.right) > 0)
-            allowRotation = false;
-        if (rightWall && horizontalAngle > maxLookAngle && Vector3.Dot(horizontalForward, transform.right) > 0)
-            allowRotation = false;
-
-        // Check vertical constraints (up/down walls)
-        float upMaxAngle = upWall ? maxLookAngle : 85f;
-        float downMaxAngle = downWall ? maxLookAngle : 85f;
-
-        if (verticalAngle > upMaxAngle && potentialForward.y > initialForward.y)
-            allowRotation = false;
-        if (verticalAngle > downMaxAngle && potentialForward.y < initialForward.y)
-            allowRotation = false;
-
-        // Apply rotation if allowed
-        if (allowRotation) {
-            xRotation = newXRotation;
-            yRotation = newYRotation;
-            transform.localRotation = potentialRotation;
-        }
+        xRotation = newXRotation;
+        yRotation = newYRotation;
+        transform.localRotation = potentialRotation;
     }
     private void HandleMovement() {
         var vert = Input.GetAxis("Vertical");
         var movement = transform.forward * vert * moveSpeed * Time.deltaTime;
+        isMoving = movement.magnitude > 0;
         rb.AddForce(movement, ForceMode.VelocityChange);
     }
     private void HandleInteractable() {
@@ -112,6 +91,22 @@ public class Controller_Player_Vent : MonoBehaviour
                 torch.ToggleSwitch();
             }
         }
+    }
+
+    private void PlayFootsteps() {
+        bool hasMoved = Vector3.Distance(transform.position, previousPosition) > 0.01f;
+        if (isMoving && hasMoved && rb.linearVelocity.magnitude > 1f) {
+            footstepTimer += Time.deltaTime;
+
+            if (footstepTimer >= footstepInterval) {
+                Helper.Instance.PlayRandAudio(audioSource, footstepClips);
+                footstepTimer = 0f;
+            }
+        }
+        else {
+            footstepTimer = 0f;
+        }
+        previousPosition = transform.position;
     }
 
     private void CheckSides() {
