@@ -1031,6 +1031,7 @@ MonoBehaviour:
   m_Version: 0
   m_Tracks:
   - {fileID: -4368995600766481494}
+  - {fileID: -6648789905665064844}
   - {fileID: 3586028528397068249}
   - {fileID: -3191671896835213310}
   - {fileID: 6733091894926161095}
@@ -1044,7 +1045,6 @@ MonoBehaviour:
   - {fileID: -6360436341924252513}
   - {fileID: 56274680023763449}
   - {fileID: -117072096999282077}
-  - {fileID: -6648789905665064844}
   - {fileID: 8607712265122006005}
   m_FixedDuration: 0
   m_EditorSettings:
