@@ -2005,7 +2005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1bbc7ebabe2f046bc43a18d80879c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroCutscene: 0
+  skipIntroCutscene: 1
   startGameCutscene: {fileID: 1905292033}
   ventEnterCutscene: {fileID: 1640582262}
   ventExitCutscene: {fileID: 893867062}

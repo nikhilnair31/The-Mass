@@ -38,12 +38,18 @@ public class Manager_Sanity : MonoBehaviour
     private void Start() {
         if (postProcessVolume.Profile.TryGet(out vignette)) {
             vignette.intensity.value = 0f;
+        } else {
+            Debug.LogError("Vignette not found.");
         }
-        if (postProcessVolume.Profile.TryGet(out LensDistortion lensDistortion)) {
+        if (postProcessVolume.Profile.TryGet(out lensDistortion)) {
             lensDistortion.intensity.value = 0f;
+        } else {
+            Debug.LogError("LensDistortion not found.");
         }
-        if (postProcessVolume.Profile.TryGet(out SplitToning splitToning)) {
-            splitToning.balance.value = 0f;
+        if (postProcessVolume.Profile.TryGet(out splitToning)) {
+            splitToning.balance.value = -100f;
+        } else {
+            Debug.LogError("SplitToning not found.");
         }
 
         var massGO = GameObject.FindGameObjectWithTag("Mass");
@@ -67,7 +73,7 @@ public class Manager_Sanity : MonoBehaviour
 
         if (vignette != null) vignette.intensity.value = Mathf.Lerp(0f, 0.5f, sanityLostInTime / sanityLostInTimeMax);
         if (lensDistortion != null) lensDistortion.intensity.value = Mathf.Lerp(0f, 0.5f, sanityLostInTime / sanityLostInTimeMax);
-        if (splitToning != null) splitToning.balance.value = Mathf.Lerp(0f, 1f, sanityLostInTime / sanityLostInTimeMax);
+        if (splitToning != null) splitToning.balance.value = Mathf.Lerp(-100f, 100f, sanityLostInTime / sanityLostInTimeMax);
 
         if (sanityLostInTime >= sanityLostInTimeMax) {
             Manager_UI.Instance.GameOver();
