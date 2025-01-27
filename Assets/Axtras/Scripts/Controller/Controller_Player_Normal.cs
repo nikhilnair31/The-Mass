@@ -37,7 +37,6 @@ public class Controller_Player_Normal : MonoBehaviour
 
     [Header("Zoom Settings")]
     [SerializeField] private CinemachineVolumeSettings volume;
-    [SerializeField] private Vignette vignette;
     [SerializeField] private CinemachineCamera cam;
     [SerializeField] private float zoomFOV = 40f;
     private float currFOV;
@@ -60,9 +59,6 @@ public class Controller_Player_Normal : MonoBehaviour
     private void Start() {
         if (transform.TryGetComponent(out Rigidbody rgb)) {
             rb = rgb;
-        }
-        if (volume.Profile.TryGet(out Vignette v)) {
-            vignette = v;
         }
 
         rb.freezeRotation = true;
@@ -190,8 +186,6 @@ public class Controller_Player_Normal : MonoBehaviour
                 zoomFOV,
                 0.5f
             );
-
-            DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0.5f, 0.5f);
         }
         else if (Input.GetMouseButtonUp(1)) {
             DOTween.To(
@@ -204,8 +198,6 @@ public class Controller_Player_Normal : MonoBehaviour
                 currFOV,
                 0.5f
             );
-
-            DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, 0f, 0.5f);
         }
     }
 
