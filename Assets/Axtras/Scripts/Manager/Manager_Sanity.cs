@@ -22,6 +22,7 @@ public class Manager_Sanity : MonoBehaviour
     [SerializeField] private CinemachineVolumeSettings postProcessVolume;
     private Vignette vignette;
     private LensDistortion lensDistortion;
+    private SplitToning splitToning;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioSource sanityAudioSource;
@@ -40,6 +41,9 @@ public class Manager_Sanity : MonoBehaviour
         }
         if (postProcessVolume.Profile.TryGet(out LensDistortion lensDistortion)) {
             lensDistortion.intensity.value = 0f;
+        }
+        if (postProcessVolume.Profile.TryGet(out SplitToning splitToning)) {
+            splitToning.balance.value = 0f;
         }
 
         var massGO = GameObject.FindGameObjectWithTag("Mass");
@@ -61,8 +65,9 @@ public class Manager_Sanity : MonoBehaviour
 
         sanityAudioSource.volume = Mathf.Lerp(0f, 1f, sanityLostInTime / sanityLostInTimeMax);
 
-        if (vignette != null) vignette.intensity.value = Mathf.Lerp(0f, 0.3f, sanityLostInTime / sanityLostInTimeMax);
-        if (lensDistortion != null) lensDistortion.intensity.value = Mathf.Lerp(0f, 0.3f, sanityLostInTime / sanityLostInTimeMax);
+        if (vignette != null) vignette.intensity.value = Mathf.Lerp(0f, 0.5f, sanityLostInTime / sanityLostInTimeMax);
+        if (lensDistortion != null) lensDistortion.intensity.value = Mathf.Lerp(0f, 0.5f, sanityLostInTime / sanityLostInTimeMax);
+        if (splitToning != null) splitToning.balance.value = Mathf.Lerp(0f, 1f, sanityLostInTime / sanityLostInTimeMax);
 
         if (sanityLostInTime >= sanityLostInTimeMax) {
             Manager_UI.Instance.GameOver();

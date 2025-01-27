@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7109219354874593572
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: 
+  active: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 0, b: 0, a: 1}
+  balance:
+    m_OverrideState: 1
+    m_Value: -100
 --- !u!114 &-6515543678154077778
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -102,10 +124,10 @@ MonoBehaviour:
   active: 1
   widthPixelation:
     m_OverrideState: 1
-    m_Value: 256
+    m_Value: 320
   heightPixelation:
     m_OverrideState: 1
-    m_Value: 256
+    m_Value: 240
   colorPrecision:
     m_OverrideState: 1
     m_Value: 256
@@ -152,10 +174,10 @@ MonoBehaviour:
   active: 1
   patternIndex:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 2
   ditherThreshold:
     m_OverrideState: 1
-    m_Value: 32
+    m_Value: 7
   ditherStrength:
     m_OverrideState: 1
     m_Value: 2
@@ -183,6 +205,7 @@ MonoBehaviour:
   - {fileID: -4302564655336119414}
   - {fileID: 6837631022381549933}
   - {fileID: -1924088426569788542}
+  - {fileID: -7109219354874593572}
 --- !u!114 &841545454973363894
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -223,7 +246,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.25355813
   smoothness:
     m_OverrideState: 1
     m_Value: 1

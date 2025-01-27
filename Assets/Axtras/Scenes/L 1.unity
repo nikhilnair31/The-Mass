@@ -1849,19 +1849,21 @@ MonoBehaviour:
   approaches:
   - Name: Throwable_Regular
     IsUsed: 0
-    ThoughtText: i should just throw something at it
+    ThoughtText: "Throw something heavy at it. See if it reacts. Maybe it\u2019ll...
+      do something."
   - Name: Throwable_Breakable
     IsUsed: 0
-    ThoughtText: something that would shatter
+    ThoughtText: "Throw something that\u2019ll shatter. Glass, a bottle, anything.
+      Maybe it\u2019ll... hurt it. Or distract it."
   - Name: Pokable
     IsUsed: 0
-    ThoughtText: something long...
+    ThoughtText: Poke it. With something. See if it feels... real.
   - Name: Spray_Gas
     IsUsed: 0
-    ThoughtText: maybe it's just some bug?
+    ThoughtText: "Spray it. Bug spray, cleaner, whatever. Maybe it\u2019ll... burn."
   - Name: Spray_Fire
     IsUsed: 0
-    ThoughtText: i have to burn that ... that <b><color=red>MASS</color></b> away
+    ThoughtText: Fire. Burn it. Find something to light it up. Now.
   ventTranform: {fileID: 66872113}
   ventEntryColliderGO: {fileID: 1750890968}
   ventExitSteamPS: {fileID: 524540030}
@@ -1945,7 +1947,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: WHAT THE FUCK
+            m_StringArgument: WHAT THE FUCK IS THAT?!
             m_BoolArgument: 0
           m_CallState: 2
     - m_PersistentCalls:
@@ -1959,7 +1961,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: oh fuck oh fuck oh fuck
+            m_StringArgument: No, no, no, no, NO!
             m_BoolArgument: 0
           m_CallState: 2
     - m_PersistentCalls:
@@ -1973,7 +1975,8 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: ... i ... i need to get a closer look at that thing
+            m_StringArgument: Just breathe. What is that thing? I need to figure
+              it out - do something. But what?!
             m_BoolArgument: 0
           m_CallState: 2
     - m_PersistentCalls:
@@ -2002,7 +2005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1bbc7ebabe2f046bc43a18d80879c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntroCutscene: 1
+  skipIntroCutscene: 0
   startGameCutscene: {fileID: 1905292033}
   ventEnterCutscene: {fileID: 1640582262}
   ventExitCutscene: {fileID: 893867062}
@@ -50330,7 +50333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1419731935
 Transform:
   m_ObjectHideFlags: 0
@@ -50359,11 +50362,11 @@ BoxCollider:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 447
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.8934069, y: 0.43386173, z: 5.332899}
   m_Center: {x: 3.8216443, y: -0.28306913, z: 0.048550606}
@@ -50379,7 +50382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86024b9a4cfc886499b79ec3acc35fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showThisText: i can't even reach it?!
+  showThisText: "It\u2019s like... something\u2019s pushing me back. What IS this?!"
   showForTime: 3
   invokeEvent:
     m_PersistentCalls:
@@ -71171,7 +71174,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079075754}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ba9292ae7492cc40aa7a655d50b67f0, type: 3}
   m_Name: 
@@ -71214,8 +71217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeProfile: {fileID: 11400000, guid: 7bbe35cdf5d69e14abbb03eccedaa5bd, type: 2}
   isEnabled: 1
-  patternIndex: 3
-  ditherThreshold: 32
+  patternIndex: 2
+  ditherThreshold: 7
   ditherStrength: 2
   ditherScale: 2
 --- !u!114 &2079075758
@@ -71232,8 +71235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeProfile: {fileID: 11400000, guid: 7bbe35cdf5d69e14abbb03eccedaa5bd, type: 2}
   isEnabled: 1
-  widthPixelation: 256
-  heightPixelation: 256
+  widthPixelation: 320
+  heightPixelation: 240
   colorPrecision: 256
 --- !u!114 &2079075759
 MonoBehaviour:
@@ -77932,7 +77935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844101393250963855, guid: e9d2583f0d163004bb30ac78755c2fd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.858202
+      value: 22.712223
       objectReference: {fileID: 0}
     - target: {fileID: 4844101393250963855, guid: e9d2583f0d163004bb30ac78755c2fd3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -77940,7 +77943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4844101393250963855, guid: e9d2583f0d163004bb30ac78755c2fd3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7133169
+      value: -1.1426382
       objectReference: {fileID: 0}
     - target: {fileID: 4844101393250963855, guid: e9d2583f0d163004bb30ac78755c2fd3, type: 3}
       propertyPath: m_LocalRotation.w
