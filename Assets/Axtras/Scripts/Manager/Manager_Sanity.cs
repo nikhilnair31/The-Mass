@@ -1,6 +1,5 @@
-using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.Rendering;
+using Unity.Cinemachine;
 using UnityEngine.Rendering.Universal;
 
 public class Manager_Sanity : MonoBehaviour 
@@ -79,5 +78,13 @@ public class Manager_Sanity : MonoBehaviour
             Manager_UI.Instance.GameOver();
             sanityLostInTime = sanityLostInTimeMax;
         }
+    }
+    
+    public void DisableSanity() {
+        vignette.intensity.value = 0f;
+        lensDistortion.intensity.value = 0f;
+        splitToning.balance.value = -100f;
+
+        enabled = false;
     }
 }

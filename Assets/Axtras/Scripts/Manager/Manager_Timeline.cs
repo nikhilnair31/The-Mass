@@ -38,7 +38,7 @@ public class Manager_Timeline : MonoBehaviour
     }
     public void PlayCutscene_VentEnter() {
         ventEnterCutscene.Play();
-        Manager_Sanity.Instance.enabled = false;
+        Manager_Sanity.Instance.DisableSanity();
     }
     public void PlayCutscene_VentExit() {
         ventExitCutscene.Play();
