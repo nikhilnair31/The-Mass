@@ -103,30 +103,30 @@ public class Manager_Game : MonoBehaviour
 
     private void UpdateByAttempt() {
         switch (currentAttempts) {
-            case 0:
-                Attempt0();
-                break;
             case 1:
                 Attempt1();
+                ShowNextAttemptThought(NextAttemptThought());
                 break;
             case 2:
                 Attempt2();
+                ShowNextAttemptThought(NextAttemptThought());
                 break;
             case 3:
                 Attempt3();
+                ShowNextAttemptThought(NextAttemptThought());
                 break;
             case 4:
                 Attempt4();
+                ShowNextAttemptThought(NextAttemptThought());
                 break;
             case 5:
                 Attempt5();
+                ShowNextAttemptThought(NextAttemptThought());
                 break;
             default:
+                Attempt0();
                 break;
         }
-
-        // In some time make the player think of what else to attempt
-        NextAttemptThought();
     }
     private void Attempt0() {
         ventExitSteamPS.Stop();
@@ -215,17 +215,19 @@ public class Manager_Game : MonoBehaviour
         // New small objects appear 
     }
 
-    private void NextAttemptThought() {
-        string nextAttemptThought = "what do i do next?";
+    private string NextAttemptThought() {
+        string nextAttemptThought = "WAIT! I can get closer through the vent!";
 
         foreach (var approach in approaches) {
             Debug.Log($"approach: {approach}");
             if (!approach.IsUsed) {
-                nextAttemptThought = approach.ThoughtText;
-                break;
+                return approach.ThoughtText;
             }
         }
 
+        return nextAttemptThought;
+    }
+    private void ShowNextAttemptThought(string nextAttemptThought) {    
         DOVirtual.DelayedCall(
             3f, 
             () => {
@@ -236,9 +238,5 @@ public class Manager_Game : MonoBehaviour
                 );
             }
         );
-    }
-
-    public bool GetIfAllAttemptsCompleted() {
-        return currentAttempts == maxAttempts;
     }
 }

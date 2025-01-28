@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Controller_Interactables : MonoBehaviour 
@@ -53,9 +52,6 @@ public class Controller_Interactables : MonoBehaviour
         }
 
         gameObject.layer = LayerMask.NameToLayer("Interactable");
-    }
-    
-    private void Start() {
     }
     
     public void SetInteractionText(string newtext) {

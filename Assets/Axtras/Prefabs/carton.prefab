@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4586813506710759323}
   - component: {fileID: 6237400576801906025}
   - component: {fileID: -8698400596594765793}
-  - component: {fileID: 335980197865935492}
   - component: {fileID: 2133558476276847716}
   - component: {fileID: 2464950588727419823}
   m_Layer: 7
@@ -20,7 +19,7 @@ GameObject:
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &7788296057025694237
 Transform:
@@ -119,28 +118,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!64 &335980197865935492
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9103383211252457923}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4527064541516355923, guid: 5f14db62c4f207248b1555082375b2a3, type: 3}
 --- !u!82 &2133558476276847716
 AudioSource:
   m_ObjectHideFlags: 0
@@ -250,9 +227,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0d67c8807fff841bf88342ecaf8f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addAudioSource: 0
+  addRigidbody: 0
+  addMeshCollider: 0
+  addBoxCollider: 1
   showThisText: pick up?
+  showForTime: -1
   isPickable: 1
   wasHeld: 0
+  heldPos: {x: 0, y: 0, z: 0}
+  heldRotEuler: {x: 0, y: 0, z: 0}
   throwForce: 3
   isBreakable: 0
   shatteredPrefab: {fileID: 0}

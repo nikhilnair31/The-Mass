@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 4050518000696037760}
   - component: {fileID: 4118381016962290731}
   - component: {fileID: 3369678840321868675}
-  - component: {fileID: 1508188423494645754}
   m_Layer: 7
   m_Name: phone
   m_TagString: Interactable
@@ -289,25 +288,3 @@ MonoBehaviour:
   notifClip: {fileID: 8300000, guid: e94b124c49c81b744b7b1cb7ec59880a, type: 3}
   notifRandDelay: 6
   shakeVec: {x: 5, y: 5, z: 5}
---- !u!95 &1508188423494645754
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5043800587102697611}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
