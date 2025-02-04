@@ -56,7 +56,7 @@ public class Controller_Player_Normal : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Start() {
+    private void OnEnable() {
         if (transform.TryGetComponent(out Rigidbody rgb)) {
             rb = rgb;
         }
@@ -76,10 +76,10 @@ public class Controller_Player_Normal : MonoBehaviour
     }
 
     private void HandleMouseLook() {
-        if (!canLook) return;
+        if (!canLook || Time.timeScale == 0f) return;
 
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
